@@ -1,0 +1,1 @@
+<cfset SESSION.user.customerId = "" />

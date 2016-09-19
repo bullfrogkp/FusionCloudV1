@@ -1,0 +1,79 @@
+entity init() method must not have required argument(s), otherwise EntityNew() and other CF-ORM actions will break. You may want to use a Factory to create the entity, and enforce the required arguments there.
+
+ORMReload() with ormsettings.dbcreate = "drop create" might not drop all tables for you. CF9 Cumulative Hot Fix 1 improves this a little bit, but you might want to drop the tables in DB yourself.
+
+type="date" (default to use ormtype="date"), will only store date but not time. If you want to persisted time as well, use ormtype="timestamp"
+
+type="string" will default to varchar(255)
+
+type="numeric" will default to float, not int. Use ormtype="int" if needed.
+
+if fieldtype="id" and generator is set to some generator, ormtype will default to int.
+
+type="string" length="10" will use varchar(10), not char(10)
+
+ormtype="char" length="10" will use char(1) still. Use sqltype="char(10)" if you really need to.
+
+type="boolean" use tinyint by default, use sqltype="bit" if you need to.
+
+should use inverse=true in a bi-directional relationship, usually in "one-to-many" side.
+
+do NOT use inverse="true" in uni-directional relationship! The relationship might not be persisted at all!
+
+If you use MS-SQL, you cannot have more than 1 entity with one-to-one property set to Null, because Null is considered as an unique value in an index. Good idea to make column not null. (or use linktable)
+
+EntityLoad("entity", 1, true) works, but EntityLoadByPK("entity", 1) is cleaner!
+
+EntityLoad(), EntityLoadByPK(), and ORMExecuteQuery with unique=true, will return null if entity is not found. Use isNull() to check before you use the returned value.
+
+ORMExecuteQuery will return empty array if no entity is found by default.
+
+don't forget to use singularname property in "one-to-many" / "many-to-many" for nicer looking generated functions (e.g. addDog(Dog dog) vs addDogs(Dog dogs) .)
+
+<cfdump> will load all the lazy-load properties. Alternatively you may try <cfdump var="#entityToQuery([entity])#"> or set top=1 to dump efficiently.
+
+entity stored in Session scope will be disconnected with its Hibernate session scope, and lazy load property will not be loaded. To restore the hibernate session scope, use entityLoadByExample() or entitySave(entity).
+
+cascade="all-delete-orphan" usually make more sense for "one-to-many" or "many-to-many" relationship. Hibernate sets null then delete, so make sure the column is nullable. Test and see if that's your desire behaviour.
+
+set required="true" whenever notnull="true", more readable for others browsing the CFC with CFCExplorer
+
+EntityNew('Y') is slightly more efficient than new com.X.Y if the entity is to be persisted later according to some Adobe engineer.
+
+relationship with an inherited entity may break sometimes due to an unfixed Hibernate bug, use linktable as a workaround.
+
+structKeyColumn cannot be the PK of the target entity.
+
+bi-directional many-to-many cannot use struct
+
+When adding new entity to struct, structKeyColumn is ignored when CF persists the parent entity.
+
+If you access the one-to-many / many-to-many array or struct directly, make sure the corresponding array/struct exists before use. Generated addX()/hasX()/removeX() are safe to use anytime.
+
+at postInsert(), the entity hibernate session is no longer available, so setting property at postInsert() will be silently ignore, or Session is Closed exception will be thrown.
+
+after entity is loaded by entityLoad() or HQL from DB, the changes will be automatically persisted even if EntitySave() is not called.
+
+transaction with CF-ORM is implemented in a way that it starts a new session and close when it's done.
+
+inside the event (i.e. preLoad() / postInsert()), assigning to variables might throw Java exception about types. Use JavaCast() to work around the bug.
+
+UPDATE
+
+CF9.0.1+: use <cfquery dbtype="hql">, easier to do cfqueryparam, and debug output actually shows you the binded values.
+
+
+
+
+
+
+
+
+
+Turn off ormsettings.flushAtRequestEnd = false to not have auto-flush at the end of the request. Instead use transactions (as of CF9.01, cftransaction flushes session for you transaction completion) around all write transactions (entitySave() or when you edit a persisted entity).
+Prevent SQL injection by using binded parameters in HQL - unnamed '?' or named ':' notations, to assure type binding by ORM against the field in question (like CFQUERYPARAM does). Prevent SQL injection!
+CF9.0.1 allows CFQUERY dbtype="hql" to write & output HQL inline. Use CFQUERYPARAM to bind params inline (equivalent to unnamed ? notation in HQL).
+Use LEFT OUTER JOIN FETCH in HQL to eager fetch relationships.
+Override add/remove functions on CFCs with bi-directional relationships to assure both sides are set when either is.
+Turn ormsettings.logsql=true to view derived SQL in the console. Adjust log4j Hibernate settings to further tweak log settings from Hibernate.
+Join Google Group cf-orm-dev. Bright people there.

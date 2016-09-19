@@ -1,0 +1,180 @@
+#filters {
+font-size:12px;
+font-weight:bold;
+}
+
+#filters tr td:first-child { 
+width:60px;
+height:40px;
+color:#F2A000;
+}
+
+#filters ul {
+margin-left:-5px;
+list-style-type:none;
+}
+
+#filters ul li {
+float:left;
+margin-left:10px;
+cursor:hand;
+cursor:pointer;
+border:1px solid #ccc;
+padding:4px 7px;
+}	
+
+#filters ul li:hover {
+color:#fff;
+background-color:#F2A000;
+}
+
+.active-filter {
+color:#fff;
+background-color:#F2A000;
+border:1px solid red !important;
+}
+
+#sort-by {
+font-size:12px;
+margin-top:20px;
+float:left;
+}
+
+#sort-by ul {
+margin-left:-5px;
+list-style-type:none;
+float:left;
+}
+
+#sort-by ul li {
+float:left;
+margin-left:10px;
+cursor:hand;
+cursor:pointer;
+}
+
+#sort-by ul li:hover {
+color:#fff;
+background-color:#ccc;
+}
+
+#sort-by ul li.active {
+color:#fff;
+background-color:#ccc;
+}
+
+#sort-by ul li {
+border:1px solid #ccc;
+padding:4px 7px;
+}
+
+
+#pages {
+font-size:12px;
+margin-top:20px;
+float:right;
+}
+
+#pages .active {
+color:#fff;
+background-color:#CCC;
+}
+
+#pages ul {
+margin-left:-5px;
+list-style-type:none;
+float:left;
+}
+
+#pages ul li {
+float:left;
+margin-left:10px;
+cursor:hand;
+cursor:pointer;
+}
+
+#pages ul li:hover {
+color:#fff;
+background-color:#CCC;
+}
+
+#pages ul li {
+border:1px solid #ccc;
+width:20px;
+height:20px;
+line-height:20px;
+text-align:center;
+}
+
+.grey_background {
+   background-color: #cccccc;
+}
+.green_background {
+   background-color: #909B19;
+}
+.red {
+   color: #FF0000;
+}
+.blue {
+   color: #0000FF;
+}
+
+#new-products {
+ font-size:12px;
+ font-weight:bold;
+ width:100%;
+}
+
+#new-products tr td:first-child { 
+width:60px;
+height:40px;
+color:#F2A000;
+}
+
+#new-products ul {
+ margin-left:10px;
+}
+
+#new-products ul li {
+ float:left;
+ margin-left:10px;
+ cursor:hand;
+ cursor:pointer;
+ margin-bottom:5px;
+}
+
+#new-products ul li a {
+color:#333;
+text-decoration:none;
+padding:6px  0 6px 0;
+}
+
+#new-products ul li a:hover {
+text-decoration:underline;
+}
+
+.categories td ul li {
+padding:6px 0 6px 0;
+width:30%;
+margin-right:12px;
+}
+
+#product-filters ul {
+list-style-type:none;
+padding-bottom:40px;
+}
+
+#product-filters ul li {
+float:left;
+margin-right:7px;
+}
+
+.filter-options {
+cursor:pointer;
+cursor:hand;
+border:1px solid #CCC;
+}
+
+.filter-options:hover {
+border:1px solid red;
+}
