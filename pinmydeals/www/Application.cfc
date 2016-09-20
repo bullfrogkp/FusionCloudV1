@@ -25,14 +25,14 @@
 		<cfif ARGUMENTS.reload EQ true OR NOT StructKeyExists( THIS, "$Config" )>
             <cfset THIS[ "$Config" ] = {} />
 			
-            <cfif Find( "127.0.0.1", CGI.server_name ) OR Find( ".local", CGI.server_name )>
+            <cfif Find( "127.0.0.1", CGI.server_name ) OR Find( ".loc", CGI.server_name )>
                 <!--- Set development environment. --->
                 <cfset THIS[ "$Config" ].isLive = false />
                 <cfset THIS[ "$Config" ].name = "PinMyDeals" />
                 <cfset THIS[ "$Config" ].ormEnabled = "true" />
                 <cfset THIS[ "$Config" ].ormSettings = {} />
                 <cfset THIS[ "$Config" ].ormSettings.dbCreate = "update" />
-                <cfset THIS[ "$Config" ].ormSettings.cfcLocation = "/core/entities/" />
+                <cfset THIS[ "$Config" ].ormSettings.cfcLocation = "/site/core/entities/" />
                 <cfset THIS[ "$Config" ].dataSource = "db_eshop" />
                 <cfset THIS[ "$Config" ].sessionManagement = "yes" />
                 <cfset THIS[ "$Config" ].sessionTimeout = CreateTimeSpan(0,12,0,0) /> 
