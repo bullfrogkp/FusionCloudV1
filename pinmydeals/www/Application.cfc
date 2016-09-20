@@ -16,8 +16,8 @@
 	<cfset this.mappings[ "/pages" ] = Config().env.absolutePathRoot & "core/pages/" />
 	<cfset this.mappings[ "/shipping" ] = Config().env.absolutePathRoot & "core/shipping/" />
 	<cfset this.mappings[ "/payments" ] = Config().env.absolutePathRoot & "core/payments/" />
-	<cfset this.mappings[ "/adminData" ] = Config().env.absolutePathRoot & "admin/data/" />
-	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathRoot & "data/" />
+	<cfset this.mappings[ "/adminData" ] = Config().env.absolutePathRoot & "pinmydeals/admin/data/" />
+	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathRoot & "pinmydeals/www/data/" />
 	<!------------------------------------------------------------------------------->
     <cffunction name="Config" access="public" returntype="struct" output="false" hint="Returns the Application.cfc configuration settings struct based on the execution environment (production, staging, development, etc).">
 		<cfargument type="boolean" name="reload" required="false" default="false"/>
@@ -47,11 +47,11 @@
 				<cfset THIS[ "$Config" ].env.recordsPerPageFrontend = 12 />
 				
 				<!--- customized local vars --->
-				<cfset var folder_name = "cfcart" />
+				<cfset var folder_name = "site" />
 				<cfset THIS[ "$Config" ].env.urlRoot = "www.pinmydeals.local" />	
 				
 				<!--- absolute url --->
-				<cfset THIS[ "$Config" ].env.absoluteUrlWeb = "/#folder_name#/" />	
+				<cfset THIS[ "$Config" ].env.absoluteUrlWeb = "/#folder_name#/pinmydeals/www/" />	
 				<!--- absolute path --->	
 				<cfset THIS[ "$Config" ].env.absolutePathRoot = ExpandPath(THIS[ "$Config" ].env.absoluteUrlWeb) />
 				<!--- url --->
