@@ -25,20 +25,20 @@
 		<cfif ARGUMENTS.reload EQ true OR NOT StructKeyExists( THIS, "$Config" )>
             <cfset THIS[ "$Config" ] = {} />
 			
-            <cfif Find( "127.0.0.1", CGI.server_name ) OR Find( "localhost", CGI.server_name )>
+            <cfif Find( "127.0.0.1", CGI.server_name ) OR Find( ".local", CGI.server_name )>
                 <!--- Set development environment. --->
                 <cfset THIS[ "$Config" ].isLive = false />
                 <cfset THIS[ "$Config" ].name = "PinMyDeals" />
                 <cfset THIS[ "$Config" ].ormEnabled = "true" />
                 <cfset THIS[ "$Config" ].ormSettings = {} />
                 <cfset THIS[ "$Config" ].ormSettings.dbCreate = "update" />
-                <cfset THIS[ "$Config" ].ormSettings.cfcLocation = "/cfcart/core/entities/" />
+                <cfset THIS[ "$Config" ].ormSettings.cfcLocation = "/core/entities/" />
                 <cfset THIS[ "$Config" ].dataSource = "db_eshop" />
                 <cfset THIS[ "$Config" ].sessionManagement = "yes" />
                 <cfset THIS[ "$Config" ].sessionTimeout = CreateTimeSpan(0,12,0,0) /> 
 				
 				<cfset THIS[ "$Config" ].env = {} />
-				<cfset THIS[ "$Config" ].env.domain = "pinmydeals.com" />
+				<cfset THIS[ "$Config" ].env.domain = "www.pinmydeals.local" />
 				<cfset THIS[ "$Config" ].env.emailCustomerService = "customerservice@#THIS[ "$Config" ].env.domain#" />
 				<cfset THIS[ "$Config" ].env.emailAdmin = "admin@#THIS[ "$Config" ].env.domain#" />
 				<cfset THIS[ "$Config" ].env.emailDevelopment = "dev@#THIS[ "$Config" ].env.domain#" />
@@ -48,7 +48,7 @@
 				
 				<!--- customized local vars --->
 				<cfset var folder_name = "cfcart" />
-				<cfset THIS[ "$Config" ].env.urlRoot = "127.0.0.1:8500" />	
+				<cfset THIS[ "$Config" ].env.urlRoot = "www.pinmydeals.local" />	
 				
 				<!--- absolute url --->
 				<cfset THIS[ "$Config" ].env.absoluteUrlWeb = "/#folder_name#/" />	
