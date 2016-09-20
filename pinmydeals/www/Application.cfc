@@ -16,8 +16,7 @@
 	<cfset this.mappings[ "/pages" ] = Config().env.absolutePathRoot & "core/pages/" />
 	<cfset this.mappings[ "/shipping" ] = Config().env.absolutePathRoot & "core/shipping/" />
 	<cfset this.mappings[ "/payments" ] = Config().env.absolutePathRoot & "core/payments/" />
-	<cfset this.mappings[ "/adminData" ] = Config().env.absolutePathRoot & "pinmydeals/admin/data/" />
-	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathRoot & "pinmydeals/www/data/" />
+	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathRoot & "data/" />
 	<!------------------------------------------------------------------------------->
     <cffunction name="Config" access="public" returntype="struct" output="false" hint="Returns the Application.cfc configuration settings struct based on the execution environment (production, staging, development, etc).">
 		<cfargument type="boolean" name="reload" required="false" default="false"/>
@@ -150,7 +149,6 @@
 		
 		<cfset StructAppend(APPLICATION, Config().env) />
 		
-		<cfset APPLICATION.globalPageObjAdmin = new adminData.global(pageName = "", formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
 		<cfset APPLICATION.globalPageObj = new siteData.global(pageName = "", formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
 		
 		<cfreturn true>
