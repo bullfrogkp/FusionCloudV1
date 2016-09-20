@@ -1,4 +1,160 @@
-﻿<cfcomponent extends="admin.application">
+﻿<cfcomponent output="false" accessors="true">
+	<!------------------------------------------------------------------------------->
+	<cfset this.name = Config().name>
+	<cfset this.ormEnabled = Config().ormEnabled> 
+	<cfset this.ormSettings.dbCreate = Config().ormSettings.dbCreate>
+	<cfset this.ormSettings.cfcLocation = Config().ormSettings.cfcLocation>
+	<cfset this.dataSource = Config().dataSource> 
+	<cfset this.sessionManagement = Config().sessionManagement>
+	<cfset this.sessionTimeout = Config().sessionTimeout>
+	<!------------------------------------------------------------------------------->
+	<cfset this.mappings[ "/core" ] = Config().env.absolutePathRoot & "core/" />
+	<cfset this.mappings[ "/entities" ] = Config().env.absolutePathRoot & "core/entities/" />
+	<cfset this.mappings[ "/modules" ] = Config().env.absolutePathRoot & "core/modules/" />
+	<cfset this.mappings[ "/services" ] = Config().env.absolutePathRoot & "core/services/" />
+	<cfset this.mappings[ "/utils" ] = Config().env.absolutePathRoot & "core/utils/" />
+	<cfset this.mappings[ "/pages" ] = Config().env.absolutePathRoot & "core/pages/" />
+	<cfset this.mappings[ "/shipping" ] = Config().env.absolutePathRoot & "core/shipping/" />
+	<cfset this.mappings[ "/payments" ] = Config().env.absolutePathRoot & "core/payments/" />
+	<cfset this.mappings[ "/adminData" ] = Config().env.absolutePathRoot & "admin/data/" />
+	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathRoot & "data/" />
+	<!------------------------------------------------------------------------------->
+    <cffunction name="Config" access="public" returntype="struct" output="false" hint="Returns the Application.cfc configuration settings struct based on the execution environment (production, staging, development, etc).">
+		<cfargument type="boolean" name="reload" required="false" default="false"/>
+		
+		<cfif ARGUMENTS.reload EQ true OR NOT StructKeyExists( THIS, "$Config" )>
+            <cfset THIS[ "$Config" ] = {} />
+			
+            <cfif Find( "127.0.0.1", CGI.server_name ) OR Find( "localhost", CGI.server_name )>
+                <!--- Set development environment. --->
+                <cfset THIS[ "$Config" ].isLive = false />
+                <cfset THIS[ "$Config" ].name = "PinMyDeals" />
+                <cfset THIS[ "$Config" ].ormEnabled = "true" />
+                <cfset THIS[ "$Config" ].ormSettings = {} />
+                <cfset THIS[ "$Config" ].ormSettings.dbCreate = "update" />
+                <cfset THIS[ "$Config" ].ormSettings.cfcLocation = "/cfcart/core/entities/" />
+                <cfset THIS[ "$Config" ].dataSource = "db_eshop" />
+                <cfset THIS[ "$Config" ].sessionManagement = "yes" />
+                <cfset THIS[ "$Config" ].sessionTimeout = CreateTimeSpan(0,12,0,0) /> 
+				
+				<cfset THIS[ "$Config" ].env = {} />
+				<cfset THIS[ "$Config" ].env.domain = "pinmydeals.com" />
+				<cfset THIS[ "$Config" ].env.emailCustomerService = "customerservice@#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.emailAdmin = "admin@#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.emailDevelopment = "dev@#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.emailInfo = "info@#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.recordsPerPage = 10 />
+				<cfset THIS[ "$Config" ].env.recordsPerPageFrontend = 12 />
+				
+				<!--- customized local vars --->
+				<cfset var folder_name = "cfcart" />
+				<cfset THIS[ "$Config" ].env.urlRoot = "127.0.0.1:8500" />	
+				
+				<!--- absolute url --->
+				<cfset THIS[ "$Config" ].env.absoluteUrlWeb = "/#folder_name#/" />	
+				<!--- absolute path --->	
+				<cfset THIS[ "$Config" ].env.absolutePathRoot = ExpandPath(THIS[ "$Config" ].env.absoluteUrlWeb) />
+				<!--- url --->
+				<cfset THIS[ "$Config" ].env.urlWeb = "http://#THIS[ "$Config" ].env.urlRoot##THIS[ "$Config" ].env.absoluteUrlWeb#" />
+				<cfset THIS[ "$Config" ].env.urlHttpsWeb = "http://#THIS[ "$Config" ].env.urlRoot##THIS[ "$Config" ].env.absoluteUrlWeb#" />
+				<!--- component --->
+				<cfset THIS[ "$Config" ].env.componentPathRoot = "#folder_name#." />
+				
+				<cfset THIS[ "$Config" ].env.ups = {} />
+				<cfset THIS[ "$Config" ].env.ups.accesskey = "CC9C9C10118EBCF0">
+				<cfset THIS[ "$Config" ].env.ups.upsuserid = "berserk_2nd">
+				<cfset THIS[ "$Config" ].env.ups.upspassword = "Shabishini1">
+				<cfset THIS[ "$Config" ].env.ups.rate_url = "https://wwwcie.ups.com/ups.app/xml/Rate">
+				<cfset THIS[ "$Config" ].env.ups.av_url = "https://wwwcie.ups.com/ups.app/xml/AV">
+				<cfset THIS[ "$Config" ].env.ups.tracking_url = "https://wwwcie.ups.com/ups.app/xml/Track">
+				
+				<cfset THIS[ "$Config" ].env.canadapost = {} />
+				<cfset THIS[ "$Config" ].env.canadapost.username = "03ac5bc25c8f08e5">
+				<cfset THIS[ "$Config" ].env.canadapost.password = "e87558a6b864af93152ab1">
+				<cfset THIS[ "$Config" ].env.canadapost.rate_url = "https://soa-gw.canadapost.ca/rs/ship/price">
+				
+				<cfset THIS[ "$Config" ].env.paypal = {} >
+				<cfset THIS[ "$Config" ].env.paypal.APIuserName = "pqhitp_1341165924_biz_api1.hotmail.com">
+				<cfset THIS[ "$Config" ].env.paypal.APIPassword = "1341165955">
+				<cfset THIS[ "$Config" ].env.paypal.APISignature = "AiPC9BjkCyDFQXbSkoZcgqH3hpacATbKynOthb8vHNx-Us8jDe7sMzsE"> 
+				<cfset THIS[ "$Config" ].env.paypal.version = "60.0">
+				<cfset THIS[ "$Config" ].env.paypal.serverURL = "https://api-3t.sandbox.paypal.com/nvp"> 
+				<cfset THIS[ "$Config" ].env.paypal.useProxy = "false">
+				<cfset THIS[ "$Config" ].env.paypal.proxyName = "">
+				<cfset THIS[ "$Config" ].env.paypal.proxyPort = "">
+				<cfset THIS[ "$Config" ].env.paypal.PayPalURL = "https://www.sandbox.paypal.com/cgi-bin/soofanscr?cmd=_express-checkout&useraction=commit&token=">
+            <cfelse>
+                <!--- Set production environment. --->
+                <cfset THIS[ "$Config" ].isLive = true />
+                <cfset THIS[ "$Config" ].name = "PinMyDeals" />
+                <cfset THIS[ "$Config" ].ormEnabled = "true" />
+                <cfset THIS[ "$Config" ].ormSettings = {} />
+                <cfset THIS[ "$Config" ].ormSettings.dbCreate = "update" />
+				<cfset THIS[ "$Config" ].ormSettings.cfclocation = "/core/entities/" />
+                <cfset THIS[ "$Config" ].dataSource = "db_eshop" />
+                <cfset THIS[ "$Config" ].sessionManagement = "yes" />
+                <cfset THIS[ "$Config" ].sessionTimeout = CreateTimeSpan(0,12,0,0) /> 
+				
+				<cfset THIS[ "$Config" ].env = {} />
+				<cfset THIS[ "$Config" ].env.domain = "pinmydeals.com" />
+				<cfset THIS[ "$Config" ].env.emailCustomerService = "customerservice@#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.emailAdmin = "admin@#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.emailDevelopment = "dev@#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.emailInfo = "info@#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.recordsPerPage = 10 />
+				<cfset THIS[ "$Config" ].env.recordsPerPageFrontend = 12 />
+				
+				<!--- absolute url --->
+				<cfset THIS[ "$Config" ].env.absoluteUrlWeb = "/" />	
+				<!--- absolute path --->	
+				<cfset THIS[ "$Config" ].env.absolutePathRoot = ExpandPath(THIS[ "$Config" ].env.absoluteUrlWeb) />
+				<!--- url --->
+				<cfset THIS[ "$Config" ].env.urlRoot = "www.#THIS[ "$Config" ].env.domain#" />	
+				<cfset THIS[ "$Config" ].env.urlWeb = "http://#THIS[ "$Config" ].env.urlRoot##THIS[ "$Config" ].env.absoluteUrlWeb#" />
+				<cfset THIS[ "$Config" ].env.urlHttpsWeb = "http://#THIS[ "$Config" ].env.urlRoot##THIS[ "$Config" ].env.absoluteUrlWeb#" />
+				<!--- component --->
+				<cfset THIS[ "$Config" ].env.componentPathRoot = "" />
+				
+				<cfset THIS[ "$Config" ].env.ups = {} />
+				<cfset THIS[ "$Config" ].env.ups.accesskey = "CC9C9C10118EBCF0">
+				<cfset THIS[ "$Config" ].env.ups.upsuserid = "berserk_2nd">
+				<cfset THIS[ "$Config" ].env.ups.upspassword = "Shabishini1">
+				<cfset THIS[ "$Config" ].env.ups.rate_url = "https://wwwcie.ups.com/ups.app/xml/Rate">
+				<cfset THIS[ "$Config" ].env.ups.av_url = "https://wwwcie.ups.com/ups.app/xml/AV">
+				<cfset THIS[ "$Config" ].env.ups.tracking_url = "https://wwwcie.ups.com/ups.app/xml/Track">
+				
+				<cfset THIS[ "$Config" ].env.canadapost = {} />
+				<cfset THIS[ "$Config" ].env.canadapost.username = "03ac5bc25c8f08e5">
+				<cfset THIS[ "$Config" ].env.canadapost.password = "e87558a6b864af93152ab1">
+				<cfset THIS[ "$Config" ].env.canadapost.rate_url = "https://soa-gw.canadapost.ca/rs/ship/price">
+				
+				<cfset THIS[ "$Config" ].env.paypal = {} >
+				<cfset THIS[ "$Config" ].env.paypal.APIuserName = "pqhitp_1341165924_biz_api1.hotmail.com">
+				<cfset THIS[ "$Config" ].env.paypal.APIPassword = "1341165955">
+				<cfset THIS[ "$Config" ].env.paypal.APISignature = "AiPC9BjkCyDFQXbSkoZcgqH3hpacATbKynOthb8vHNx-Us8jDe7sMzsE"> 
+				<cfset THIS[ "$Config" ].env.paypal.version = "60.0">
+				<cfset THIS[ "$Config" ].env.paypal.serverURL = "https://api-3t.sandbox.paypal.com/nvp"> 
+				<cfset THIS[ "$Config" ].env.paypal.useProxy = "false">
+				<cfset THIS[ "$Config" ].env.paypal.proxyName = "">
+				<cfset THIS[ "$Config" ].env.paypal.proxyPort = "">
+				<cfset THIS[ "$Config" ].env.paypal.PayPalURL = "https://www.sandbox.paypal.com/cgi-bin/soofanscr?cmd=_express-checkout&useraction=commit&token=">
+            </cfif>
+        </cfif>
+       
+        <cfreturn THIS[ "$Config" ] />
+    </cffunction>
+    <!------------------------------------------------------------------------------->
+	<cffunction name="onApplicationStart" returntype="boolean" output="false">
+		<cfset SetEncoding("form","utf-8") />
+		<cfset SetEncoding("url","utf-8") />
+		
+		<cfset StructAppend(APPLICATION, Config().env) />
+		
+		<cfset APPLICATION.globalPageObjAdmin = new adminData.global(pageName = "", formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
+		<cfset APPLICATION.globalPageObj = new siteData.global(pageName = "", formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
+		
+		<cfreturn true>
+	</cffunction>
 	<!------------------------------------------------------------------------------->
 	<cffunction name="onSessionStart" returnType="void">
 		<cfset _setUser() />
