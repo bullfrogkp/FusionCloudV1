@@ -8,15 +8,8 @@
 	<cfset this.sessionManagement = Config().sessionManagement>
 	<cfset this.sessionTimeout = Config().sessionTimeout>
 	<!------------------------------------------------------------------------------->
-	<cfset this.mappings[ "/core" ] = Config().env.absolutePathRoot & "core/" />
-	<cfset this.mappings[ "/entities" ] = Config().env.absolutePathRoot & "core/entities/" />
-	<cfset this.mappings[ "/modules" ] = Config().env.absolutePathRoot & "core/modules/" />
-	<cfset this.mappings[ "/services" ] = Config().env.absolutePathRoot & "core/services/" />
-	<cfset this.mappings[ "/utils" ] = Config().env.absolutePathRoot & "core/utils/" />
-	<cfset this.mappings[ "/pages" ] = Config().env.absolutePathRoot & "core/pages/" />
-	<cfset this.mappings[ "/shipping" ] = Config().env.absolutePathRoot & "core/shipping/" />
-	<cfset this.mappings[ "/payments" ] = Config().env.absolutePathRoot & "core/payments/" />
-	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathRoot & "data/" />
+	<cfset this.mappings[ "/core" ] = Config().env.absolutePathCore & "core/" />
+	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePath & "data/" />
 	<!------------------------------------------------------------------------------->
     <cffunction name="Config" access="public" returntype="struct" output="false" hint="Returns the Application.cfc configuration settings struct based on the execution environment (production, staging, development, etc).">
 		<cfargument type="boolean" name="reload" required="false" default="false"/>
@@ -24,40 +17,32 @@
 		<cfif ARGUMENTS.reload EQ true OR NOT StructKeyExists( THIS, "$Config" )>
             <cfset THIS[ "$Config" ] = {} />
 			
+			<cfset THIS[ "$Config" ].name = "PinMyDeals" />
+			<cfset THIS[ "$Config" ].ormEnabled = "true" />
+			<cfset THIS[ "$Config" ].ormSettings = {} />
+			<cfset THIS[ "$Config" ].ormSettings.dbCreate = "update" />
+			<cfset THIS[ "$Config" ].ormSettings.cfcLocation = "/site/core/entities/" />
+			<cfset THIS[ "$Config" ].dataSource = "db_eshop" />
+			<cfset THIS[ "$Config" ].sessionManagement = "yes" />
+			<cfset THIS[ "$Config" ].sessionTimeout = CreateTimeSpan(0,12,0,0) /> 
+			
+			<cfset THIS[ "$Config" ].env = {} />
+			<cfset THIS[ "$Config" ].env.emailCustomerService = "customerservice@#THIS[ "$Config" ].env.domain#" />
+			<cfset THIS[ "$Config" ].env.emailAdmin = "admin@#THIS[ "$Config" ].env.domain#" />
+			<cfset THIS[ "$Config" ].env.emailDevelopment = "dev@#THIS[ "$Config" ].env.domain#" />
+			<cfset THIS[ "$Config" ].env.emailInfo = "info@#THIS[ "$Config" ].env.domain#" />
+			<cfset THIS[ "$Config" ].env.recordsPerPage = 10 />
+			<cfset THIS[ "$Config" ].env.recordsPerPageFrontend = 12 />
+			
             <cfif Find( "127.0.0.1", CGI.server_name ) OR Find( ".loc", CGI.server_name )>
-                <!--- Set development environment. --->
                 <cfset THIS[ "$Config" ].isLive = false />
-                <cfset THIS[ "$Config" ].name = "PinMyDeals" />
-                <cfset THIS[ "$Config" ].ormEnabled = "true" />
-                <cfset THIS[ "$Config" ].ormSettings = {} />
-                <cfset THIS[ "$Config" ].ormSettings.dbCreate = "update" />
-                <cfset THIS[ "$Config" ].ormSettings.cfcLocation = "/site/core/entities/" />
-                <cfset THIS[ "$Config" ].dataSource = "db_eshop" />
-                <cfset THIS[ "$Config" ].sessionManagement = "yes" />
-                <cfset THIS[ "$Config" ].sessionTimeout = CreateTimeSpan(0,12,0,0) /> 
-				
-				<cfset THIS[ "$Config" ].env = {} />
 				<cfset THIS[ "$Config" ].env.domain = "www.pinmydeals.local" />
-				<cfset THIS[ "$Config" ].env.emailCustomerService = "customerservice@#THIS[ "$Config" ].env.domain#" />
-				<cfset THIS[ "$Config" ].env.emailAdmin = "admin@#THIS[ "$Config" ].env.domain#" />
-				<cfset THIS[ "$Config" ].env.emailDevelopment = "dev@#THIS[ "$Config" ].env.domain#" />
-				<cfset THIS[ "$Config" ].env.emailInfo = "info@#THIS[ "$Config" ].env.domain#" />
-				<cfset THIS[ "$Config" ].env.recordsPerPage = 10 />
-				<cfset THIS[ "$Config" ].env.recordsPerPageFrontend = 12 />
-				
-				<!--- customized local vars --->
-				<cfset var folder_name = "site" />
-				<cfset THIS[ "$Config" ].env.urlRoot = "www.pinmydeals.local" />	
-				
-				<!--- absolute url --->
-				<cfset THIS[ "$Config" ].env.absoluteUrlWeb = "/#folder_name#/pinmydeals/www/" />	
-				<!--- absolute path --->	
-				<cfset THIS[ "$Config" ].env.absolutePathRoot = ExpandPath(THIS[ "$Config" ].env.absoluteUrlWeb) />
-				<!--- url --->
-				<cfset THIS[ "$Config" ].env.urlWeb = "http://#THIS[ "$Config" ].env.urlRoot##THIS[ "$Config" ].env.absoluteUrlWeb#" />
-				<cfset THIS[ "$Config" ].env.urlHttpsWeb = "http://#THIS[ "$Config" ].env.urlRoot##THIS[ "$Config" ].env.absoluteUrlWeb#" />
-				<!--- component --->
-				<cfset THIS[ "$Config" ].env.componentPathRoot = "#folder_name#." />
+				<cfset THIS[ "$Config" ].env.absoluteUrl = "/site/pinmydeals/www/" />
+				<cfset THIS[ "$Config" ].env.absoluteUrlCore = "/site/core/" />
+				<cfset THIS[ "$Config" ].env.absolutePath = ExpandPath(THIS[ "$Config" ].env.absoluteUrl) />
+				<cfset THIS[ "$Config" ].env.absolutePathCore = ExpandPath(THIS[ "$Config" ].env.absoluteUrlCore) />
+				<cfset THIS[ "$Config" ].env.urlHttp = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrl#" />
+				<cfset THIS[ "$Config" ].env.urlHttps = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrl#" />
 				
 				<cfset THIS[ "$Config" ].env.ups = {} />
 				<cfset THIS[ "$Config" ].env.ups.accesskey = "CC9C9C10118EBCF0">
@@ -83,36 +68,14 @@
 				<cfset THIS[ "$Config" ].env.paypal.proxyPort = "">
 				<cfset THIS[ "$Config" ].env.paypal.PayPalURL = "https://www.sandbox.paypal.com/cgi-bin/soofanscr?cmd=_express-checkout&useraction=commit&token=">
             <cfelse>
-                <!--- Set production environment. --->
                 <cfset THIS[ "$Config" ].isLive = true />
-                <cfset THIS[ "$Config" ].name = "PinMyDeals" />
-                <cfset THIS[ "$Config" ].ormEnabled = "true" />
-                <cfset THIS[ "$Config" ].ormSettings = {} />
-                <cfset THIS[ "$Config" ].ormSettings.dbCreate = "update" />
-				<cfset THIS[ "$Config" ].ormSettings.cfclocation = "/core/entities/" />
-                <cfset THIS[ "$Config" ].dataSource = "db_eshop" />
-                <cfset THIS[ "$Config" ].sessionManagement = "yes" />
-                <cfset THIS[ "$Config" ].sessionTimeout = CreateTimeSpan(0,12,0,0) /> 
-				
-				<cfset THIS[ "$Config" ].env = {} />
-				<cfset THIS[ "$Config" ].env.domain = "pinmydeals.com" />
-				<cfset THIS[ "$Config" ].env.emailCustomerService = "customerservice@#THIS[ "$Config" ].env.domain#" />
-				<cfset THIS[ "$Config" ].env.emailAdmin = "admin@#THIS[ "$Config" ].env.domain#" />
-				<cfset THIS[ "$Config" ].env.emailDevelopment = "dev@#THIS[ "$Config" ].env.domain#" />
-				<cfset THIS[ "$Config" ].env.emailInfo = "info@#THIS[ "$Config" ].env.domain#" />
-				<cfset THIS[ "$Config" ].env.recordsPerPage = 10 />
-				<cfset THIS[ "$Config" ].env.recordsPerPageFrontend = 12 />
-				
-				<!--- absolute url --->
-				<cfset THIS[ "$Config" ].env.absoluteUrlWeb = "/" />	
-				<!--- absolute path --->	
-				<cfset THIS[ "$Config" ].env.absolutePathRoot = ExpandPath(THIS[ "$Config" ].env.absoluteUrlWeb) />
-				<!--- url --->
-				<cfset THIS[ "$Config" ].env.urlRoot = "www.#THIS[ "$Config" ].env.domain#" />	
-				<cfset THIS[ "$Config" ].env.urlWeb = "http://#THIS[ "$Config" ].env.urlRoot##THIS[ "$Config" ].env.absoluteUrlWeb#" />
-				<cfset THIS[ "$Config" ].env.urlHttpsWeb = "http://#THIS[ "$Config" ].env.urlRoot##THIS[ "$Config" ].env.absoluteUrlWeb#" />
-				<!--- component --->
-				<cfset THIS[ "$Config" ].env.componentPathRoot = "" />
+				<cfset THIS[ "$Config" ].env.domain = "www.pinmydeals.com" />
+				<cfset THIS[ "$Config" ].env.absoluteUrl = "/pinmydeals/www/" />
+				<cfset THIS[ "$Config" ].env.absoluteUrlCore = "/core/" />
+				<cfset THIS[ "$Config" ].env.absolutePath = ExpandPath(THIS[ "$Config" ].env.absoluteUrl) />
+				<cfset THIS[ "$Config" ].env.absolutePathCore = ExpandPath(THIS[ "$Config" ].env.absoluteUrlCore) />
+				<cfset THIS[ "$Config" ].env.urlHttp = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrl#" />
+				<cfset THIS[ "$Config" ].env.urlHttps = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrl#" />
 				
 				<cfset THIS[ "$Config" ].env.ups = {} />
 				<cfset THIS[ "$Config" ].env.ups.accesskey = "CC9C9C10118EBCF0">
