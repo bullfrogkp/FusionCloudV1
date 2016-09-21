@@ -27,13 +27,6 @@
 			<cfset THIS[ "$Config" ].sessionTimeout = CreateTimeSpan(0,12,0,0) /> 
 			
 			<cfset THIS[ "$Config" ].env = {} />
-			<cfset THIS[ "$Config" ].env.emailCustomerService = "customerservice@#THIS[ "$Config" ].env.domain#" />
-			<cfset THIS[ "$Config" ].env.emailAdmin = "admin@#THIS[ "$Config" ].env.domain#" />
-			<cfset THIS[ "$Config" ].env.emailDevelopment = "dev@#THIS[ "$Config" ].env.domain#" />
-			<cfset THIS[ "$Config" ].env.emailInfo = "info@#THIS[ "$Config" ].env.domain#" />
-			<cfset THIS[ "$Config" ].env.recordsPerPage = 10 />
-			<cfset THIS[ "$Config" ].env.recordsPerPageFrontend = 12 />
-			
             <cfif Find( "127.0.0.1", CGI.server_name ) OR Find( ".loc", CGI.server_name )>
                 <cfset THIS[ "$Config" ].isLive = false />
 				<cfset THIS[ "$Config" ].env.domain = "www.pinmydeals.local" />
@@ -101,6 +94,13 @@
 				<cfset THIS[ "$Config" ].env.paypal.proxyPort = "">
 				<cfset THIS[ "$Config" ].env.paypal.PayPalURL = "https://www.sandbox.paypal.com/cgi-bin/soofanscr?cmd=_express-checkout&useraction=commit&token=">
             </cfif>
+			
+			<cfset THIS[ "$Config" ].env.emailCustomerService = "customerservice@#THIS[ "$Config" ].env.domain#" />
+			<cfset THIS[ "$Config" ].env.emailAdmin = "admin@#THIS[ "$Config" ].env.domain#" />
+			<cfset THIS[ "$Config" ].env.emailDevelopment = "dev@#THIS[ "$Config" ].env.domain#" />
+			<cfset THIS[ "$Config" ].env.emailInfo = "info@#THIS[ "$Config" ].env.domain#" />
+			<cfset THIS[ "$Config" ].env.recordsPerPage = 10 />
+			<cfset THIS[ "$Config" ].env.recordsPerPageFrontend = 12 />
         </cfif>
        
         <cfreturn THIS[ "$Config" ] />
@@ -129,7 +129,7 @@
 	<cffunction name="_initPageObject" output="false" access="private" returnType="any">
 		<cfargument name="pageName" type="string" required="true"/>
 		
-		<cfif FileExists("#APPLICATION.absolutePathRoot#data/#ARGUMENTS.pageName#.cfc")>
+		<cfif FileExists("#APPLICATION.absolutePath#data/#ARGUMENTS.pageName#.cfc")>
 			<cfset var pageObj = new "siteData.#ARGUMENTS.pageName#"(pageName = ARGUMENTS.pageName, formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
 		<cfelse>
 			<cfset var pageObj = new core.pages.page(pageName = ARGUMENTS.pageName, formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
