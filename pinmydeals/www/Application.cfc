@@ -9,7 +9,7 @@
 	<cfset this.sessionTimeout = Config().sessionTimeout>
 	<!------------------------------------------------------------------------------->
 	<cfset this.mappings[ "/core" ] = Config().env.absolutePathCore & "core/" />
-	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePath & "data/" />
+	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathSite & "data/" />
 	<!------------------------------------------------------------------------------->
     <cffunction name="Config" access="public" returntype="struct" output="false" hint="Returns the Application.cfc configuration settings struct based on the execution environment (production, staging, development, etc).">
 		<cfargument type="boolean" name="reload" required="false" default="false"/>
@@ -30,12 +30,12 @@
             <cfif Find( "127.0.0.1", CGI.server_name ) OR Find( ".loc", CGI.server_name )>
                 <cfset THIS[ "$Config" ].isLive = false />
 				<cfset THIS[ "$Config" ].env.domain = "www.pinmydeals.local" />
-				<cfset THIS[ "$Config" ].env.absoluteUrl = "/site/pinmydeals/www/" />
+				<cfset THIS[ "$Config" ].env.absoluteUrlSite = "/site/pinmydeals/www/" />
 				<cfset THIS[ "$Config" ].env.absoluteUrlCore = "/site/core/" />
-				<cfset THIS[ "$Config" ].env.absolutePath = ExpandPath(THIS[ "$Config" ].env.absoluteUrl) />
+				<cfset THIS[ "$Config" ].env.absolutePathSite = ExpandPath(THIS[ "$Config" ].env.absoluteUrlSite) />
 				<cfset THIS[ "$Config" ].env.absolutePathCore = ExpandPath(THIS[ "$Config" ].env.absoluteUrlCore) />
-				<cfset THIS[ "$Config" ].env.urlHttp = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrl#" />
-				<cfset THIS[ "$Config" ].env.urlHttps = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrl#" />
+				<cfset THIS[ "$Config" ].env.urlHttp = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrlSite#" />
+				<cfset THIS[ "$Config" ].env.urlHttps = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrlSite#" />
 				
 				<cfset THIS[ "$Config" ].env.ups = {} />
 				<cfset THIS[ "$Config" ].env.ups.accesskey = "CC9C9C10118EBCF0">
@@ -63,12 +63,12 @@
             <cfelse>
                 <cfset THIS[ "$Config" ].isLive = true />
 				<cfset THIS[ "$Config" ].env.domain = "www.pinmydeals.com" />
-				<cfset THIS[ "$Config" ].env.absoluteUrl = "/pinmydeals/www/" />
+				<cfset THIS[ "$Config" ].env.absoluteUrlSite = "/pinmydeals/www/" />
 				<cfset THIS[ "$Config" ].env.absoluteUrlCore = "/core/" />
-				<cfset THIS[ "$Config" ].env.absolutePath = ExpandPath(THIS[ "$Config" ].env.absoluteUrl) />
+				<cfset THIS[ "$Config" ].env.absolutePathSite = ExpandPath(THIS[ "$Config" ].env.absoluteUrlSite) />
 				<cfset THIS[ "$Config" ].env.absolutePathCore = ExpandPath(THIS[ "$Config" ].env.absoluteUrlCore) />
-				<cfset THIS[ "$Config" ].env.urlHttp = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrl#" />
-				<cfset THIS[ "$Config" ].env.urlHttps = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrl#" />
+				<cfset THIS[ "$Config" ].env.urlHttp = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrlSite#" />
+				<cfset THIS[ "$Config" ].env.urlHttps = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrlSite#" />
 				
 				<cfset THIS[ "$Config" ].env.ups = {} />
 				<cfset THIS[ "$Config" ].env.ups.accesskey = "CC9C9C10118EBCF0">
@@ -129,7 +129,7 @@
 	<cffunction name="_initPageObject" output="false" access="private" returnType="any">
 		<cfargument name="pageName" type="string" required="true"/>
 		
-		<cfif FileExists("#APPLICATION.absolutePath#data/#ARGUMENTS.pageName#.cfc")>
+		<cfif FileExists("#APPLICATION.absolutePathSite#data/#ARGUMENTS.pageName#.cfc")>
 			<cfset var pageObj = new "siteData.#ARGUMENTS.pageName#"(pageName = ARGUMENTS.pageName, formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
 		<cfelse>
 			<cfset var pageObj = new core.pages.page(pageName = ARGUMENTS.pageName, formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
@@ -267,7 +267,7 @@
 			<!---	
 				<cfcatch type="any">
 					<cfset new "#APPLICATION.componentPathRoot#core.utils.utils().handleError(cfcatch = cfcatch) />
-					<cflocation url="#APPLICATION.absoluteUrlWeb#error.cfm" addtoken="false" />
+					<cflocation url="#APPLICATION.absoluteUrlSite#error.cfm" addtoken="false" />
 				</cfcatch>
 			</cftry>
 			--->
@@ -338,8 +338,8 @@
 		
 		<cfset SESSION.folderNameTheme = ARGUMENTS.folderNameTheme>		
 		<cfset SESSION.urlTheme = "#APPLICATION.urlWeb#themes/#SESSION.folderNameTheme#/">
-		<cfset SESSION.absoluteUrlTheme = "#APPLICATION.absoluteUrlWeb#themes/#SESSION.folderNameTheme#/">
-		<cfset SESSION.absolutePathTheme = "#APPLICATION.absolutePathRoot#themes\#SESSION.folderNameTheme#\">
+		<cfset SESSION.absoluteUrlTheme = "#APPLICATION.absoluteUrlSite#themes/#SESSION.folderNameTheme#/">
+		<cfset SESSION.absolutePathTheme = "#APPLICATION.absolutePathSite#themes\#SESSION.folderNameTheme#\">
 	</cffunction>
 	<!----------------------------------------------------------------------------
 	<cffunction name="onMissingTemplate" returnType="any">
@@ -347,7 +347,7 @@
    
 		<cflog text="cannot find page: #ARGUMENTS.targetPage#" />
 		
-		<cflocation url="#APPLICATION.absoluteUrlWeb#error.cfm" addtoken="false" />
+		<cflocation url="#APPLICATION.absoluteUrlSite#error.cfm" addtoken="false" />
 	</cffunction>--->
 	<!------------------------------------------------------------------------------->
 </cfcomponent>
