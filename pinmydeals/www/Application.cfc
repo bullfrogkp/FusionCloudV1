@@ -8,8 +8,8 @@
 	<cfset this.sessionManagement = Config().sessionManagement>
 	<cfset this.sessionTimeout = Config().sessionTimeout>
 	<!------------------------------------------------------------------------------->
-	<cfset this.mappings[ "/core" ] = Config().env.absolutePathCore & "core/" />
-	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathSite & "data/" />
+	<cfset this.mappings[ "/core" ] = Config().env.absolutePathCore />
+	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathSite & "data\" />
 	<!------------------------------------------------------------------------------->
     <cffunction name="Config" access="public" returntype="struct" output="false" hint="Returns the Application.cfc configuration settings struct based on the execution environment (production, staging, development, etc).">
 		<cfargument type="boolean" name="reload" required="false" default="false"/>
@@ -29,13 +29,13 @@
 			<cfset THIS[ "$Config" ].env = {} />
             <cfif Find( "127.0.0.1", CGI.server_name ) OR Find( ".loc", CGI.server_name )>
                 <cfset THIS[ "$Config" ].isLive = false />
-				<cfset THIS[ "$Config" ].env.domain = "www.pinmydeals.local" />
+				<cfset THIS[ "$Config" ].env.domain = "www.pinmydeals.loc" />
 				<cfset THIS[ "$Config" ].env.absoluteUrlSite = "/site/pinmydeals/www/" />
 				<cfset THIS[ "$Config" ].env.absoluteUrlCore = "/site/core/" />
 				<cfset THIS[ "$Config" ].env.absolutePathSite = ExpandPath(THIS[ "$Config" ].env.absoluteUrlSite) />
 				<cfset THIS[ "$Config" ].env.absolutePathCore = ExpandPath(THIS[ "$Config" ].env.absoluteUrlCore) />
-				<cfset THIS[ "$Config" ].env.urlHttp = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrlSite#" />
-				<cfset THIS[ "$Config" ].env.urlHttps = "http://#THIS[ "$Config" ].env.domain##THIS[ "$Config" ].env.absoluteUrlSite#" />
+				<cfset THIS[ "$Config" ].env.urlHttp = "http://#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.urlHttps = "http://#THIS[ "$Config" ].env.domain#" />
 				
 				<cfset THIS[ "$Config" ].env.ups = {} />
 				<cfset THIS[ "$Config" ].env.ups.accesskey = "CC9C9C10118EBCF0">
@@ -109,11 +109,8 @@
 	<cffunction name="onApplicationStart" returntype="boolean" output="false">
 		<cfset SetEncoding("form","utf-8") />
 		<cfset SetEncoding("url","utf-8") />
-		
-		<cfset StructAppend(APPLICATION, Config().env) />
-		
+		<cfset StructAppend(APPLICATION, Config().env) /><cfdump var="#APPLICATION#" abort>
 		<cfset APPLICATION.globalPageObj = new siteData.global(pageName = "", formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
-		
 		<cfreturn true>
 	</cffunction>
 	<!------------------------------------------------------------------------------->
