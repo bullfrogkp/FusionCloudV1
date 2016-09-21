@@ -334,7 +334,7 @@
 		<cfargument type="string" name="folderNameTheme" required=true /> 
 		
 		<cfset SESSION.folderNameTheme = ARGUMENTS.folderNameTheme>		
-		<cfset SESSION.urlTheme = "#APPLICATION.url#themes/#SESSION.folderNameTheme#/">
+		<cfset SESSION.urlTheme = "#APPLICATION.urlHttp#themes/#SESSION.folderNameTheme#/">
 		<cfset SESSION.absoluteUrlTheme = "#APPLICATION.absoluteUrlSite#themes/#SESSION.folderNameTheme#/">
 		<cfset SESSION.absolutePathTheme = "#APPLICATION.absolutePathSite#themes\#SESSION.folderNameTheme#\">
 	</cffunction>
