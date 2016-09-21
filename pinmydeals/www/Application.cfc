@@ -109,7 +109,7 @@
 	<cffunction name="onApplicationStart" returntype="boolean" output="false">
 		<cfset SetEncoding("form","utf-8") />
 		<cfset SetEncoding("url","utf-8") />
-		<cfset StructAppend(APPLICATION, Config().env) /><cfdump var="#APPLICATION#" abort>
+		<cfset StructAppend(APPLICATION, Config().env) />
 		<cfset APPLICATION.globalPageObj = new siteData.global(pageName = "", formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
 		<cfreturn true>
 	</cffunction>
@@ -263,7 +263,7 @@
 				<cfset REQUEST.pageData.templatePath = currentPageName & ".cfm" />
 			<!---	
 				<cfcatch type="any">
-					<cfset new "#APPLICATION.componentPathRoot#core.utils.utils().handleError(cfcatch = cfcatch) />
+					<cfset new "core.utils.utils().handleError(cfcatch = cfcatch) />
 					<cflocation url="#APPLICATION.absoluteUrlSite#error.cfm" addtoken="false" />
 				</cfcatch>
 			</cftry>
@@ -318,15 +318,15 @@
 	<!------------------------------------------------------------------------------->
 	<cffunction name="_setCart"  access="private" returnType="void" output="false">
 		<cfif IsNull(SESSION.cart)>
-			<cfset SESSION.cart = new "#APPLICATION.componentPathRoot#core.entities.cart"(	trackingEntity = SESSION.trackingEntity
-																						, 	customerGroupId = SESSION.user.customerGroupId
-																						, 	currencyId = SESSION.currency.id) />
+			<cfset SESSION.cart = new "core.entities.cart"(	trackingEntity = SESSION.trackingEntity
+														, 	customerGroupId = SESSION.user.customerGroupId
+														, 	currencyId = SESSION.currency.id) />
 		</cfif>
 	</cffunction>
 	<!------------------------------------------------------------------------------->
 	<cffunction name="_setHistory"  access="private" returnType="void" output="false">
 		<cfif IsNull(SESSION.history)>
-			<cfset SESSION.history = new "#APPLICATION.componentPathRoot#core.entities.history"(	trackingEntity = SESSION.trackingEntity) />
+			<cfset SESSION.history = new "core.entities.history"(	trackingEntity = SESSION.trackingEntity) />
 		</cfif>
 	</cffunction>
 	<!------------------------------------------------------------------------------->
