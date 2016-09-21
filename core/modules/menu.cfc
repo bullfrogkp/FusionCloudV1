@@ -37,7 +37,7 @@
 		
 		<cfset LOCAL.product = {} />
 		<cfset LOCAL.product.href = "" />
-		<cfset LOCAL.product.image = "#SESSION.absoluteUrlTheme#images/product-minimal-2.jpg" />
+		<cfset LOCAL.product.image = "#getSessionData().absoluteUrlTheme#images/product-minimal-2.jpg" />
 		<cfset LOCAL.product.price = 19.99 />
 		<cfset LOCAL.product.label = "Pullover Batwing Sleeve Zigzag" />
 		<cfset ArrayAppend(LOCAL.retStruct.section1.subSection3.products,LOCAL.product) />
@@ -104,7 +104,7 @@
 		
 		<cfset LOCAL.product = {} />
 		<cfset LOCAL.product.href = "" />
-		<cfset LOCAL.product.image = "#SESSION.absoluteUrlTheme#images/product-minimal-2.jpg" />
+		<cfset LOCAL.product.image = "#getSessionData().absoluteUrlTheme#images/product-minimal-2.jpg" />
 		<cfset LOCAL.product.price = 19.99 />
 		<cfset LOCAL.product.label = "Pullover Batwing Sleeve Zigzag" />
 		<cfset ArrayAppend(LOCAL.retStruct.section2.subSection3.products,LOCAL.product) />
@@ -150,7 +150,7 @@
 		
 		<cfset LOCAL.category = {} />
 		<cfset LOCAL.category.label = "Clothing" />
-		<cfset LOCAL.category.image = "#SESSION.absoluteUrlTheme#images/product-menu-2.jpg" />
+		<cfset LOCAL.category.image = "#getSessionData().absoluteUrlTheme#images/product-menu-2.jpg" />
 		<cfset LOCAL.category.subCategories = ArrayNew(1) />
 		
 		<cfset LOCAL.subCategory = {} />
@@ -172,7 +172,7 @@
 		
 		<cfset LOCAL.category = {} />
 		<cfset LOCAL.category.label = "Makeup" />
-		<cfset LOCAL.category.image = "#SESSION.absoluteUrlTheme#images/product-menu-2.jpg" />
+		<cfset LOCAL.category.image = "#getSessionData().absoluteUrlTheme#images/product-menu-2.jpg" />
 		<cfset LOCAL.category.subCategories = ArrayNew(1) />
 		
 		<cfset LOCAL.subCategory = {} />
@@ -194,7 +194,7 @@
 		
 		<cfset LOCAL.category = {} />
 		<cfset LOCAL.category.label = "Nutrition" />
-		<cfset LOCAL.category.image = "#SESSION.absoluteUrlTheme#images/product-menu-2.jpg" />
+		<cfset LOCAL.category.image = "#getSessionData().absoluteUrlTheme#images/product-menu-2.jpg" />
 		<cfset LOCAL.category.subCategories = ArrayNew(1) />
 		
 		<cfset LOCAL.subCategory = {} />
@@ -216,7 +216,7 @@
 		
 		<cfset LOCAL.category = {} />
 		<cfset LOCAL.category.label = "Baby" />
-		<cfset LOCAL.category.image = "#SESSION.absoluteUrlTheme#images/product-menu-2.jpg" />
+		<cfset LOCAL.category.image = "#getSessionData().absoluteUrlTheme#images/product-menu-2.jpg" />
 		<cfset LOCAL.category.subCategories = ArrayNew(1) />
 		
 		<cfset LOCAL.subCategory = {} />
@@ -238,7 +238,7 @@
 		
 		<cfset LOCAL.category = {} />
 		<cfset LOCAL.category.label = "Food" />
-		<cfset LOCAL.category.image = "#SESSION.absoluteUrlTheme#images/product-menu-2.jpg" />
+		<cfset LOCAL.category.image = "#getSessionData().absoluteUrlTheme#images/product-menu-2.jpg" />
 		<cfset LOCAL.category.subCategories = ArrayNew(1) />
 		
 		<cfset LOCAL.subCategory = {} />
@@ -259,7 +259,7 @@
 		<cfset ArrayAppend(LOCAL.retStruct.section3.categories, LOCAL.category) />
 		<!---------------------------------------------------------------------------------->
 		<cfset LOCAL.retStruct.section4.label = "Blog" />
-		<cfset LOCAL.retStruct.section4.image = "#SESSION.absoluteUrlTheme#images/product-menu-8.jpg" />
+		<cfset LOCAL.retStruct.section4.image = "#getSessionData().absoluteUrlTheme#images/product-menu-8.jpg" />
 		<cfset LOCAL.retStruct.section4.blogs = ArrayNew(1) />
 		<cfset LOCAL.retStruct.section4.links = ArrayNew(1) />
 		
