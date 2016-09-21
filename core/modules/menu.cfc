@@ -265,7 +265,7 @@
 		
 		<cfset LOCAL.blog = {} />
 		<cfset LOCAL.blog.label = "Blog1"/>
-		<cfset LOCAL.blog.href = "#APPLICATION.absoluteUrlWeb#blog_detail.cfm"/>
+		<cfset LOCAL.blog.href = "#APPLICATION.absoluteUrlSite#blog_detail.cfm"/>
 		<cfset ArrayAppend(LOCAL.retStruct.section4.blogs, LOCAL.blog) />
 		
 		<cfset LOCAL.blog = {} />
