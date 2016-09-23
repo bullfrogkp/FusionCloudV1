@@ -47,7 +47,7 @@
 		
 		<cfif StructKeyExists(FORM,"submit_cart") OR StructKeyExists(FORM,"submit_cart.x")>
 	
-			<cfset SESSION.cart = new "#APPLICATION.componentPathRoot#core.entities.cart"() />
+			<cfset SESSION.cart = new "core.entities.cart"() />
 			<cfset SESSION.cart.setCfId(COOKIE.cfid) />
 			<cfset SESSION.cart.setCfToken(COOKIE.cftoken) />
 			<cfset SESSION.cart.setCurrencyId(SESSION.currency.id) />
@@ -67,9 +67,9 @@
 			<cfset SESSION.cart.calculate() />
 		
 			<cfif IsNumeric(SESSION.user.customerId)>
-				<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#checkout/checkout_step1_customer.cfm" />
+				<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#checkout/checkout_step1_customer.cfm" />
 			<cfelse>
-				<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#checkout/checkout_signin.cfm" />
+				<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#checkout/checkout_signin.cfm" />
 			</cfif>
 		<cfelseif StructKeyExists(FORM,"update_count")>
 			<cfset LOCAL.trackingRecord = EntityLoadByPK("tracking_record",FORM.tracking_record_id) />

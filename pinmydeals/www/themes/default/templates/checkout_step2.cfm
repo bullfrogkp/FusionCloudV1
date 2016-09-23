@@ -67,7 +67,7 @@ margin-bottom:10px;
 						<div id="shipping_methods_div" style="text-align:center;float:left;">
 							<select id="shipping-methods-#product.getProductId()#" name="shipping_methods_#product.getProductId()#">
 								<cfloop array="#item.shippingMethodArray#" index="s">
-									<option value="#item.productId#_#s.shippingMethodId#" data-imagesrc="#APPLICATION.absoluteUrlWeb#images/uploads/shipping/#s.logo#"
+									<option value="#item.productId#_#s.shippingMethodId#" data-imagesrc="#APPLICATION.absoluteUrlSite#images/uploads/shipping/#s.logo#"
 										data-description="
 										<cfif s.price EQ 0>
 											Free Shipping

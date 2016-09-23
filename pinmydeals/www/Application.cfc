@@ -30,6 +30,7 @@
             <cfif Find( "127.0.0.1", CGI.server_name ) OR Find( ".loc", CGI.server_name )>
                 <cfset THIS[ "$Config" ].isLive = false />
 				<cfset THIS[ "$Config" ].env.domain = "www.pinmydeals.loc" />
+				<cfset THIS[ "$Config" ].env.apiDomain = "api.pinmydeals.loc" />
 				<cfset THIS[ "$Config" ].env.absoluteUrlSite = "/" />
 				<cfset THIS[ "$Config" ].env.absolutePathSite = ExpandPath("/site/pinmydeals/www/") />
 				<cfset THIS[ "$Config" ].env.absolutePathSiteData = ExpandPath("/site/pinmydeals/www/data/") />

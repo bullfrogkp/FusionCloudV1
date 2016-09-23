@@ -418,12 +418,12 @@
 		
 		<cfif IsNull(productImg)>
 			<cfif NOT IsNull(getImages()) AND ArrayLen(getImages()) GT 0>
-				<cfset imageLink = "#APPLICATION.absoluteUrlWeb#images/uploads/product/#getProductId()#/#imageType##getImages()[1].getName()#" />
+				<cfset imageLink = "#APPLICATION.absoluteUrlSite#images/uploads/product/#getProductId()#/#imageType##getImages()[1].getName()#" />
 			<cfelse>
-				<cfset imageLink = "#APPLICATION.absoluteUrlWeb#images/site/no_image_available.png" />
+				<cfset imageLink = "#APPLICATION.absoluteUrlSite#images/site/no_image_available.png" />
 			</cfif>
 		<cfelse>
-			<cfset imageLink = "#APPLICATION.absoluteUrlWeb#images/uploads/product/#getProductId()#/#imageType##productImg.getName()#" />
+			<cfset imageLink = "#APPLICATION.absoluteUrlSite#images/uploads/product/#getProductId()#/#imageType##productImg.getName()#" />
 		</cfif>
 		
 		<cfreturn imageLink />
@@ -470,7 +470,7 @@
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
 	<cffunction name="getDetailPageURL" access="public" output="false" returnType="string">
-		<cfreturn "#APPLICATION.absoluteUrlWeb#product_detail.cfm/#URLEncodedFormat(getName())#/#getProductId()#" />
+		<cfreturn "#APPLICATION.absoluteUrlSite#product_detail.cfm/#URLEncodedFormat(getName())#/#getProductId()#" />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
 	<cffunction name="getTaxRateMV" access="public" output="false" returnType="numeric">
@@ -545,7 +545,7 @@
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
 	<cffunction name="getLogoURL" access="public" output="false" returnType="string">
-		<cfreturn "#APPLICATION.absoluteUrlWeb#products/#getProductId()#/logo/#getLogo()#" />
+		<cfreturn "#APPLICATION.absoluteUrlSite#products/#getProductId()#/logo/#getLogo()#" />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
 	<cffunction name="getApprovedReviews" access="public" output="false" returnType="array">

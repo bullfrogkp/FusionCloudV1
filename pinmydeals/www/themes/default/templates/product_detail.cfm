@@ -82,7 +82,7 @@
 			text: "Checkout",
 			"class": 'checkoutButtonClass',
 			click: function() {
-			window.location.href='#APPLICATION.absoluteUrlWeb#cart.cfm';
+			window.location.href='#APPLICATION.absoluteUrlSite#cart.cfm';
 			}
 		},
 		{
@@ -116,7 +116,7 @@
 			text: "My Wishlist",
 			"class": 'checkoutButtonClass',
 			click: function() {
-			window.location.href='#APPLICATION.absoluteUrlWeb#wishlist.cfm';
+			window.location.href='#APPLICATION.absoluteUrlSite#wishlist.cfm';
 			}
 		},
 		{
@@ -210,7 +210,7 @@
 				
 				$.ajax({
 						type: "get",
-						url: "#APPLICATION.absoluteUrlWeb#core/services/productService.cfc",
+						url: "#APPLICATION.absoluteUrlSite#core/services/productService.cfc",
 						dataType: 'json',
 						data: {
 							method: 'getProduct',
@@ -266,7 +266,7 @@
 		$("##add-current-to-cart").click(function() {
 			$.ajax({
 						type: "get",
-						url: "#APPLICATION.absoluteUrlWeb#core/services/trackingService.cfc",
+						url: "#APPLICATION.absoluteUrlSite#core/services/trackingService.cfc",
 						dataType: 'json',
 						data: {
 							method: 'addTrackingRecord',
@@ -291,7 +291,7 @@
 		$("##add-current-to-wishlist").click(function() {
 			$.ajax({
 						type: "get",
-						url: "#APPLICATION.absoluteUrlWeb#core/services/trackingService.cfc",
+						url: "#APPLICATION.absoluteUrlSite#core/services/trackingService.cfc",
 						dataType: 'json',
 						data: {
 							method: 'addTrackingRecord',
@@ -372,7 +372,7 @@
 					text: "#s.shipping_carrier_name# - #s.shipping_method_name#: #LSCurrencyFormat(s.shipping_price,"local",SESSION.currency.locale)#",
 					value: #s.product_shipping_method_rela_id#,
 					selected: false,
-					imageSrc: "#APPLICATION.absoluteUrlWeb#images/uploads/shipping/#s.image_name#"
+					imageSrc: "#APPLICATION.absoluteUrlSite#images/uploads/shipping/#s.image_name#"
 				}
 				<cfif s.currentRow LT s.recordCount>
 				,
@@ -565,7 +565,7 @@
 							<div class="thumbnail-name"><a href="#product.getDetailPageURL()#">#product.getDisplayName()#</a></div>
 							<div class="thumbnail-price">#LSCurrencyFormat(product.getPrice(customerGroupId = SESSION.user.customerGroupId, currencyId = SESSION.currency.id),"local",SESSION.currency.locale)#</div>
 							<cfif product.isFreeShipping()>
-							<img class="free-shipping-icon" src="#APPLICATION.absoluteUrlWeb#images/freeshipping.jpg" style="width:120px;margin-top:7px;" />
+							<img class="free-shipping-icon" src="#APPLICATION.absoluteUrlSite#images/freeshipping.jpg" style="width:120px;margin-top:7px;" />
 							</cfif>
 							<div class="product-overlay">
 								<div class="overlay-content">

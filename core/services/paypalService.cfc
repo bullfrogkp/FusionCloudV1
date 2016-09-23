@@ -62,7 +62,7 @@
 																content = "error: #LOCAL.responseStruct.L_LONGMESSAGE0#") />
 
 			<cfset getCart().transactionFailedReason = LOCAL.responseStruct.L_LONGMESSAGE0 />	
-			<cflocation  url="#APPLICATION.absoluteUrlWeb#checkout/checkout_confirmation.cfm" addtoken="false">
+			<cflocation  url="#APPLICATION.absoluteUrlSite#checkout/checkout_confirmation.cfm" addtoken="false">
 			--->
 		</cfif>
     </cffunction>

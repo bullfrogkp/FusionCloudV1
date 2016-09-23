@@ -2,8 +2,8 @@
 <cfsavecontent variable="htmlhead">
 	<script language="javascript" type="text/javascript">
 		var productType = '#REQUEST.pageData.product.getProductType().getName()#';
-		var cartRequestUrl = '#APPLICATION.absoluteUrlWeb#core/services/cartService.cfc';
-		var absoluteUrlWeb = '#APPLICATION.absoluteUrlWeb#';
+		var cartRequestUrl = '#APPLICATION.absoluteUrlSite#core/services/cartService.cfc';
+		var absoluteUrlSite = '#APPLICATION.absoluteUrlSite#';
 		
 		if(productType == 'configurable') {
 			var selectedProductId = 0;
@@ -19,7 +19,7 @@
 			var optionArrayLength = #ArrayLen(REQUEST.pageData.product.getProductAttributeRelas())#;
 			var parentProductId = '#REQUEST.pageData.product.getProductId()#';
 			var customerGroupId = '#SESSION.user.customerGroupId#';
-			var requestUrl = '#APPLICATION.absoluteUrlWeb#core/services/productService.cfc';
+			var requestUrl = '#APPLICATION.absoluteUrlSite#core/services/productService.cfc';
 			var currencySymbol = '#SESSION.currency.symbol#';
 		} else {
 			selectedProductId = #REQUEST.pageData.product.getProductId()#;
@@ -335,7 +335,7 @@
 								</div>
 								#REQUEST.moduleView.product_detail_options#
 								<div class="detail-info-entry">
-									<a class="button style-10" href="#APPLICATION.absoluteUrlWeb#cart.cfm">Checkout</a>
+									<a class="button style-10" href="#APPLICATION.absoluteUrlSite#cart.cfm">Checkout</a>
 									<a class="button style-11 close-window">Continue Shopping</a>
 									<div class="clear"></div>
 								</div>

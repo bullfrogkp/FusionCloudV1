@@ -20,7 +20,7 @@
 			<cfset LOCAL.requestData.AMT = LOCAL.order.getTotalPrice()>
 			<cfset LOCAL.requestData.CURRENCYCODE = SESSION.currency.code>
 					
-			<cfinvoke component="#APPLICATION.componentPathRoot#core.services.callerService" method="doHttppost" returnvariable="LOCAL.response">
+			<cfinvoke component="core.services.callerService" method="doHttppost" returnvariable="LOCAL.response">
 				<cfinvokeargument name="requestData" value="#LOCAL.requestData#">
 				<cfinvokeargument name="serverURL" value="#APPLICATION.paypal.serverURL#">
 				<cfinvokeargument name="proxyName" value="#APPLICATION.paypal.proxyName#">
@@ -28,7 +28,7 @@
 				<cfinvokeargument name="useProxy" value="#APPLICATION.paypal.useProxy#">
 			</cfinvoke>
 			
-			<cfinvoke component="#APPLICATION.componentPathRoot#core.services.callerService" method="getNVPResponse" returnvariable="LOCAL.responseStruct">
+			<cfinvoke component="core.services.callerService" method="getNVPResponse" returnvariable="LOCAL.responseStruct">
 				<cfinvokeargument name="nvpString" value="#URLDecode(LOCAL.response)#">
 			</cfinvoke>
 			
@@ -43,13 +43,13 @@
 				<cfset LOCAL.order.setPaid() />
 				<cfset EntitySave(LOCAL.order) />
 				
-				<cfset LOCAL.trackingRecords = new "#APPLICATION.componentPathRoot#core.services.trackingService"(cfid = COOKIE.cfid, cftoken = COOKIE.cftoken).getTrackingRecords(trackingRecordType = "shopping cart") />
+				<cfset LOCAL.trackingRecords = new "core.services.trackingService"(cfid = COOKIE.cfid, cftoken = COOKIE.cftoken).getTrackingRecords(trackingRecordType = "shopping cart") />
 				<cfloop array="#LOCAL.trackingRecords#" index="LOCAL.record">
 					<cfset EntityDelete(LOCAL.record) />
 				</cfloop>
 				
 				<!--- send email --->
-				<cfset LOCAL.emailService = new "#APPLICATION.componentPathRoot#core.services.emailService"() />
+				<cfset LOCAL.emailService = new "core.services.emailService"() />
 				<cfset LOCAL.emailService.setFromEmail(APPLICATION.emailCustomerService) />
 				<cfset LOCAL.emailService.setToEmail(LOCAL.order.getCustomerEmail()) />
 				<cfset LOCAL.emailService.setContentName("order confirmation") />
@@ -59,7 +59,7 @@
 				<cfset LOCAL.emailService.setReplaceStruct(LOCAL.replaceStruct) />
 				<cfset LOCAL.emailService.sendEmail() />
 				
-				<cflocation url="#APPLICATION.absoluteUrlWeb#checkout/checkout_thankyou.cfm" addToken="false" />
+				<cflocation url="#APPLICATION.absoluteUrlSite#checkout/checkout_thankyou.cfm" addToken="false" />
 			<cfelse>
 				<cfdump var="#LOCAL.responseStruct#" abort>
 				<!---

@@ -86,7 +86,7 @@
 		
 			<cfset LOCAL.pathInfo = "/#LOCAL.searchCategoryName#/#LOCAL.searchCategoryId#/1/1/-/#LOCAL.searchText#/" />
 				
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#products.cfm#LOCAL.pathInfo#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#products.cfm#LOCAL.pathInfo#" />
 			
 		<cfelseif StructKeyExists(FORM,"currency_id")>
 		
@@ -132,7 +132,7 @@
 					</cfif>
 				</cfif>
 				
-				<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#subscription_done.cfm" />
+				<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#subscription_done.cfm" />
 			</cfif>
 		</cfif>
 		
@@ -145,7 +145,7 @@
 		
 		<cfif StructKeyExists(getUrlData(),"logout")>
 			<cfset SESSION.user.customerId = "" />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#index.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#index.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

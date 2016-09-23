@@ -34,7 +34,7 @@
 		<cfset LOCAL.redirectUrl = "" />
 		
 		<!--- send internal email --->
-		<cfset LOCAL.emailService = new "#APPLICATION.componentPathRoot#core.services.emailService"() />
+		<cfset LOCAL.emailService = new "core.services.emailService"() />
 		<cfset LOCAL.emailService.setFromEmail(APPLICATION.emailCustomerService) />
 		<cfset LOCAL.emailService.setToEmail(APPLICATION.emailCustomerService) />
 		<cfset LOCAL.emailService.setContentName("contact us internal") />
@@ -48,7 +48,7 @@
 		<cfset LOCAL.emailService.sendEmail() />
 		
 		<!--- send customer copy --->
-		<cfset LOCAL.emailService = new "#APPLICATION.componentPathRoot#core.services.emailService"() />
+		<cfset LOCAL.emailService = new "core.services.emailService"() />
 		<cfset LOCAL.emailService.setFromEmail(APPLICATION.emailCustomerService) />
 		<cfset LOCAL.emailService.setToEmail(Trim(FORM.contact_email)) />
 		<cfset LOCAL.emailService.setContentName("contact us external") />
@@ -60,7 +60,7 @@
 		<cfset LOCAL.emailService.setReplaceStruct(LOCAL.replaceStruct) />
 		<cfset LOCAL.emailService.sendEmail() />
 		
-		<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#contact_us_email_sent.cfm" />
+		<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#contact_us_email_sent.cfm" />
 		
 		<cfreturn LOCAL />	
 	</cffunction>	

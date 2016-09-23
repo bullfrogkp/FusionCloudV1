@@ -42,7 +42,7 @@
 				<cfset LOCAL.billingAddress.countryId = FORM["country_id_#FORM.submitted_address_id#"] />
 				<cfset LOCAL.billingAddress.countryCode = LOCAL.country.getCode() />
 				
-				<cfset LOCAL.addressComponent = new "#APPLICATION.componentPathRoot#core.shipping.address"() />
+				<cfset LOCAL.addressComponent = new "core.shipping.address"() />
 				<cfset LOCAL.isValidAddress = LOCAL.addressComponent.isValidAddress(address = LOCAL.billingAddress) />
 				<cfif LOCAL.isValidAddress EQ false>
 					<cfset ArrayAppend(LOCAL.messageArray,"Please enter a valid shipping address.") />

@@ -10,7 +10,7 @@
 		<cfset var LOCAL.ret_val = "0" />
 		
 		<cfif IsValid("email",ARGUMENTS.contact_email) AND Trim(ARGUMENTS.contact_phone) NEQ "" AND Trim(ARGUMENTS.contact_name) NEQ "">
-			<cfinvoke component="#APPLICATION.componentPathRoot#admin.core.utils.email" method="sendDirectEmail">
+			<cfinvoke component="admin.core.utils.email" method="sendDirectEmail">
 				<cfinvokeargument name="from_email" value="#APPLICATION.email_info#">
 				<cfinvokeargument name="to_email" value="#APPLICATION.email_info#">
 				<cfinvokeargument name="email_subject" value="客户咨询 (#Trim(ARGUMENTS.contact_name)#:#Trim(ARGUMENTS.contact_phone)#)">

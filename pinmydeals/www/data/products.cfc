@@ -25,8 +25,8 @@
 			<cfset LOCAL.pageData.category = EntityLoad("category",{name="search result"},true) />
 		</cfif>
 		
-		<cfset LOCAL.categoryService = new "#APPLICATION.componentPathRoot#core.services.categoryService"() />
-		<cfset LOCAL.productService = new "#APPLICATION.componentPathRoot#core.services.productService"() />
+		<cfset LOCAL.categoryService = new "core.services.categoryService"() />
+		<cfset LOCAL.productService = new "core.services.productService"() />
 		<cfset LOCAL.productService.setIsDeleted(false) />
 		<cfset LOCAL.productService.setIsEnabled(true) />
 		<cfset LOCAL.productService.setPageNumber(LOCAL.pageData.pageNumber) />

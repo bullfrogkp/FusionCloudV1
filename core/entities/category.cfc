@@ -28,7 +28,7 @@
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
 	<cffunction name="getDetailPageURL" access="public" output="false" returnType="string">
-		<cfreturn "#APPLICATION.absoluteUrlWeb#products.cfm/#URLEncodedFormat(getDisplayName())#/#getCategoryId()#/1/1/-/-/" />
+		<cfreturn "#APPLICATION.absoluteUrlSite#products.cfm/#URLEncodedFormat(getDisplayName())#/#getCategoryId()#/1/1/-/-/" />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
 	<cffunction name="removeCategoryFilterRelas" access="public" output="false" returnType="void">

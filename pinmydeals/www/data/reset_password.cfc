@@ -55,7 +55,7 @@
 			
 			<cfset EntitySave(LOCAL.customer) />
 			<cfset EntitySave(LOCAL.link) />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#reset_password_done.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#reset_password_done.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

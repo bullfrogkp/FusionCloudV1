@@ -26,7 +26,7 @@
 					</td>
 					<td style="font-size: 12px;">
 						<div style="margin-left:-40px;float:left;">Keep me signed in</div>
-						<div style="float:right;"><a href="#APPLICATION.absoluteUrlWeb#forget_password.cfm">Forget Password?</a></div>
+						<div style="float:right;"><a href="#APPLICATION.absoluteUrlSite#forget_password.cfm">Forget Password?</a></div>
 					</td>
 				</tr>
 				<tr>

@@ -14,7 +14,7 @@
 			</cfif>
 			
 			<cfif Trim(FORM.username) NEQ "" AND Trim(FORM.password) NEQ "">
-				<cfset LOCAL.customerService = new "#APPLICATION.componentPathRoot#core.services.customerService"() />
+				<cfset LOCAL.customerService = new "core.services.customerService"() />
 				<cfset LOCAL.customerService.setUsername(Trim(FORM.username)) />
 				<cfset LOCAL.customerService.setPassword(Trim(FORM.password)) />
 				<cfif LOCAL.customerService.isUserValid() EQ false>
@@ -98,7 +98,7 @@
 			<cfset SESSION.cart.calculate() />
 		</cfif>
 		
-		<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#myaccount/dashboard.cfm" />
+		<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#myaccount/dashboard.cfm" />
 		
 		<cfreturn LOCAL />	
 	</cffunction>	

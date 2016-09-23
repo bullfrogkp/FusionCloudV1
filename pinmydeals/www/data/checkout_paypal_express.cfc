@@ -52,7 +52,7 @@
 				<cfset LOCAL.shippingAddress.countryId = FORM.shipto_country_id />
 				<cfset LOCAL.shippingAddress.countryCode = LOCAL.country.getCode() />
 				
-				<cfset LOCAL.addressComponent = new "#APPLICATION.componentPathRoot#core.shipping.address"() />
+				<cfset LOCAL.addressComponent = new "core.shipping.address"() />
 				<cfset LOCAL.isValidAddress = LOCAL.addressComponent.isValidAddress(address = LOCAL.shippingAddress) />
 				<cfif LOCAL.isValidAddress EQ false>
 					<cfset ArrayAppend(LOCAL.messageArray,"Sorry we don't support shipping to this address.") />
@@ -144,7 +144,7 @@
 			<cfset getSessionData().cart.setBillingAddressStruct(LOCAL.billingAddress) />
 			<cfset getSessionData().cart.calculate() />
 			
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#checkout/checkout_step2.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#checkout/checkout_step2.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	
