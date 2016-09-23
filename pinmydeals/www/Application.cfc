@@ -9,7 +9,7 @@
 	<cfset this.sessionTimeout = Config().sessionTimeout>
 	<!------------------------------------------------------------------------------->
 	<cfset this.mappings[ "/core" ] = Config().env.absolutePathCore />
-	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathSite & "data\" />
+	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathSiteData />
 	<!------------------------------------------------------------------------------->
     <cffunction name="Config" access="public" returntype="struct" output="false" hint="Returns the Application.cfc configuration settings struct based on the execution environment (production, staging, development, etc).">
 		<cfargument type="boolean" name="reload" required="false" default="false"/>
@@ -32,6 +32,7 @@
 				<cfset THIS[ "$Config" ].env.domain = "www.pinmydeals.loc" />
 				<cfset THIS[ "$Config" ].env.absoluteUrlSite = "/" />
 				<cfset THIS[ "$Config" ].env.absolutePathSite = ExpandPath("/site/pinmydeals/www/") />
+				<cfset THIS[ "$Config" ].env.absolutePathSiteData = ExpandPath("/site/pinmydeals/www/data/") />
 				<cfset THIS[ "$Config" ].env.absolutePathCore = ExpandPath("/site/core/") />
 				<cfset THIS[ "$Config" ].env.urlHttp = "http://#THIS[ "$Config" ].env.domain#" />
 				<cfset THIS[ "$Config" ].env.urlHttps = "http://#THIS[ "$Config" ].env.domain#" />
@@ -124,7 +125,7 @@
 	<cffunction name="_initPageObject" output="false" access="private" returnType="any">
 		<cfargument name="pageName" type="string" required="true"/>
 		
-		<cfif FileExists("#APPLICATION.absolutePathSite#data/#ARGUMENTS.pageName#.cfc")>
+		<cfif FileExists("#APPLICATION.absolutePathSiteData#/#ARGUMENTS.pageName#.cfc")>
 			<cfset var pageObj = new "siteData.#ARGUMENTS.pageName#"(pageName = ARGUMENTS.pageName, formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
 		<cfelse>
 			<cfset var pageObj = new core.pages.page(pageName = ARGUMENTS.pageName, formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
