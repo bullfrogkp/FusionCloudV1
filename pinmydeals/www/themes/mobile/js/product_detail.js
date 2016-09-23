@@ -15,7 +15,7 @@ $(function() {
 				$.ajax({
 						type: "get",
 						url: cartRequestUrl,
-						dataType: 'json',
+						dataType: 'jsonp',
 						data: {
 							method: 'addProductToCart',
 							productid: selectedProductId,
@@ -75,7 +75,7 @@ $(function() {
 					$.ajax({
 						type: "get",
 						url: requestUrl,
-						dataType: 'json',
+						dataType: 'jsonp',
 						data: {
 							method: 'getProduct',
 							parentProductId: parentProductId,
