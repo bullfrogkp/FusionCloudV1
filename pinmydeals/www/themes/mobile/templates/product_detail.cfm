@@ -2,7 +2,7 @@
 <cfsavecontent variable="htmlhead">
 	<script language="javascript" type="text/javascript">
 		var productType = '#REQUEST.pageData.product.getProductType().getName()#';
-		var cartRequestUrl = '#APPLICATION.absoluteUrlSite#core/services/cartService.cfc';
+		var cartRequestUrl = 'http://api.pinmydeals.loc/services/cartService.cfc';
 		var absoluteUrlSite = '#APPLICATION.absoluteUrlSite#';
 		
 		if(productType == 'configurable') {
