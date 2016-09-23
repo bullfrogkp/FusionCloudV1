@@ -19,7 +19,7 @@
 			var optionArrayLength = #ArrayLen(REQUEST.pageData.product.getProductAttributeRelas())#;
 			var parentProductId = '#REQUEST.pageData.product.getProductId()#';
 			var customerGroupId = '#SESSION.user.customerGroupId#';
-			var requestUrl = '#APPLICATION.absoluteUrlSite#core/services/productService.cfc';
+			var requestUrl = 'http://api.pinmydeals.loc/services/productService.cfc';
 			var currencySymbol = '#SESSION.currency.symbol#';
 		} else {
 			selectedProductId = #REQUEST.pageData.product.getProductId()#;
