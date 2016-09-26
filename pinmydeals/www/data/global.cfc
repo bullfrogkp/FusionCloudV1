@@ -8,6 +8,22 @@
 		<cfset LOCAL.pageData.currencies =  EntityLoad("currency", {isEnabled=true}) />
 		<cfset LOCAL.pageData.slogan =  "FREE SHIPPING ON ALL US ORDERS this week!" />
 		
+		<!--- set tracking entity --->
+		<cfset LOCAL.trackingEntity = EntityLoad("tracking_entity",{cfid = COOKIE.cfid, cftoken = COOKIE.cftoken}, true) />
+		<cfif IsNull(trackingEntity)>
+			<cfset trackingEntity = EntityNew("tracking_entity") />
+			<cfset trackingEntity.setCfid(COOKIE.cfid) />
+			<cfset trackingEntity.setCftoken(COOKIE.cftoken) />
+			<cfset trackingEntity.setLastAccessDatetime(Now()) />
+			<cfset EntitySave(LOCAL.trackingEntity) />
+		</cfif>
+		
+		<!--- set cart --->
+		<cfset LOCAL.pageData.cart = new "core.entities.cart"(	trackingEntity = LOCAL.trackingEntity
+															, 	customerGroupId = getSessionData().user.customerGroupId
+															, 	currencyId = getSessionData().currency.id) />
+		
+		
 		<cfif 	ListLen(getCgiData().PATH_INFO,"/") EQ 6 
 				AND
 				(

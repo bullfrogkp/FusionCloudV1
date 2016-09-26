@@ -117,9 +117,6 @@
 	<cffunction name="onSessionStart" returnType="void">
 		<cfset _setUser() />
 		<cfset _setCurrency() />
-		<cfset _setTrackingEntity() />
-		<cfset _setCart() />
-		<cfset _setHistory() />
 		<cfset _setTheme("mobile") />
 	</cffunction>
 	<!------------------------------------------------------------------------------->
@@ -296,31 +293,6 @@
 			<cfset SESSION.currency.code = defaultCurrency.getCode() />
 			<cfset SESSION.currency.symbol = defaultCurrency.getSymbolText() />
 			<cfset SESSION.currency.locale = defaultCurrency.getLocale() />
-		</cfif>
-	</cffunction>
-	
-	<!------------------------------------------------------------------------------->
-	<cffunction name="_setTrackingEntity"  access="private" returnType="void" output="false">
-		<cfif IsNull(SESSION.trackingEntity)>
-			<cfset var trackingEntity = EntityLoad("tracking_entity",{cfid = COOKIE.cfid, cftoken = COOKIE.cftoken}, true) />
-			<cfif IsNull(trackingEntity)>
-				<cfset trackingEntity = EntityNew("tracking_entity") />
-				<cfset trackingEntity.setCfid(COOKIE.cfid) />
-				<cfset trackingEntity.setCftoken(COOKIE.cftoken) />
-				<cfset trackingEntity.setLastAccessDatetime(Now()) />
-				<cfset EntitySave(trackingEntity) />
-				<cfset ORMFlush() />
-			</cfif>
-			
-			<cfset SESSION.trackingEntity = trackingEntity />
-		</cfif>
-	</cffunction>
-	<!------------------------------------------------------------------------------->
-	<cffunction name="_setCart"  access="private" returnType="void" output="false">
-		<cfif IsNull(SESSION.cart)>
-			<cfset SESSION.cart = new "core.entities.cart"(	trackingEntity = SESSION.trackingEntity
-														, 	customerGroupId = SESSION.user.customerGroupId
-														, 	currencyId = SESSION.currency.id) />
 		</cfif>
 	</cffunction>
 	<!------------------------------------------------------------------------------->
