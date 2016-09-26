@@ -18,7 +18,8 @@ $(function() {
 						dataType: 'jsonp',
 						data: {
 							method: 'addProductToCart',
-							productid: selectedProductId,
+							trackingEntityId: trackingEntityId,
+							productId: selectedProductId,
 							quantity: $("#quantity").html()
 						}
 				})

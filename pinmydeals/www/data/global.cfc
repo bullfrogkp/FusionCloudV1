@@ -10,13 +10,13 @@
 		
 		<!--- set tracking entity --->
 		<cfset LOCAL.trackingEntity = EntityLoad("tracking_entity",{cfid = COOKIE.cfid, cftoken = COOKIE.cftoken}, true) />
-		<cfif IsNull(trackingEntity)>
-			<cfset trackingEntity = EntityNew("tracking_entity") />
-			<cfset trackingEntity.setCfid(COOKIE.cfid) />
-			<cfset trackingEntity.setCftoken(COOKIE.cftoken) />
-			<cfset trackingEntity.setLastAccessDatetime(Now()) />
-			<cfset EntitySave(LOCAL.trackingEntity) />
+		<cfif IsNull(LOCAL.trackingEntity)>
+			<cfset LOCAL.trackingEntity = EntityNew("tracking_entity") />
+			<cfset LOCAL.trackingEntity.setCfid(COOKIE.cfid) />
+			<cfset LOCAL.trackingEntity.setCftoken(COOKIE.cftoken) />
 		</cfif>
+		<cfset LOCAL.trackingEntity.setLastAccessDatetime(Now()) />
+		<cfset EntitySave(LOCAL.trackingEntity) />
 		
 		<!--- set cart --->
 		<cfset LOCAL.pageData.cart = new "core.entities.cart"(	trackingEntity = LOCAL.trackingEntity

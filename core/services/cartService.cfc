@@ -75,7 +75,8 @@
 	<!------------------------------------------------------------------------------------------------------------>
 	<cffunction name="addProductToCart" access="remote" returntype="string" returnformat="plain" output="false">
 		<cfargument name="callback" type="string" required="true">
-		<cfargument name="productid" type="numeric" required="true">
+		<cfargument name="productId" type="numeric" required="true">
+		<cfargument name="trackingEntityId" type="numeric" required="true">
 		<cfargument name="quantity" type="string" required="true">
 		
 		<cfset var LOCAL = {} />

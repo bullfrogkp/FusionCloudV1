@@ -4,6 +4,7 @@
 		var productType = '#REQUEST.pageData.product.getProductType().getName()#';
 		var cartRequestUrl = 'http://api.pinmydeals.loc/services/cartService.cfc';
 		var absoluteUrlSite = '#APPLICATION.absoluteUrlSite#';
+		var trackingEntityId = #REQUEST.pageData.trackingEntity.getTrackingEntityId()#;
 		
 		if(productType == 'configurable') {
 			var selectedProductId = 0;
