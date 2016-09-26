@@ -25,7 +25,7 @@
 				<th class="column-5"></th>
 			</tr>
 			
-			<cfloop array="#SESSION.cart.getCartItems()#" index="item">
+			<cfloop array="#REQUEST.pageData.cart.getCartItems()#" index="item">
 				<tr>
 					<td>
 						<div class="traditional-cart-entry">
@@ -95,7 +95,7 @@
 		</div>
 		<div class="col-md-4 information-entry">
 			<div class="cart-summary-box">
-				<div class="grand-total">Subtotal: #SESSION.cart.getDisplaySubTotal()#</div>
+				<div class="grand-total">Subtotal: #REQUEST.pageData.cart.getDisplaySubTotal()#</div>
 				<a class="button style-10" href="#APPLICATION.absoluteUrlSite#checkout/checkout_paypal_express.cfm">Proceed To Checkout</a>
 			</div>
 		</div>

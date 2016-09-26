@@ -51,8 +51,8 @@
 		
 		order.products = new Array();
 		
-		<cfif SESSION.cart.getQuantity() GT 0>
-			<cfloop array="#SESSION.cart.getCartItems()#" index="item">
+		<cfif REQUEST.pageData.cart.getQuantity() GT 0>
+			<cfloop array="#REQUEST.pageData.cart.getCartItems()#" index="item">
 				product = new Object();
 				product.id = '#item.getProduct().getProductId()#';
 				product.sku = '#item.getSku()#';
@@ -63,12 +63,12 @@
 				order.products.push(product);
 			</cfloop>
 			
-			order.subtotal = '#SESSION.cart.getSubTotal()#';
-			order.tax = '#SESSION.cart.getTax()#';
-			order.shippingFee = '#SESSION.cart.getShippingFee()#';
-			order.discount = '#SESSION.cart.getDiscount()#';
-			order.coupon = '#SESSION.cart.getCoupon()#';
-			order.total = '#SESSION.cart.getTotal()#';
+			order.subtotal = '#REQUEST.pageData.cart.getSubTotal()#';
+			order.tax = '#REQUEST.pageData.cart.getTax()#';
+			order.shippingFee = '#REQUEST.pageData.cart.getShippingFee()#';
+			order.discount = '#REQUEST.pageData.cart.getDiscount()#';
+			order.coupon = '#REQUEST.pageData.cart.getCoupon()#';
+			order.total = '#REQUEST.pageData.cart.getTotal()#';
 		<cfelse>
 			order.subtotal = '';
 			order.tax = '';
@@ -225,14 +225,14 @@
 						<div class="swiper-tabs tabs-switch">
 							<div class="title">Products</div>
 							<div class="list">
-								<cfloop from="1" to="#ArrayLen(SESSION.cart.getCartItems())#" index="i">
-									<a class="block-title tab-switcher <cfif i EQ 1>active</cfif>">#SESSION.cart.getCartItems()[i].getProduct().getDisplayName()#</a>
+								<cfloop from="1" to="#ArrayLen(REQUEST.pageData.cart.getCartItems())#" index="i">
+									<a class="block-title tab-switcher <cfif i EQ 1>active</cfif>">#REQUEST.pageData.cart.getCartItems()[i].getProduct().getDisplayName()#</a>
 								</cfloop>
 								<div class="clear"></div>
 							</div>
 						</div>
 						<div>
-							<cfloop array="#SESSION.cart.getCartItems()#" index="item">
+							<cfloop array="#REQUEST.pageData.cart.getCartItems()#" index="item">
 								<div class="tabs-entry">
 									<div class="products-swiper">
 										<div class="swiper-container" data-autoplay="0" data-loop="0" data-speed="500" data-center="0" data-slides-per-view="responsive" data-xs-slides="2" data-int-slides="2" data-sm-slides="3" data-md-slides="4" data-lg-slides="5" data-add-slides="5">
@@ -266,7 +266,7 @@
 									<th class="column-3">Qty</th>
 									<th class="column-3">Shipping Method</th>
 								</tr>
-								<cfloop array="#SESSION.cart.getCartItems()#" index="item">
+								<cfloop array="#REQUEST.pageData.cart.getCartItems()#" index="item">
 									<cfset product = item.getProduct() />
 									<tr>
 										<td>
