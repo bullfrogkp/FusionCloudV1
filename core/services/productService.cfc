@@ -198,8 +198,7 @@
 			<cfset retStruct.originalPrice = 0 />
 		</cfif>
 		
-		<cfset var retString = "#ARGUMENTS.callback#(#SerializeJSON(retStruct)#);" />
-		
+		<cfset retString = "#ARGUMENTS.callback#(#SerializeJSON(retStruct)#);" />
 		<cfreturn retString>
 	</cffunction>
 	

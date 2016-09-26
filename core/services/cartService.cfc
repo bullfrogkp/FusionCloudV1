@@ -73,11 +73,13 @@
 		<cfreturn LOCAL.retValue />
 	</cffunction>
 	<!------------------------------------------------------------------------------------------------------------>
-	<cffunction name="addProductToCart" access="remote" returntype="struct" returnformat="json" output="false">
+	<cffunction name="addProductToCart" access="remote" returntype="string" returnformat="plain" output="false">
+		<cfargument name="callback" type="string" required="true">
 		<cfargument name="productid" type="numeric" required="true">
 		<cfargument name="quantity" type="string" required="true">
 		
 		<cfset var LOCAL = {} />
+		<cfset var retString = "" />
 		<cfset LOCAL.retStruct = {} />
 		<cfset LOCAL.retStruct.products = [] />
 		
@@ -98,7 +100,8 @@
 		<cfset LOCAL.retStruct.subTotal = SESSION.cart.getSubTotalPriceWCInter() />
 		<cfset LOCAL.retStruct.total = SESSION.cart.getTotalPriceWCInter() />
 		
-		<cfreturn LOCAL.retStruct />
+		<cfset retString = "#ARGUMENTS.callback#(#SerializeJSON(retStruct)#);" />
+		<cfreturn retString>
 	</cffunction>
 	<!------------------------------------------------------------------------------------------------------------>
 </cfcomponent>
