@@ -101,7 +101,7 @@
 			<cfset EntitySave(LOCAL.existingRecord) />
 		</cfif>
 		
-		<cfset LOCAL.cart = new "core.entities.cart"(	trackingEntity = LOCAL.trackingEntity
+		<cfset LOCAL.cart = new "core.entities.cart"(	trackingEntityId = ARGUMENTS.trackingEntityId
 													, 	customerGroupId = ARGUMENTS.customerGroupId
 													, 	currencyId = ARGUMENTS.currencyId) />
 		<cfset LOCAL.cart.calculate() />

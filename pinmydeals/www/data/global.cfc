@@ -19,7 +19,7 @@
 		<cfset EntitySave(LOCAL.trackingEntity) />
 		
 		<!--- set cart --->
-		<cfset LOCAL.pageData.cart = new "core.entities.cart"(	trackingEntity = LOCAL.trackingEntity
+		<cfset LOCAL.pageData.cart = new "core.entities.cart"(	trackingEntityId = LOCAL.trackingEntity.getTrackingEntityId()
 															, 	customerGroupId = getSessionData().user.customerGroupId
 															, 	currencyId = getSessionData().currency.id) />
 		
