@@ -296,12 +296,6 @@
 		</cfif>
 	</cffunction>
 	<!------------------------------------------------------------------------------->
-	<cffunction name="_setHistory"  access="private" returnType="void" output="false">
-		<cfif IsNull(SESSION.history)>
-			<cfset SESSION.history = new "core.entities.history"(	trackingEntity = SESSION.trackingEntity) />
-		</cfif>
-	</cffunction>
-	<!------------------------------------------------------------------------------->
 	<cffunction name="_setTheme"  access="private" returnType="void" output="false">
 		<cfargument type="string" name="folderNameTheme" required=true /> 
 		

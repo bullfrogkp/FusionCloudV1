@@ -34,7 +34,9 @@
 		<cfset LOCAL.pageData.description = LOCAL.pageData.product.getDescriptionMV() />
 		<cfset LOCAL.pageData.keywords = LOCAL.pageData.product.getKeywordsMV() />
 		
-		<cfset SESSION.history.addHistoryItem(productId = LOCAL.productId) />
+		<cfset LOCAL.trackingEntity = EntityLoad("tracking_entity",{cfid = COOKIE.cfid, cftoken = COOKIE.cftoken}, true) />
+		<cfset LOCAL.history = new "core.entities.history"(	trackingEntity = LOCAL.trackingEntity) />
+		<cfset LOCAL.history.addHistoryItem(productId = LOCAL.productId) />
 														
 		<cfreturn LOCAL.pageData />	
 	</cffunction>
