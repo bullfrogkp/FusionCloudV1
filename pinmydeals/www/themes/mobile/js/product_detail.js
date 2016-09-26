@@ -20,6 +20,8 @@ $(function() {
 							method: 'addProductToCart',
 							trackingEntityId: trackingEntityId,
 							productId: selectedProductId,
+							customerGroupId: customerGroupId,
+							currencyId: currencyId,
 							quantity: $("#quantity").html()
 						}
 				})

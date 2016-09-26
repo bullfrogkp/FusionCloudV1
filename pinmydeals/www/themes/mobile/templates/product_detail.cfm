@@ -5,6 +5,8 @@
 		var cartRequestUrl = 'http://api.pinmydeals.loc/services/cartService.cfc';
 		var absoluteUrlSite = '#APPLICATION.absoluteUrlSite#';
 		var trackingEntityId = #REQUEST.pageData.trackingEntity.getTrackingEntityId()#;
+		var customerGroupId = #SESSION.user.customerGroupId#;
+		var currencyId = #SESSION.currency.id#;
 		
 		if(productType == 'configurable') {
 			var selectedProductId = 0;
