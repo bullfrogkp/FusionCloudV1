@@ -119,8 +119,8 @@
 			<cfset ArrayAppend(LOCAL.retStruct.products, LOCAL.product) />
 		</cfloop>
 		
-		<cfset LOCAL.retStruct.subTotal = LOCAL.cart.getSubTotalPriceWCInter() />
-		<cfset LOCAL.retStruct.total = LOCAL.cart.getTotalPriceWCInter() />
+		<cfset LOCAL.retStruct.subTotal = LOCAL.cart.getSubTotalPriceWCLocal() />
+		<cfset LOCAL.retStruct.total = LOCAL.cart.getTotalPriceWCLocal() />
 		
 		<cfset retString = "#ARGUMENTS.callback#(#SerializeJSON(retStruct)#);" />
 		<cfreturn retString>
