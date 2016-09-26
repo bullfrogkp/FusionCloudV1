@@ -8,6 +8,7 @@
 	<cfproperty name="paymentMethodId" type="numeric"> 
     <cfproperty name="couponId" type="string"> 
     <cfproperty name="customerGroupId" type="numeric"> 
+	<cfproperty name="trackingEntityId" type="numeric">
 	
     <cfproperty name="customerStruct" type="struct"> 
     <cfproperty name="shippingAddressStruct" type="struct"> 
@@ -38,15 +39,14 @@
 	<cfproperty name="coupon" type="any">
 	<cfproperty name="order" type="any">
 	<cfproperty name="orderProduct" type="any">
-	<cfproperty name="trackingEntity" type="any">
     
 	<!------------------------------------------------------------------------------->
 	<cffunction name="init" access="public" output="false" returntype="any">
-		<cfargument name="trackingEntity" type="any" required="true" />
+		<cfargument name="trackingEntityId" type="numeric" required="true" />
 		<cfargument name="customerGroupId" type="numeric" required="true" />
 		<cfargument name="currencyId" type="numeric" required="true" />
 		
-		<cfset setTrackingEntity(ARGUMENTS.trackingEntity) />
+		<cfset setTrackingEntityId(ARGUMENTS.trackingEntityId) />
 		<cfset setCustomerGroupId(ARGUMENTS.customerGroupId) />
 		<cfset setCurrencyId(ARGUMENTS.currencyId) />
 		
@@ -449,40 +449,11 @@
 		</cfloop>
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
-	<cffunction name="addCartItem" access="public" output="false" returnType="void">
-		<cfargument name="productId" type="numeric" required="true" />
-		<cfargument name="quantity" type="numeric" required="true" />
-		
-		<cfset var LOCAL = {} />
-		
-		<cfset LOCAL.trackingRecord = EntityNew("tracking_record") />
-		<cfset LOCAL.trackingRecordType = EntityLoad("tracking_record_type",{name = "shopping cart"},true) />
-		<cfset LOCAL.product = EntityLoadByPK("product",ARGUMENTS.productId) />
-		
-		<cfset LOCAL.existingRecord = EntityLoad("tracking_record",{product = LOCAL.product, trackingEntity = getTrackingEntity()},true) />
-		
-		<cfif IsNull(LOCAL.existingRecord)>
-			<cfset LOCAL.trackingRecord.setTrackingEntity(getTrackingEntity()) />
-			<cfset LOCAL.trackingRecord.setTrackingRecordType(LOCAL.trackingRecordType) />
-			<cfset LOCAL.trackingRecord.setProduct(LOCAL.product) />
-			<cfset LOCAL.trackingRecord.setQuantity(ARGUMENTS.quantity) />
-			<cfset EntitySave(LOCAL.trackingRecord) />
-		<cfelse>
-			<cfset LOCAL.existingRecord.setQuantity(LOCAL.existingRecord.getQuantity() + ARGUMENTS.quantity) />
-			<cfset EntitySave(LOCAL.existingRecord) />
-		</cfif>
-	</cffunction>
-	<!------------------------------------------------------------------------------->	
-	<cffunction name="removeCartItem" access="public" output="false" returnType="any">
-		<cfargument name="trackingRecordId" type="numeric" required="true" />
-		
-		<cfset EntityDelete(EntityLoadByPK("tracking_record",ARGUMENTS.trackingRecordId)) />
-	</cffunction>
-	<!------------------------------------------------------------------------------->	
 	<cffunction name="getCartItems" access="public" output="false" returnType="array">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.trackingRecordType = EntityLoad("tracking_record_type",{name = "shopping cart"},true) />
-		<cfset LOCAL.trackingRecords = EntityLoad("tracking_record",{trackingRecordType = LOCAL.trackingRecordType, trackingEntity = getTrackingEntity()}) />
+		<cfset LOCAL.trackingEntity = EntityLoadByPK("tracking_entity",getTrackingEntityId()) />
+		<cfset LOCAL.trackingRecords = EntityLoad("tracking_record",{trackingRecordType = LOCAL.trackingRecordType, trackingEntity = LOCAL.trackingEntity}) />
 		<cfreturn LOCAL.trackingRecords />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
