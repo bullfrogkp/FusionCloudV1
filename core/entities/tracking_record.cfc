@@ -21,8 +21,23 @@
 		<cfargument name="customerGroupId" type="numeric" required="true">
 		<cfargument name="currencyId" type="numeric" required="true">
 		
+		<cfreturn getProduct().getPrice(customerGroupId = ARGUMENTS.customerGroupId, currencyId = ARGUMENTS.currencyId) />
+	</cffunction>
+	<!------------------------------------------------------------------------------->	
+	<cffunction name="getPriceWCLocal" access="public" output="false" returnType="string">
+		<cfargument name="customerGroupId" type="numeric" required="true">
+		<cfargument name="currencyId" type="numeric" required="true">
+		
 		<cfset LOCAL.currency = EntityLoadByPK("currency", ARGUMENTS.currencyId) />
-		<cfreturn LSCurrencyFormat(getProduct().getPrice(customerGroupId = ARGUMENTS.customerGroupId, currencyId = ARGUMENTS.currencyId),"local",LOCAL.currency.getLocale()) />
+		<cfreturn LSCurrencyFormat(getPrice(customerGroupId = ARGUMENTS.customerGroupId, currencyId = ARGUMENTS.currencyId),"local",LOCAL.currency.getLocale()) />
+	</cffunction>
+	<!------------------------------------------------------------------------------->	
+	<cffunction name="getPriceWCInter" access="public" output="false" returnType="string">
+		<cfargument name="customerGroupId" type="numeric" required="true">
+		<cfargument name="currencyId" type="numeric" required="true">
+		
+		<cfset LOCAL.currency = EntityLoadByPK("currency", ARGUMENTS.currencyId) />
+		<cfreturn LSCurrencyFormat(getPrice(customerGroupId = ARGUMENTS.customerGroupId, currencyId = ARGUMENTS.currencyId),"international",LOCAL.currency.getLocale()) />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
 	<cffunction name="getSubTotal" access="public" output="false" returnType="string">
@@ -32,12 +47,20 @@
 		<cfreturn getProduct().getPrice(customerGroupId = ARGUMENTS.customerGroupId, currencyId = ARGUMENTS.currencyId) * getQuantity() />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
-	<cffunction name="getSubTotalDisplay" access="public" output="false" returnType="string">
+	<cffunction name="getSubTotalWCLocal" access="public" output="false" returnType="string">
 		<cfargument name="customerGroupId" type="numeric" required="true">
 		<cfargument name="currencyId" type="numeric" required="true">
 		
 		<cfset LOCAL.currency = EntityLoadByPK("currency", ARGUMENTS.currencyId) />
 		<cfreturn LSCurrencyFormat(getSubTotal(argumentCollection = ARGUMENTS),"local",LOCAL.currency.getLocale()) />
+	</cffunction>
+	<!------------------------------------------------------------------------------->	
+	<cffunction name="getSubTotalWCInter" access="public" output="false" returnType="string">
+		<cfargument name="customerGroupId" type="numeric" required="true">
+		<cfargument name="currencyId" type="numeric" required="true">
+		
+		<cfset LOCAL.currency = EntityLoadByPK("currency", ARGUMENTS.currencyId) />
+		<cfreturn LSCurrencyFormat(getSubTotal(argumentCollection = ARGUMENTS),"international",LOCAL.currency.getLocale()) />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
 	<cffunction name="getAttributes" access="public" output="false" returnType="array">
