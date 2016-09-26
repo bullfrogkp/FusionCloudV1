@@ -138,13 +138,15 @@
 		<cfreturn LOCAL.getProductShippingMethods />
     </cffunction>
 	
-	<cffunction name="getProduct" access="remote" returntype="struct" returnformat="json" output="false">
+	<cffunction name="getProduct" access="remote" returntype="string" returnformat="plain" output="false">
+		<cfargument name="callback" type="string" required="true">
 		<cfargument name="parentProductId" type="numeric" required="true">
 		<cfargument name="attributeValueIdList" type="string" required="true">
 		<cfargument name="customerGroupId" type="numeric" required="true">
 		
 		<cfset var LOCAL = {} />
 		<cfset var retStruct = {} />
+		<cfset var retString = "" />
 		
 		<cfquery name="LOCAL.getProduct">
 			SELECT	p.product_id
@@ -196,7 +198,9 @@
 			<cfset retStruct.originalPrice = 0 />
 		</cfif>
 		
-		<cfreturn retStruct>
+		<cfset var retString = "#ARGUMENTS.callback#(#SerializeJSON(retStruct)#);" />
+		
+		<cfreturn retString>
 	</cffunction>
 	
 	<cffunction name="searchProducts" access="remote" returntype="query" returnformat="json" output="false">
