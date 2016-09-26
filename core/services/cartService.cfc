@@ -82,9 +82,11 @@
 		<cfargument name="quantity" type="string" required="true">
 		
 		<cfset var LOCAL = {} />
+		<cfset LOCAL.retStruct = {} />
+		<cfset LOCAL.retStruct.products = [] />
 		
 		<cfset LOCAL.trackingRecord = EntityNew("tracking_record") />
-		<cfset LOCAL.trackingEntity = EntityLocadByPK("tracking_entity",ARGUMENTS.trackingEntityId) />
+		<cfset LOCAL.trackingEntity = EntityLoadByPK("tracking_entity",ARGUMENTS.trackingEntityId) />
 		<cfset LOCAL.trackingRecordType = EntityLoad("tracking_record_type",{name = "shopping cart"},true) />
 		<cfset LOCAL.product = EntityLoadByPK("product",ARGUMENTS.productId) />
 		
