@@ -18,12 +18,12 @@
 		<cfset LOCAL.trackingEntity.setLastAccessDatetime(Now()) />
 		<cfset EntitySave(LOCAL.trackingEntity) />
 		
+		<cfset LOCAL.pageData.trackingEntityId = LOCAL.trackingEntity.getTrackingEntityId() />
+		
 		<!--- set cart --->
 		<cfset LOCAL.pageData.cart = new "core.entities.cart"(	trackingEntityId = LOCAL.trackingEntity.getTrackingEntityId()
 															, 	customerGroupId = getSessionData().user.customerGroupId
 															, 	currencyId = getSessionData().currency.id) />
-		
-		
 		<cfif 	ListLen(getCgiData().PATH_INFO,"/") EQ 6 
 				AND
 				(

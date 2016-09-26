@@ -4,7 +4,7 @@
 		var productType = '#REQUEST.pageData.product.getProductType().getName()#';
 		var cartRequestUrl = 'http://api.pinmydeals.loc/services/cartService.cfc';
 		var absoluteUrlSite = '#APPLICATION.absoluteUrlSite#';
-		var trackingEntityId = #REQUEST.pageData.trackingEntity.getTrackingEntityId()#;
+		var trackingEntityId = #REQUEST.pageData.trackingEntityId#;
 		var customerGroupId = #SESSION.user.customerGroupId#;
 		var currencyId = #SESSION.currency.id#;
 		
