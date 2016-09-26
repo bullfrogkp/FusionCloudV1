@@ -479,9 +479,14 @@
 		<cfreturn LOCAL.subTotal />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
-	<cffunction name="getDisplaySubTotal" access="public" output="false" returnType="string">
+	<cffunction name="getSubTotalWCLocal" access="public" output="false" returnType="string">
 		<cfset LOCAL.currency = EntityLoadByPK("currency",getCurrencyId()) />
 		<cfreturn LSCurrencyFormat(getSubTotal(),"local",LOCAL.currency.getLocale()) />
+	</cffunction>
+	<!------------------------------------------------------------------------------->	
+	<cffunction name="getSubTotalWCInter" access="public" output="false" returnType="string">
+		<cfset LOCAL.currency = EntityLoadByPK("currency",getCurrencyId()) />
+		<cfreturn LSCurrencyFormat(getSubTotal(),"international",LOCAL.currency.getLocale()) />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
 	<cffunction name="getGrandTotal" access="public" output="false" returnType="numeric">
@@ -491,8 +496,14 @@
 		<cfreturn LOCAL.grandTotal />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
-	<cffunction name="getDisplayGrandTotal" access="public" output="false" returnType="string">
+	<cffunction name="getGrandTotalWCLocal" access="public" output="false" returnType="string">
+		<cfset LOCAL.currency = EntityLoadByPK("currency",getCurrencyId()) />
 		<cfreturn LSCurrencyFormat(getGrandTotal(),"local",LOCAL.currency.getLocale()) />
+	</cffunction>
+	<!------------------------------------------------------------------------------->	
+	<cffunction name="getGrandTotalWCInter" access="public" output="false" returnType="string">
+		<cfset LOCAL.currency = EntityLoadByPK("currency",getCurrencyId()) />
+		<cfreturn LSCurrencyFormat(getGrandTotal(),"international",LOCAL.currency.getLocale()) />
 	</cffunction>
 	<!------------------------------------------------------------------------------->
 </cfcomponent>

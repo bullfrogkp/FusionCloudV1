@@ -34,6 +34,7 @@ $(function() {
 					str += '<div class="summary"><div class="subtotal">Subtotal: '+data.SUBTOTAL+'</div><div class="grandtotal">Grand Total <span>'+data.TOTAL+'</span></div></div><div class="cart-buttons"><div class="column"><a class="button style-3" href="'+absoluteUrlSite+'cart.cfm">view cart</a><div class="clear"></div></div><div class="column"><a class="button style-4" href="'+absoluteUrlSite+'checkout/checout_paypal_express.cfm">checkout</a><div class="clear"></div></div><div class="clear"></div></div>';
 					
 					$(".cart-box .popup-container").html(str);   
+					$("#cart-subtotal").html(data.SUBTOTAL); 
 				})
 				.fail(function(data) {
 					alert( "error" );

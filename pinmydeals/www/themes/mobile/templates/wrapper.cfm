@@ -83,7 +83,7 @@
                             <div class="line-entry">
                                 <a href="##" class="header-functionality-entry"><i class="fa fa-copy"></i><span>Compare</span></a>
                                 <a href="#APPLICATION.absoluteUrlSite#wishlist.cfm" class="header-functionality-entry"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>
-                                <a href="#APPLICATION.absoluteUrlSite#cart.cfm" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> &nbsp;&nbsp;&nbsp;<b>#REQUEST.pageData.cart.getDisplaySubTotal()#</b></a>
+                                <a href="#APPLICATION.absoluteUrlSite#cart.cfm" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> &nbsp;&nbsp;&nbsp;<b id="cart-subtotal">#REQUEST.pageData.cart.getSubTotalWCLocal()#</b></a>
                             </div>
                         </div>
                     </div>
@@ -453,7 +453,7 @@
 				</cfloop>
 				
 				<div class="summary">
-					<div class="subtotal">Subtotal: #REQUEST.pageData.cart.getDisplaySubTotal()#</div>
+					<div class="subtotal">Subtotal: #REQUEST.pageData.cart.getSubTotalWCLocal()#</div>
 				</div>
 				<div class="cart-buttons">
 					<div class="column">
