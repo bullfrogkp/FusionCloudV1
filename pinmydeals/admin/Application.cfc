@@ -173,6 +173,7 @@
 				<cfset globalPageObj.setUrlData(URL) />
 				<cfset globalPageObj.setCgiData(CGI) />
 				<cfset globalPageObj.setSessionData(SESSION) />
+				<cfset globalPageObj.setPageName(currentPageName) />
 				<cfset var pageObj = _initPageObject(argumentCollection = args) />
 				<cfset pageObj.setUrlData(URL) />
 				<cfset pageObj.setCgiData(CGI) />
