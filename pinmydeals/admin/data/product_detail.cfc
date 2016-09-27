@@ -27,7 +27,7 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.redirectUrl = "" />
 
-		<cfset LOCAL.productService = new "#APPLICATION.componentPathRoot#core.services.productService"() />
+		<cfset LOCAL.productService = new "core.services.productService"() />
 		
 		<cfset SESSION.temp.message = {} />
 		<cfset SESSION.temp.message.messageArray = [] />
@@ -482,8 +482,8 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.pageData = {} />
 		
-		<cfset LOCAL.categoryService = new "#APPLICATION.componentPathRoot#core.services.categoryService"() />
-		<cfset LOCAL.productService = new "#APPLICATION.componentPathRoot#core.services.productService"() />
+		<cfset LOCAL.categoryService = new "core.services.categoryService"() />
+		<cfset LOCAL.productService = new "core.services.productService"() />
 		
 		<cfset LOCAL.pageData.categoryTree = LOCAL.categoryService.getCategoryTree(isSpecial=false) />
 		<cfset LOCAL.pageData.customerGroups = EntityLoad("customer_group",{isDeleted = false, isEnabled = true},"isDefault Desc") />

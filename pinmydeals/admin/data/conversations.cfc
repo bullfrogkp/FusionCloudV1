@@ -5,7 +5,7 @@
 		
 		<cfset LOCAL.pageData.title = "Conversations | #APPLICATION.applicationName#" />
 		
-		<cfset LOCAL.convService = new "#APPLICATION.componentPathRoot#core.services.conversationService"() />
+		<cfset LOCAL.convService = new "core.services.conversationService"() />
 		<cfset LOCAL.convService.setRecordsPerPage(APPLICATION.recordsPerPage) />
 		<cfif StructKeyExists(URL,"id") AND IsNumeric(URL.id)>
 			<cfset LOCAL.convService.setId(URL.id) />

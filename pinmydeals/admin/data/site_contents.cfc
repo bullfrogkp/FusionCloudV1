@@ -5,7 +5,7 @@
 		
 		<cfset LOCAL.pageData.title = "Contents | #APPLICATION.applicationName#" />
 		
-		<cfset LOCAL.siteContentService = new "#APPLICATION.componentPathRoot#core.services.siteContentService"() />
+		<cfset LOCAL.siteContentService = new "core.services.siteContentService"() />
 		<cfset LOCAL.siteContentService.setRecordsPerPage(APPLICATION.recordsPerPage) />
 		<cfset LOCAL.siteContentService.setIsDeleted(false) />
 		<cfif StructKeyExists(URL,"id") AND IsNumeric(URL.id)>

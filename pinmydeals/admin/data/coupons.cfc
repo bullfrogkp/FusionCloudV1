@@ -5,7 +5,7 @@
 		
 		<cfset LOCAL.pageData.title = "Coupons | #APPLICATION.applicationName#" />
 		
-		<cfset LOCAL.couponService = new "#APPLICATION.componentPathRoot#core.services.couponService"() />
+		<cfset LOCAL.couponService = new "core.services.couponService"() />
 		<cfset LOCAL.couponService.setRecordsPerPage(APPLICATION.recordsPerPage) />
 		<cfset LOCAL.couponService.setIsDeleted(false) />
 		<cfif StructKeyExists(URL,"id") AND IsNumeric(URL.id)>

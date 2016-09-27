@@ -13,7 +13,7 @@
 		</cfif>
 		
 		<cfif Trim(FORM.username) NEQ "" AND Trim(FORM.password) NEQ "">
-			<cfset LOCAL.userService = new "#APPLICATION.componentPathRoot#core.services.userService"() />
+			<cfset LOCAL.userService = new "core.services.userService"() />
 			<cfset LOCAL.userService.setUsername(Trim(FORM.username)) />
 			<cfset LOCAL.userService.setPassword(Trim(FORM.password)) />
 			<cfif LOCAL.userService.isUserValid() EQ false>

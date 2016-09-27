@@ -23,7 +23,7 @@
 				<cfif Trim(FORM.new_password) NEQ Trim(FORM.confirm_new_password)>
 					<cfset ArrayAppend(LOCAL.messageArray,"Passwords don't match") />
 				<cfelse>
-					<cfset LOCAL.userService = new "#APPLICATION.componentPathRoot#core.services.userService"() />
+					<cfset LOCAL.userService = new "core.services.userService"() />
 					<cfset LOCAL.userService.setUsername(Trim(FORM.username)) />
 					<cfset LOCAL.userService.setPassword(Trim(FORM.current_password)) />
 					<cfif LOCAL.userService.isUserValid() EQ false>

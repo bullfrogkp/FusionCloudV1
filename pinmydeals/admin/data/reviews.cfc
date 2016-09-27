@@ -5,7 +5,7 @@
 		
 		<cfset LOCAL.pageData.title = "Reviews | #APPLICATION.applicationName#" />
 		
-		<cfset LOCAL.reviewService = new "#APPLICATION.componentPathRoot#core.services.reviewService"() />
+		<cfset LOCAL.reviewService = new "core.services.reviewService"() />
 		<cfset LOCAL.reviewService.setRecordsPerPage(APPLICATION.recordsPerPage) />
 		<cfset LOCAL.reviewService.setIsDeleted(false) />
 		<cfif StructKeyExists(URL,"id") AND IsNumeric(URL.id)>

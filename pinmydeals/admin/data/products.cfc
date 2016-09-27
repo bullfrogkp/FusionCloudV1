@@ -5,8 +5,8 @@
 		
 		<cfset LOCAL.pageData.title = "Products | #APPLICATION.applicationName#" />
 		
-		<cfset LOCAL.productService = new "#APPLICATION.componentPathRoot#core.services.productService"() />
-		<cfset LOCAL.categoryService = new "#APPLICATION.componentPathRoot#core.services.categoryService"() />
+		<cfset LOCAL.productService = new "core.services.productService"() />
+		<cfset LOCAL.categoryService = new "core.services.categoryService"() />
 				
 		<cfset LOCAL.productService.setRecordsPerPage(APPLICATION.recordsPerPage) />
 		<cfset LOCAL.productService.setIsDeleted(false) />

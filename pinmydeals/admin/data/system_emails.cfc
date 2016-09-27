@@ -5,7 +5,7 @@
 		
 		<cfset LOCAL.pageData.title = "System Emails | #APPLICATION.applicationName#" />
 		
-		<cfset LOCAL.emailService = new "#APPLICATION.componentPathRoot#core.services.systemEmailService"() />
+		<cfset LOCAL.emailService = new "core.services.systemEmailService"() />
 		<cfset LOCAL.emailService.setRecordsPerPage(APPLICATION.recordsPerPage) />
 		<cfset LOCAL.emailService.setIsDeleted(false) />
 		<cfif StructKeyExists(URL,"id") AND IsNumeric(URL.id)>

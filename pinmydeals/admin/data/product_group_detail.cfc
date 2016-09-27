@@ -69,7 +69,7 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.pageData = {} />
 		
-		<cfset LOCAL.categoryService = new "#APPLICATION.componentPathRoot#core.services.categoryService"() />
+		<cfset LOCAL.categoryService = new "core.services.categoryService"() />
 		<cfset LOCAL.pageData.categoryTree = LOCAL.categoryService.getCategoryTree() />
 		<cfset LOCAL.pageData.productGroups = EntityLoad("product_group") />
 		

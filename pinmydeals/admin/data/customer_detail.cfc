@@ -43,7 +43,7 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.redirectUrl = "" />
 		
-		<cfset LOCAL.customerService = new "#APPLICATION.componentPathRoot#core.services.customerService"() />
+		<cfset LOCAL.customerService = new "core.services.customerService"() />
 		
 		<cfset SESSION.temp.message = {} />
 		<cfset SESSION.temp.message.messageArray = [] />
@@ -136,7 +136,7 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.pageData = {} />
 		
-		<cfset LOCAL.customerService = new "#APPLICATION.componentPathRoot#core.services.customerService"() />
+		<cfset LOCAL.customerService = new "core.services.customerService"() />
 		<cfset LOCAL.pageData.provinces = EntityLoad("province") />
 		<cfset LOCAL.pageData.countries = EntityLoad("country") />
 		<cfset LOCAL.pageData.customerGroups = EntityLoad("customer_group",{isDeleted = false, isEnabled = true}) />
