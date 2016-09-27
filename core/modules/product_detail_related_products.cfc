@@ -9,7 +9,7 @@
 		<cfset LOCAL.product.href = "" />
 		<cfset LOCAL.product.previousPrice = 999 />
 		<cfset LOCAL.product.currentPrice = 111 />
-		<cfset LOCAL.product.image = "#SESSION.absoluteUrlTheme#images/product-image-inline-1.jpg" />
+		<cfset LOCAL.product.image = "#getSessionData().absoluteUrlTheme#images/product-image-inline-1.jpg" />
 		<cfset ArrayAppend(LOCAL.retStruct.products, LOCAL.product) />
 		
 		<cfset LOCAL.product = {} />
@@ -17,7 +17,7 @@
 		<cfset LOCAL.product.href = "" />
 		<cfset LOCAL.product.previousPrice = 999 />
 		<cfset LOCAL.product.currentPrice = 111 />
-		<cfset LOCAL.product.image = "#SESSION.absoluteUrlTheme#images/product-image-inline-2.jpg" />
+		<cfset LOCAL.product.image = "#getSessionData().absoluteUrlTheme#images/product-image-inline-2.jpg" />
 		<cfset ArrayAppend(LOCAL.retStruct.products, LOCAL.product) />
 		
 		<cfset LOCAL.product = {} />
@@ -25,7 +25,7 @@
 		<cfset LOCAL.product.href = "" />
 		<cfset LOCAL.product.previousPrice = 999 />
 		<cfset LOCAL.product.currentPrice = 111 />
-		<cfset LOCAL.product.image = "#SESSION.absoluteUrlTheme#images/product-image-inline-3.jpg" />
+		<cfset LOCAL.product.image = "#getSessionData().absoluteUrlTheme#images/product-image-inline-3.jpg" />
 		<cfset ArrayAppend(LOCAL.retStruct.products, LOCAL.product) />
 		
 		<cfreturn LOCAL.retStruct />

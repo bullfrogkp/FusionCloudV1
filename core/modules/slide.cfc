@@ -3,7 +3,7 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
 		<cfset LOCAL.retStruct.slideSection = '
-		<div class="swiper-slide no-shadow active" data-val="0" style="background-image: url(#SESSION.absoluteUrlTheme#images/fullwidth-1.jpg);"> 
+		<div class="swiper-slide no-shadow active" data-val="0" style="background-image: url(#getSessionData().absoluteUrlTheme#images/fullwidth-1.jpg);"> 
 				<div class="parallax-vertical-align">
 					<div class="parallax-article left-align">
 						<h2 class="subtitle">Check out this weekend</h2>
@@ -16,7 +16,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="swiper-slide no-shadow" data-val="1" style="background-image: url(#SESSION.absoluteUrlTheme#images/fullwidth-2.jpg);"> 
+			<div class="swiper-slide no-shadow" data-val="1" style="background-image: url(#getSessionData().absoluteUrlTheme#images/fullwidth-2.jpg);"> 
 				<div class="parallax-vertical-align">
 					<div class="parallax-article left-align">
 						<h2 class="subtitle">Check out this weekend</h2>

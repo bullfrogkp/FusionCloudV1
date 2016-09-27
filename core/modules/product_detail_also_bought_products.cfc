@@ -12,8 +12,8 @@
 		<cfset LOCAL.product.stars = 4 />
 		<cfset LOCAL.product.previousPrice = 999 />
 		<cfset LOCAL.product.currentPrice = 111 />
-		<cfset LOCAL.product.image1 = "#SESSION.absoluteUrlTheme#images/product-minimal-1.jpg" />
-		<cfset LOCAL.product.image2 = "#SESSION.absoluteUrlTheme#images/product-minimal-11.jpg" />
+		<cfset LOCAL.product.image1 = "#getSessionData().absoluteUrlTheme#images/product-minimal-1.jpg" />
+		<cfset LOCAL.product.image2 = "#getSessionData().absoluteUrlTheme#images/product-minimal-11.jpg" />
 		<cfset ArrayAppend(LOCAL.retStruct.products, LOCAL.product) />
 		
 		<cfset LOCAL.product = {} />
@@ -24,8 +24,8 @@
 		<cfset LOCAL.product.stars = 4 />
 		<cfset LOCAL.product.previousPrice = 999 />
 		<cfset LOCAL.product.currentPrice = 111 />
-		<cfset LOCAL.product.image1 = "#SESSION.absoluteUrlTheme#images/product-minimal-1.jpg" />
-		<cfset LOCAL.product.image2 = "#SESSION.absoluteUrlTheme#images/product-minimal-11.jpg" />
+		<cfset LOCAL.product.image1 = "#getSessionData().absoluteUrlTheme#images/product-minimal-1.jpg" />
+		<cfset LOCAL.product.image2 = "#getSessionData().absoluteUrlTheme#images/product-minimal-11.jpg" />
 		<cfset ArrayAppend(LOCAL.retStruct.products, LOCAL.product) />
 		
 		<cfset LOCAL.product = {} />
@@ -36,8 +36,8 @@
 		<cfset LOCAL.product.stars = 4 />
 		<cfset LOCAL.product.previousPrice = 999 />
 		<cfset LOCAL.product.currentPrice = 111 />
-		<cfset LOCAL.product.image1 = "#SESSION.absoluteUrlTheme#images/product-minimal-1.jpg" />
-		<cfset LOCAL.product.image2 = "#SESSION.absoluteUrlTheme#images/product-minimal-11.jpg" />
+		<cfset LOCAL.product.image1 = "#getSessionData().absoluteUrlTheme#images/product-minimal-1.jpg" />
+		<cfset LOCAL.product.image2 = "#getSessionData().absoluteUrlTheme#images/product-minimal-11.jpg" />
 		<cfset ArrayAppend(LOCAL.retStruct.products, LOCAL.product) />
 		
 		<cfset LOCAL.product = {} />
@@ -48,8 +48,8 @@
 		<cfset LOCAL.product.stars = 4 />
 		<cfset LOCAL.product.previousPrice = 999 />
 		<cfset LOCAL.product.currentPrice = 111 />
-		<cfset LOCAL.product.image1 = "#SESSION.absoluteUrlTheme#images/product-minimal-1.jpg" />
-		<cfset LOCAL.product.image2 = "#SESSION.absoluteUrlTheme#images/product-minimal-11.jpg" />
+		<cfset LOCAL.product.image1 = "#getSessionData().absoluteUrlTheme#images/product-minimal-1.jpg" />
+		<cfset LOCAL.product.image2 = "#getSessionData().absoluteUrlTheme#images/product-minimal-11.jpg" />
 		<cfset ArrayAppend(LOCAL.retStruct.products, LOCAL.product) />
 		
 		<cfset LOCAL.product = {} />
@@ -60,8 +60,8 @@
 		<cfset LOCAL.product.stars = 4 />
 		<cfset LOCAL.product.previousPrice = 999 />
 		<cfset LOCAL.product.currentPrice = 111 />
-		<cfset LOCAL.product.image1 = "#SESSION.absoluteUrlTheme#images/product-minimal-1.jpg" />
-		<cfset LOCAL.product.image2 = "#SESSION.absoluteUrlTheme#images/product-minimal-11.jpg" />
+		<cfset LOCAL.product.image1 = "#getSessionData().absoluteUrlTheme#images/product-minimal-1.jpg" />
+		<cfset LOCAL.product.image2 = "#getSessionData().absoluteUrlTheme#images/product-minimal-11.jpg" />
 		<cfset ArrayAppend(LOCAL.retStruct.products, LOCAL.product) />
 		
 		<cfreturn LOCAL.retStruct />
