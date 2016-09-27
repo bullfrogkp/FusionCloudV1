@@ -113,7 +113,7 @@
 		<cfset SetEncoding("form","utf-8") />
 		<cfset SetEncoding("url","utf-8") />
 		<cfset StructAppend(APPLICATION, Config().env) />
-		<cfset APPLICATION.globalPageObj = new siteDataAdmin.global(pageName = "", formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
+		<cfset APPLICATION.globalPageObjAdmin = new siteDataAdmin.global(pageName = "", formData = {}, urlData = {}, cgiData = {}, sessionData = {}) />
 		<cfreturn true>
 	</cffunction>
 	<!------------------------------------------------------------------------------->
