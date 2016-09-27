@@ -482,11 +482,11 @@
     <!-- custom scrollbar -->
     <script src="#SESSION.absoluteUrlTheme#js/jquery.mousewheel.js"></script>
     <script src="#SESSION.absoluteUrlTheme#js/jquery.jscrollpane.min.js"></script>
-	
+	<!---
 	<!-- map -->
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=en"></script>
 	<script src="#SESSION.absoluteUrlTheme#js/map.js"></script>
-
+	--->
 	<script src="#SESSION.absoluteUrlTheme#js/#REQUEST.pageData.currentPageName#.js"></script>
 </body>
 </html>
