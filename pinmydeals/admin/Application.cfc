@@ -289,9 +289,9 @@
 		<cfargument type="string" name="folderNameTheme" required=true /> 
 		
 		<cfset var folderNameThemeAdmin = ARGUMENTS.folderNameTheme>		
-		<cfset SESSION.urlThemeAdmin = "#APPLICATION.urlHttp#admin/themes/#folderNameThemeAdmin#/">
-		<cfset SESSION.absoluteUrlThemeAdmin = "#APPLICATION.absoluteUrlSite#admin/themes/#folderNameThemeAdmin#/">
-		<cfset SESSION.absolutePathThemeAdmin = "#APPLICATION.absolutePathSite#admin\themes\#folderNameThemeAdmin#\">
+		<cfset SESSION.urlThemeAdmin = "#APPLICATION.urlHttp#themes/#folderNameThemeAdmin#/">
+		<cfset SESSION.absoluteUrlThemeAdmin = "#APPLICATION.absoluteUrlSite#themes/#folderNameThemeAdmin#/">
+		<cfset SESSION.absolutePathThemeAdmin = "#APPLICATION.absolutePathSite#themes\#folderNameThemeAdmin#\">
 	</cffunction>
 	<!------------------------------------------------------------------------------->
 	<cffunction name="_getCurrentURL" output="false" access="private" returnType="string">
