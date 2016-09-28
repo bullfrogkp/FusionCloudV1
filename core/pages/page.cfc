@@ -213,7 +213,6 @@
 		<cfset LOCAL.retStruct = {} />
 		
 		<cfset LOCAL.pageEntity = EntityLoad("page",{name = getPageName()},true) />
-		<cfset LOCAL.pageEntity.setSection(getSection()) />
 		<cfset LOCAL.modules = LOCAL.pageEntity.getModules() />
 		
 		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
