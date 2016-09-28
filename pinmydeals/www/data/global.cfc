@@ -55,7 +55,8 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
 		
-		<cfset LOCAL.modules = EntityLoad("site_module",{isDeleted = false, isEnabled = true}) />
+		<cfset LOCAL.site = EntityLoad("site", {name = APPLICATION.applicationName}, true) />
+		<cfset LOCAL.modules = EntityLoad("site_module",{site = LOCAL.site, isDeleted = false, isEnabled = true}) />
 		
 		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
 			<cfset LOCAL.moduleObj = new "core.modules.#LOCAL.module.getName()#"(formData = getFormData(), urlData = getUrlData(), cgiData = getCgiData(), sessionData = getSessionData()) />
@@ -69,7 +70,8 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
 		
-		<cfset LOCAL.modules = EntityLoad("site_module",{isDeleted = false, isEnabled = true}) />
+		<cfset LOCAL.site = EntityLoad("site", {name = APPLICATION.applicationName}, true) />
+		<cfset LOCAL.modules = EntityLoad("site_module",{site = LOCAL.site, isDeleted = false, isEnabled = true}) />
 		
 		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
 			<cfset LOCAL.moduleObj = new "core.modules.#LOCAL.module.getName()#"(formData = getFormData(), urlData = getUrlData(), cgiData = getCgiData(), sessionData = getSessionData()) />
