@@ -53,7 +53,7 @@
 			<cfset EntitySave(LOCAL.newsletter) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Newsletter has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.newsletter.getNewsletterId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.newsletter.getNewsletterId()#" />
 			
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 			
@@ -62,7 +62,7 @@
 			<cfset EntitySave(LOCAL.newsletter) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Newsletter '#LOCAL.newsletter.getSubject()#' has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/newsletters.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#newsletters.cfm" />
 			
 		</cfif>
 		

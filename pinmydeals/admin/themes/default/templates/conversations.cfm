@@ -52,7 +52,7 @@
 									<td>#conv.getDescription()#</td>
 									<td>#conv.getCreatedDatetime()#</td>
 									<td>#conv.getCreatedUser()#</td>
-									<td><a href="#APPLICATION.absoluteUrlSite#admin/conversation_detail.cfm?id=#conv.getConversationId()#">View Detail</a></td>
+									<td><a href="#APPLICATION.absoluteUrlSite#conversation_detail.cfm?id=#conv.getConversationId()#">View Detail</a></td>
 								</tr>
 							</cfloop>
 						<cfelse>

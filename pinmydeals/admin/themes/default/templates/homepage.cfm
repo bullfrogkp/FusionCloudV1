@@ -17,7 +17,7 @@
 			// General settings
 			runtimes: 'html5,flash,silverlight,html4',
 			
-			url: "#APPLICATION.absoluteUrlSite#admin/ajax/upload_ads.cfm",
+			url: "#APPLICATION.absoluteUrlSite#ajax/upload_ads.cfm",
 
 			// Maximum file size
 			max_file_size: '1000mb',

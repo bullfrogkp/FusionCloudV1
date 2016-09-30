@@ -54,7 +54,7 @@
 			<cfset EntitySave(LOCAL.systemEmail) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"System email has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.systemEmail.getSystemEmailId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.systemEmail.getSystemEmailId()#" />
 			
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 			
@@ -64,7 +64,7 @@
 			<cfset EntitySave(LOCAL.systemEmail) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"System Email '#LOCAL.systemEmail.getSubject()#' has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/system_emails.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#system_emails.cfm" />
 			
 		</cfif>
 		

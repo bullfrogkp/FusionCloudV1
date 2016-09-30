@@ -29,17 +29,17 @@
 				<div class="box-body">
 					<ul>
 						<cfloop array="#REQUEST.pageData.categoryTree#" index="cat">
-							<li><a href="#APPLICATION.absoluteUrlSite#admin/product_detail.cfm?category_id=#cat.getCategoryId()#">#cat.getDisplayName()#</a>
+							<li><a href="#APPLICATION.absoluteUrlSite#product_detail.cfm?category_id=#cat.getCategoryId()#">#cat.getDisplayName()#</a>
 							<cfif ArrayLen(cat.getSubCategories()) NEQ 0>
 								<ul>
 							</cfif>
 							<cfloop array="#cat.getSubCategories()#" index="subCat">
-								<li><a href="#APPLICATION.absoluteUrlSite#admin/product_detail.cfm?category_id=#subCat.getCategoryId()#">#subCat.getDisplayName()#</a>
+								<li><a href="#APPLICATION.absoluteUrlSite#product_detail.cfm?category_id=#subCat.getCategoryId()#">#subCat.getDisplayName()#</a>
 								<cfif ArrayLen(subCat.getSubCategories()) NEQ 0>
 									<ul>
 								</cfif>
 								<cfloop array="#subCat.getSubCategories()#" index="thirdCat">
-									<li><a href="#APPLICATION.absoluteUrlSite#admin/product_detail.cfm?category_id=#thirdCat.getCategoryId()#">#thirdCat.getDisplayName()#</a>
+									<li><a href="#APPLICATION.absoluteUrlSite#product_detail.cfm?category_id=#thirdCat.getCategoryId()#">#thirdCat.getDisplayName()#</a>
 								</cfloop>
 								<cfif ArrayLen(subCat.getSubCategories()) NEQ 0>
 									</ul>
@@ -84,7 +84,7 @@
 			<div class="box box-warning">
 				<div class="box-header">
 					<h3 class="box-title">Products</h3>
-					<a href="#APPLICATION.absoluteUrlSite#admin/product_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Product</a>
+					<a href="#APPLICATION.absoluteUrlSite#product_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Product</a>
 				</div><!-- /.box-header -->
 				<div class="box-body table-responsive">
 					<table class="table table-bordered table-hover">
@@ -108,7 +108,7 @@
 										<cfcase value="no"><span class="label label-danger">Disabled</span></cfcase>
 									</cfswitch>
 								</td>
-								<td><a href="#APPLICATION.absoluteUrlSite#admin/product_detail.cfm?id=#product.getProductId()#">View Detail</a></td>
+								<td><a href="#APPLICATION.absoluteUrlSite#product_detail.cfm?id=#product.getProductId()#">View Detail</a></td>
 							</tr>
 							</cfloop>
 						<cfelse>

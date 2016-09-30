@@ -48,7 +48,7 @@
 			<cfset EntitySave(LOCAL.order) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Order status has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.order.getOrderId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.order.getOrderId()#" />
 			
 		<cfelseif StructKeyExists(FORM,"save_product_status")>
 					
@@ -71,7 +71,7 @@
 			<cfset EntitySave(LOCAL.orderProduct) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Product status has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.order.getOrderId()#&active_tab_id=tab_3" />	
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.order.getOrderId()#&active_tab_id=tab_3" />	
 			
 		<cfelseif StructKeyExists(FORM,"save_product_tracking_number")>
 			<cfset LOCAL.orderProduct = EntityLoadByPK("order_product",FORM.order_product_id) />
@@ -79,7 +79,7 @@
 			<cfset EntitySave(LOCAL.orderProduct) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Tracking number has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.order.getOrderId()#&active_tab_id=tab_2" />		
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.order.getOrderId()#&active_tab_id=tab_2" />		
 		<cfelseif StructKeyExists(FORM,"save_shipping_tracking_number")>
 		
 			<cfset LOCAL.order = EntityLoadByPK("order", FORM.id)> 
@@ -87,7 +87,7 @@
 			<cfset EntitySave(LOCAL.order) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Shipping tracking number has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.order.getOrderId()#&active_tab_id=tab_2" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.order.getOrderId()#&active_tab_id=tab_2" />
 			
 		</cfif>
 		

@@ -49,7 +49,7 @@
 			// General settings
 			runtimes: 'html5,flash,silverlight,html4',
 			
-			url: "#APPLICATION.absoluteUrlSite#admin/ajax/upload_category_images.cfm",
+			url: "#APPLICATION.absoluteUrlSite#ajax/upload_category_images.cfm",
 
 			// Maximum file size
 			max_file_size: '1000mb',
@@ -91,7 +91,7 @@
 			// General settings
 			runtimes: 'html5,flash,silverlight,html4',
 			
-			url: "#APPLICATION.absoluteUrlSite#admin/ajax/upload_ads.cfm",
+			url: "#APPLICATION.absoluteUrlSite#ajax/upload_ads.cfm",
 
 			// Maximum file size
 			max_file_size: '1000mb',
@@ -769,7 +769,7 @@
 														<td>#DateFormat(product[1].getCreatedDatetime(),"mmm dd,yyyy")#</td>
 														<td>#product[1].getSku()#</td>
 														<td>#product[1].getIsEnabled()#</td>
-														<td><a href="#APPLICATION.absoluteUrlSite#admin/product_detail.cfm?id=#product[1].getProductId()#">View Detail</a></td>
+														<td><a href="#APPLICATION.absoluteUrlSite#product_detail.cfm?id=#product[1].getProductId()#">View Detail</a></td>
 													</tr>
 												</cfloop>
 											<cfelse>

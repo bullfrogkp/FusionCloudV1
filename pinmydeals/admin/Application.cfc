@@ -307,7 +307,7 @@
    
 		<cflog text="cannot find page: #ARGUMENTS.targetPage#" />
 		
-		<cflocation url="#APPLICATION.absoluteUrlSite#admin/error.cfm" addtoken="false" />
+		<cflocation url="#APPLICATION.absoluteUrlSite#error.cfm" addtoken="false" />
 	</cffunction>--->
 	<!------------------------------------------------------------------------------->
 </cfcomponent>

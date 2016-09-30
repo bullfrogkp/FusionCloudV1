@@ -20,7 +20,7 @@
 			// General settings
 			runtimes: 'html5,flash,silverlight,html4',
 			
-			url: "#APPLICATION.absoluteUrlSite#admin/ajax/upload_product_images.cfm",
+			url: "#APPLICATION.absoluteUrlSite#ajax/upload_product_images.cfm",
 
 			// Maximum file size
 			max_file_size: '1000mb',
@@ -1535,7 +1535,7 @@
 														<td>#review.getMessage()#</td>
 														<td>#review.getRating()#</td>
 														<td>#review.getCreatedDatetime()#</td>
-														<td><a href="#APPLICATION.absoluteUrlSite#admin/review_detail.cfm?id=#review.getReviewId()#">View Detail</a></td>
+														<td><a href="#APPLICATION.absoluteUrlSite#review_detail.cfm?id=#review.getReviewId()#">View Detail</a></td>
 													</tr>
 													</cfloop>
 												</cfif>

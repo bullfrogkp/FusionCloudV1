@@ -224,7 +224,7 @@
 			<cfset EntitySave(LOCAL.category) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Category has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=#LOCAL.tab_id#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=#LOCAL.tab_id#" />
 		
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 		
@@ -232,7 +232,7 @@
 			<cfset EntitySave(LOCAL.category) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Category: #LOCAL.category.getDisplayName()# has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/categories.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#categories.cfm" />
 		
 		<cfelseif StructKeyExists(FORM,"delete_image")>
 		
@@ -241,7 +241,7 @@
 			<cfset EntitySave(LOCAL.category) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Image has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=tab_5" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=tab_5" />
 		
 		<cfelseif StructKeyExists(FORM,"delete_ad")>
 			
@@ -250,7 +250,7 @@
 			<cfset EntitySave(LOCAL.advertisementSection) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Advertise image has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=tab_7" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=tab_7" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

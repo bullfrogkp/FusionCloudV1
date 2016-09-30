@@ -134,7 +134,7 @@
 			</cfif>
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Order has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/order_detail.cfm?id=#LOCAL.order.getOrderId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#order_detail.cfm?id=#LOCAL.order.getOrderId()#" />
 			
 		<cfelseif StructKeyExists(FORM,"add_new_product")>
 		
@@ -178,7 +178,7 @@
 			<cfset EntitySave(LOCAL.order) /> 
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"New product has been added.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.order.getOrderId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.order.getOrderId()#" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

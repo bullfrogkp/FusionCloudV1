@@ -67,7 +67,7 @@
 											<cfcase value="Pending"><span class="label label-warning">Pending</span></cfcase>
 										</cfswitch>
 									</td>
-									<td><a href="#APPLICATION.absoluteUrlSite#admin/review_detail.cfm?id=#review.getReviewId()#">View Detail</a></td>
+									<td><a href="#APPLICATION.absoluteUrlSite#review_detail.cfm?id=#review.getReviewId()#">View Detail</a></td>
 								</tr>
 							</cfloop>
 						<cfelse>

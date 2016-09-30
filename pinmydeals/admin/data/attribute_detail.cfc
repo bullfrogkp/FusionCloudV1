@@ -46,7 +46,7 @@
 			<cfset EntitySave(LOCAL.attribute) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Attribute has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.attribute.getAttributeId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.attribute.getAttributeId()#" />
 			
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 			<cfset LOCAL.attribute.setIsDeleted(true) />
@@ -54,7 +54,7 @@
 			<cfset EntitySave(LOCAL.attribute) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Attribute has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/attributes.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#attributes.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	
