@@ -427,9 +427,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li class="attributes attribute_detail"><a href="#APPLICATION.absoluteUrlSite#attributes.cfm"><i class="fa fa-angle-double-right"></i> Attributes</a></li>		
-                                <li class="attribute_sets attribute_set_detail"><a href="#APPLICATION.absoluteUrlSite#attribute_sets.cfm"><i class="fa fa-angle-double-right"></i> Attribute Sets</a></li>		
-								<li class="filters filter_detail"><a href="#APPLICATION.absoluteUrlSite#filters.cfm"><i class="fa fa-angle-double-right"></i> Filters</a></li>		
-                                <li class="filter_groups filter_group_detail"><a href="#APPLICATION.absoluteUrlSite#filter_groups.cfm"><i class="fa fa-angle-double-right"></i> Filter Groups</a></li>	
+                                <li class="filters filter_detail"><a href="#APPLICATION.absoluteUrlSite#filters.cfm"><i class="fa fa-angle-double-right"></i> Filters</a></li>		
                                 <li class="currencies currency_detail"><a href="#APPLICATION.absoluteUrlSite#currencies.cfm"><i class="fa fa-angle-double-right"></i> Currencies</a></li>
                                 <li class="tax_information"><a href="#APPLICATION.absoluteUrlSite#tax_information.cfm"><i class="fa fa-angle-double-right"></i> Taxes</a></li>
                                 <li class="site_info"><a href="#APPLICATION.absoluteUrlSite#site_info.cfm"><i class="fa fa-angle-double-right"></i> Site Info</a></li>
