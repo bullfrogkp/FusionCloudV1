@@ -212,7 +212,8 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
 		
-		<cfset LOCAL.pageEntity = EntityLoad("page",{name = getPageName()},true) />
+		<cfset LOCAL.site = EntityLoad("site",{name = APPLICATION.applicationName},true) />
+		<cfset LOCAL.pageEntity = EntityLoad("page",{name = getPageName(), site = LOCAL.site},true) />
 		<cfset LOCAL.modules = LOCAL.pageEntity.getModules() />
 		
 		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
@@ -227,7 +228,8 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
 		
-		<cfset LOCAL.pageEntity = EntityLoad("page",{name = getPageName()},true) />
+		<cfset LOCAL.site = EntityLoad("site",{name = APPLICATION.applicationName},true) />
+		<cfset LOCAL.pageEntity = EntityLoad("page",{name = getPageName(), site = LOCAL.site},true) />
 		<cfset LOCAL.modules = LOCAL.pageEntity.getModules() />
 		
 		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
