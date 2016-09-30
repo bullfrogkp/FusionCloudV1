@@ -268,7 +268,8 @@
 		<cfset LOCAL.pageData.filters = EntityLoad("filter",{isDeleted = false}, "filterId ASC") />
 	
 		<cfset LOCAL.currentPageName = "products" />
-		<cfset LOCAL.pageData.currentPage = EntityLoad("page", {name = LOCAL.currentPageName},true)>
+		<cfset LOCAL.site = EntityLoad("site", {name = APPLICATION.applicationName}, true) />
+		<cfset LOCAL.pageData.currentPage = EntityLoad("page", {site = LOCAL.site , name = LOCAL.currentPageName},true)>
 		<cfset LOCAL.pageData.advertisementSection = EntityLoad("page_section", {name="advertisement",page=LOCAL.pageData.currentPage},true)> 
 		<cfset LOCAL.pageData.bestSellerSection = EntityLoad("page_section", {name="best seller",page=LOCAL.pageData.currentPage},true)> 
 		
