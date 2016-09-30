@@ -49,7 +49,7 @@
 			// General settings
 			runtimes: 'html5,flash,silverlight,html4',
 			
-			url: "#APPLICATION.absoluteUrlWeb#admin/ajax/upload_category_images.cfm",
+			url: "#APPLICATION.absoluteUrlSite#admin/ajax/upload_category_images.cfm",
 
 			// Maximum file size
 			max_file_size: '1000mb',
@@ -91,7 +91,7 @@
 			// General settings
 			runtimes: 'html5,flash,silverlight,html4',
 			
-			url: "#APPLICATION.absoluteUrlWeb#admin/ajax/upload_ads.cfm",
+			url: "#APPLICATION.absoluteUrlSite#admin/ajax/upload_ads.cfm",
 
 			// Maximum file size
 			max_file_size: '1000mb',
@@ -149,7 +149,7 @@
 		$("##search-product").click(function() {
 			$.ajax({
 						type: "get",
-						url: "#APPLICATION.absoluteUrlWeb#core/services/productService.cfc",
+						url: "#APPLICATION.absoluteUrlSite#core/services/productService.cfc",
 						dataType: 'json',
 						data: {
 							method: 'searchProducts',
@@ -383,7 +383,7 @@
 			option.fid = f.fid;
 			option.value = $("##new-filter-option-name").val();
 			option.imageName = 'no_image_available.png';
-			option.imageSrc = '#APPLICATION.absoluteUrlWeb#images/site/no_image_available.png';
+			option.imageSrc = '#APPLICATION.absoluteUrlSite#images/site/no_image_available.png';
 			
 			if($("##new-filter-name-hidden").val().toLowerCase() == 'color')
 			{
@@ -713,7 +713,7 @@
 													</tr>
 													<tr>
 														<td colspan="2">
-															<img class="img-responsive" src="#APPLICATION.absoluteUrlWeb#images/uploads/category/#REQUEST.pageData.category.getCategoryId()#/#img.getName()#" />
+															<img class="img-responsive" src="#APPLICATION.absoluteUrlSite#images/uploads/category/#REQUEST.pageData.category.getCategoryId()#/#img.getName()#" />
 														</td>
 													</tr>
 													<tr>
@@ -769,7 +769,7 @@
 														<td>#DateFormat(product[1].getCreatedDatetime(),"mmm dd,yyyy")#</td>
 														<td>#product[1].getSku()#</td>
 														<td>#product[1].getIsEnabled()#</td>
-														<td><a href="#APPLICATION.absoluteUrlWeb#admin/product_detail.cfm?id=#product[1].getProductId()#">View Detail</a></td>
+														<td><a href="#APPLICATION.absoluteUrlSite#admin/product_detail.cfm?id=#product[1].getProductId()#">View Detail</a></td>
 													</tr>
 												</cfloop>
 											<cfelse>

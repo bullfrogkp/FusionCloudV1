@@ -21,7 +21,7 @@
 			<cfset EntitySave(LOCAL.currentPage) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Content has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#admin/#getPageName()#.cfm?&active_tab_id=#FORM.tab_id#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?&active_tab_id=#FORM.tab_id#" />
 		<cfreturn LOCAL />	
 	</cffunction>	
 	

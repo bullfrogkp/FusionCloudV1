@@ -66,7 +66,7 @@
 			<cfset EntitySave(LOCAL.currency) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Currency has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#admin/#getPageName()#.cfm?id=#LOCAL.currency.getCurrencyId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.currency.getCurrencyId()#" />
 			
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 			
@@ -74,7 +74,7 @@
 			<cfset EntitySave(LOCAL.currency) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Currency '#LOCAL.currency.getCode()#' has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#admin/currencies.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/currencies.cfm" />
 			
 		</cfif>
 		

@@ -43,7 +43,7 @@
 									<td>#user.getEmail()#</td>
 									<td>#user.getPhone()#</td>
 									<td>#Dateformat(user.getLastLoginDatetime(),"mmm dd, yyyy")# #Timeformat(user.getLastLoginDatetime(),"hh:mm:ss")#</td>
-									<td><a href="#APPLICATION.absoluteUrlWeb#admin/user_detail.cfm?id=#user.getAdminUserId()#">View Detail</a></td>
+									<td><a href="#APPLICATION.absoluteUrlSite#admin/user_detail.cfm?id=#user.getAdminUserId()#">View Detail</a></td>
 								</tr>
 							</cfloop>
 						</tbody>

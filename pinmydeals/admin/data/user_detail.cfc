@@ -90,7 +90,7 @@
 			<cfset EntitySave(LOCAL.user) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"User has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#admin/#getPageName()#.cfm?id=#LOCAL.user.getAdminUserId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.user.getAdminUserId()#" />
 			
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 			
@@ -98,7 +98,7 @@
 			<cfset EntitySave(LOCAL.user) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"User has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#admin/users.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/users.cfm" />
 			
 		</cfif>
 		

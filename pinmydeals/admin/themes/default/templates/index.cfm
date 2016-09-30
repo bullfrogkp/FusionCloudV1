@@ -36,7 +36,7 @@
 				<div class="icon">
 					<i class="ion ion-bag"></i>
 				</div>
-				<a href="#APPLICATION.absoluteUrlWeb#admin/orders.cfm" class="small-box-footer">
+				<a href="#APPLICATION.absoluteUrlSite#admin/orders.cfm" class="small-box-footer">
 					More info <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>
@@ -55,7 +55,7 @@
 				<div class="icon">
 					<i class="ion ion-person-add"></i>
 				</div>
-				<a href="#APPLICATION.absoluteUrlWeb#admin/customers.cfm" class="small-box-footer">
+				<a href="#APPLICATION.absoluteUrlSite#admin/customers.cfm" class="small-box-footer">
 					More info <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>
@@ -74,7 +74,7 @@
 				<div class="icon">
 					<i class="ion ion-stats-bars"></i>
 				</div>
-				<a href="#APPLICATION.absoluteUrlWeb#admin/reviews.cfm" class="small-box-footer">
+				<a href="#APPLICATION.absoluteUrlSite#admin/reviews.cfm" class="small-box-footer">
 					More info <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>
@@ -93,7 +93,7 @@
 				<div class="icon">
 					<i class="ion ion-pie-graph"></i>
 				</div>
-				<a href="#APPLICATION.absoluteUrlWeb#admin/conversations.cfm" class="small-box-footer">
+				<a href="#APPLICATION.absoluteUrlSite#admin/conversations.cfm" class="small-box-footer">
 					More info <i class="fa fa-arrow-circle-right"></i>
 				</a>
 			</div>
@@ -135,7 +135,7 @@
 							<tr>
 								<td>#order.getCustomerFullName()#</td>
 								<td>#LSCurrencyFormat(order.getSubTotalPrice(),"international",order.getCurrency().getLocale())#</td>
-								<td><a href="#APPLICATION.absoluteUrlWeb#admin/order_detail.cfm?id=#order.getOrderId()#">Detail</a></td>
+								<td><a href="#APPLICATION.absoluteUrlSite#admin/order_detail.cfm?id=#order.getOrderId()#">Detail</a></td>
 							</tr>
 						</cfloop>
 					</table>
@@ -159,7 +159,7 @@
 							<tr>
 								<td>#review.getReviewerName()#</td>
 								<td>#review.getSubject()#</td>
-								<td><a href="#APPLICATION.absoluteUrlWeb#admin/review_detail.cfm?id=#review.getReviewId()#">Detail</a></td>
+								<td><a href="#APPLICATION.absoluteUrlSite#admin/review_detail.cfm?id=#review.getReviewId()#">Detail</a></td>
 							</tr>
 						</cfloop>
 					</table>
@@ -186,7 +186,7 @@
 							<tr>
 								<td>#product.getDisplayName()#</td>
 								<td>#product.getSoldCount()#</td>
-								<td><a href="#APPLICATION.absoluteUrlWeb#admin/product_detail.cfm?id=#product.getProductId()#">Detail</a></td>
+								<td><a href="#APPLICATION.absoluteUrlSite#admin/product_detail.cfm?id=#product.getProductId()#">Detail</a></td>
 							</tr>
 						</cfloop>
 					</table>
@@ -210,7 +210,7 @@
 							<tr>
 								<td>#product.getDisplayName()#</td>
 								<td>#product.getViewCount()#</td>
-								<td><a href="#APPLICATION.absoluteUrlWeb#admin/product_detail.cfm?id=#product.getProductId()#">Detail</a></td>
+								<td><a href="#APPLICATION.absoluteUrlSite#admin/product_detail.cfm?id=#product.getProductId()#">Detail</a></td>
 							</tr>
 						</cfloop>
 					</table>

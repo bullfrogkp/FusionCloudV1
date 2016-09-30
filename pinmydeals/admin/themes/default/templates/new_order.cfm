@@ -49,9 +49,9 @@
 							<cfif NOT IsNull(REQUEST.pageData.order) AND NOT IsNull(REQUEST.pageData.order.getProducts())>
 								<cfloop array="#REQUEST.pageData.order.getProducts()#" index="product">
 									<cfif NOT IsNull(product.getImageName())>
-										<cfset imageLink = "#APPLICATION.absoluteUrlWeb#images/uploads/product/#product.getProductId()#/#product.getImageName()#" />
+										<cfset imageLink = "#APPLICATION.absoluteUrlSite#images/uploads/product/#product.getProductId()#/#product.getImageName()#" />
 									<cfelse>
-										<cfset imageLink = "#APPLICATION.absoluteUrlWeb#images/site/no_image_available.png" />
+										<cfset imageLink = "#APPLICATION.absoluteUrlSite#images/site/no_image_available.png" />
 									</cfif>
 									<tr>
 										<td style="width:110px;"><img class="img-responsive" src="#imageLink#" style="width:100px;" /></td>

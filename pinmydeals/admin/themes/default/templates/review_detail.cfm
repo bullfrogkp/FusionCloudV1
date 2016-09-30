@@ -29,7 +29,7 @@
 			<div class="box box-primary">
 				<div class="box-body">
 					<div class="form-group">
-						<label>Product <a href="#APPLICATION.absoluteUrlWeb#admin/product_detail.cfm?id=#REQUEST.pageData.review.getProduct().getProductId()#" class="form-link" style="margin-left:18px;">#REQUEST.pageData.review.getProduct().getDisplayName()#</a></label>
+						<label>Product <a href="#APPLICATION.absoluteUrlSite#admin/product_detail.cfm?id=#REQUEST.pageData.review.getProduct().getProductId()#" class="form-link" style="margin-left:18px;">#REQUEST.pageData.review.getProduct().getDisplayName()#</a></label>
 					</div>
 					<div class="form-group">
 						<label>Post By <a href="" class="form-link">#REQUEST.pageData.review.getCreatedUser()#</a></label>

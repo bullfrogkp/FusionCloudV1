@@ -276,7 +276,7 @@
 			<!---	
 				<cfcatch type="any">
 					<cfset new "#APPLICATION.componentPathRoot#core.utils.utils().handleError(cfcatch = cfcatch) />
-					<cflocation url="#APPLICATION.absoluteUrlWeb#error.cfm" addtoken="false" />
+					<cflocation url="#APPLICATION.absoluteUrlSite#error.cfm" addtoken="false" />
 				</cfcatch>
 			</cftry>
 			--->
@@ -307,7 +307,7 @@
    
 		<cflog text="cannot find page: #ARGUMENTS.targetPage#" />
 		
-		<cflocation url="#APPLICATION.absoluteUrlWeb#admin/error.cfm" addtoken="false" />
+		<cflocation url="#APPLICATION.absoluteUrlSite#admin/error.cfm" addtoken="false" />
 	</cffunction>--->
 	<!------------------------------------------------------------------------------->
 </cfcomponent>

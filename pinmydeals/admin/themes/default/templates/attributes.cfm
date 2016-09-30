@@ -14,7 +14,7 @@
 			<div class="box box-primary">
 				<div class="box-header">
 					<h3 class="box-title">Attributes</h3>
-					<a href="#APPLICATION.absoluteUrlWeb#admin/attribute_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Attribute</a>
+					<a href="#APPLICATION.absoluteUrlSite#admin/attribute_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Attribute</a>
 				</div><!-- /.box-header -->
 				<div class="box-body table-responsive">
 					<table class="table table-bordered table-hover data-table">
@@ -30,7 +30,7 @@
 								<tr>
 									<td>#attribute.getAttributeId()#</td>
 									<td>#attribute.getDisplayName()#</td>
-									<td><a href="#APPLICATION.absoluteUrlWeb#admin/attribute_detail.cfm?id=#attribute.getAttributeId()#">View Detail</a></td>
+									<td><a href="#APPLICATION.absoluteUrlSite#admin/attribute_detail.cfm?id=#attribute.getAttributeId()#">View Detail</a></td>
 								</tr>
 							</cfloop>
 						<cfelse>

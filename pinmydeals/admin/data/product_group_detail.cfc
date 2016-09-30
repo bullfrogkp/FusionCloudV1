@@ -46,7 +46,7 @@
 			</cfif>
 			
 			<cfset EntitySave(LOCAL.productGroup) />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#admin/#getPageName()#.cfm?id=#LOCAL.productGroup.getProductGroupId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/#getPageName()#.cfm?id=#LOCAL.productGroup.getProductGroupId()#" />
 			
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 			
@@ -55,7 +55,7 @@
 			<cfset EntitySave(LOCAL.productGroup) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Product group has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlWeb#admin/product_groups.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#admin/product_groups.cfm" />
 			
 		</cfif>
 		

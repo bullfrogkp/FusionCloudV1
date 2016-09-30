@@ -14,7 +14,7 @@
 			<div class="box box-primary">
 				<div class="box-header">
 					<h3 class="box-title">Currencies</h3>
-					<a href="#APPLICATION.absoluteUrlWeb#admin/currency_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add Currency</a>
+					<a href="#APPLICATION.absoluteUrlSite#admin/currency_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add Currency</a>
 				</div>
 				<div class="box-body table-responsive">
 					<table class="table table-bordered table-hover">
@@ -41,7 +41,7 @@
 											<span class="label label-danger">Disabled</span>
 										</cfif>
 									</td>
-									<td><a href="#APPLICATION.absoluteUrlWeb#admin/currency_detail.cfm?id=#currency.getCurrencyId()#">View Detail</a></td>
+									<td><a href="#APPLICATION.absoluteUrlSite#admin/currency_detail.cfm?id=#currency.getCurrencyId()#">View Detail</a></td>
 								</tr>
 							</cfloop>
 						<cfelse>
