@@ -272,9 +272,6 @@
 			<cfset LOCAL.pageData.title = "#LOCAL.pageData.category.getDisplayName()# | #APPLICATION.applicationName#" />
 			<cfset LOCAL.pageData.deleteButtonClass = "" />
 			
-			<cfset LOCAL.pageData.advertisementSection.setCategory(LOCAL.pageData.category)> 
-			<cfset LOCAL.pageData.bestSellerSection.setCategory(LOCAL.pageData.category)> 
-			
 			<cfset LOCAL.pageData.filterList = "" />
 			<cfloop array="#LOCAL.pageData.category.getCategoryFilterRelas()#" index="LOCAL.categoryFilterRela">
 				<cfset LOCAL.pageData.filterList &= "#LOCAL.categoryFilterRela.getFilter().getFilterId()#," />
