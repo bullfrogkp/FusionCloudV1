@@ -1,5 +1,5 @@
 ﻿<cfcomponent extends="core.modules.module">	
-    <cffunction name="getFrontEndData" access="public" output="false" returnType="struct">
+    <cffunction name="getData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
 		

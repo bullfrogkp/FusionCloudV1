@@ -23,35 +23,19 @@
 		<cfreturn this />
 	</cffunction>
 	
-	<cffunction name="getFrontendData" access="public" output="false" returnType="struct">
-		<cfset var LOCAL = {} />
-		<cfreturn LOCAL />
-	</cffunction>
-
-	<cffunction name="getBackendData" access="public" output="false" returnType="struct">
+	<cffunction name="getData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		<cfreturn LOCAL />
 	</cffunction>
 	
-	<cffunction name="getFrontendView" access="public" output="false" returnType="string">
-		<cfreturn "" />
-	</cffunction>
-
-	<cffunction name="getBackendView" access="public" output="false" returnType="string">
+	<cffunction name="getView" access="public" output="false" returnType="string">
 		<cfreturn "" />
 	</cffunction>
 	
-	<cffunction name="processFrontendModuleFormData" access="public" output="false" returnType="struct">
+	<cffunction name="processModuleFormData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.redirectUrl = "" />
 		
 		<cfreturn LOCAL />	
 	</cffunction>	
-	
-	<cffunction name="processBackendModuleFormData" access="public" output="false" returnType="struct">
-		<cfset var LOCAL = {} />
-		<cfset LOCAL.redirectUrl = "" />
-		
-		<cfreturn LOCAL />	
-	</cffunction>
 </cfcomponent>
