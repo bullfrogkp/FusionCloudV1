@@ -76,7 +76,7 @@
 					</div><!-- /.tab-pane -->
 					<cfloop array="#REQUEST.page.getModules()#" index="module">
 						<div class="tab-pane" id="tab_#i#">
-							#module.getBackendView()#
+							#module.getView()#
 						</div>
 					</cfloop>
 				</div>	

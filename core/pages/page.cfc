@@ -234,7 +234,7 @@
 		
 		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
 			<cfset LOCAL.moduleObj =_initModuleObject(moduleName = LOCAL.module.getName()) />
-			<cfset StructInsert(LOCAL.retStruct, LOCAL.module.getName(), LOCAL.moduleObj.getFrontendView()) />
+			<cfset StructInsert(LOCAL.retStruct, LOCAL.module.getName(), LOCAL.moduleObj.getView()) />
 		</cfloop>
 		
 		<cfreturn LOCAL.retStruct />

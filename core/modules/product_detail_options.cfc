@@ -1,5 +1,5 @@
 ﻿<cfcomponent extends="core.modules.module">	
-    <cffunction name="getFrontendView" access="public" output="false" returnType="string">
+    <cffunction name="getView" access="public" output="false" returnType="string">
 		<cfset var LOCAL = {} />
 		
 		<cfset LOCAL.retVal = "" />
