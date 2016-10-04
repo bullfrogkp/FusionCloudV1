@@ -2,7 +2,7 @@
     <cffunction name="getData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
-		<cfset LOCAL.retStruct.bestSellers = EntityLoad("page_section", {name="best seller",page="category_detail"},true)> 
+		<cfset LOCAL.retStruct.products = EntityLoad("admin_category_detail_bestseller", {category=EntityLoadByPK("category",getUrlData().category_id))> 
 		<cfreturn LOCAL.retStruct />
 	</cffunction>
 </cfcomponent>
