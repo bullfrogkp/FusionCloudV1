@@ -798,7 +798,6 @@
 					<div class="tab-pane #REQUEST.pageData.tabs['tab_7']#" id="tab_7">
 						<div class="form-group">
 							<div class="row">
-								<!---
 								<cfif NOT IsNull(REQUEST.pageData.admin_category_detail_advertisement.advertisements)>
 									<cfloop array="#REQUEST.pageData.admin_category_detail_advertisement.advertisements#" index="ad">						
 										<div class="col-xs-2">
@@ -827,7 +826,6 @@
 										</div>
 									</cfloop>
 								</cfif>
-								--->
 							</div>
 							
 							<div class="form-group">
@@ -903,14 +901,12 @@
 							</div>
 							<div class="col-xs-5">	
 								<select name="products_selected" id="products-selected" multiple class="form-control" style="height:270px;">
-									<!---
 									<cfif NOT IsNull(REQUEST.pageData.bestSellers)>
 										<cfloop array="#REQUEST.pageData.bestSellers#" index="bs">	
 											<cfset product = bs.getProduct() />
 											<option value="#product.getProductId()#">#product.getDisplayName()#</option>
 										</cfloop>
 									</cfif>
-									--->
 								</select>
 							</div>
 						</div>
