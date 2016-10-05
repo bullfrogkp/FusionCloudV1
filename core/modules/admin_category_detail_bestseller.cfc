@@ -1,6 +1,9 @@
 ﻿<cfcomponent extends="core.modules.module">	
     <cffunction name="getData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
+		<cfset LOCAL.categoryService = new "core.services.categoryService"() />
+		<cfset LOCAL.categoryTree = LOCAL.categoryService.getCategoryTree() />
+		
 		<cfset LOCAL.retStruct = {} />
 		<cfset LOCAL.retStruct.products = EntityLoad("module_admin_category_detail_bestseller", {category=EntityLoadByPK("category",getUrlData().id)})> 
 		<cfset LOCAL.retStruct.javascript = "good"> 
@@ -10,39 +13,42 @@
 		<cfset LOCAL.retStruct.tab_view = '<div class="row">
 							<div class="col-xs-3" style="padding-right:0;">
 								<select name="search_product_group_id" id="search-product-group-id" class="form-control">
-									<option value="0">Choose Product Group ...</option>
-									<cfloop array="#REQUEST.pageData.productGroups#" index="group">
-										<option value="#group.getProductGroupId()#">#group.getDisplayName()#</option>
+									<option value="0">Choose Product Group ...</option> ' />
+									<cfloop array="#LOCAL.productGroups#" index="group">
+										<cfset LOCAL.retStruct.tab_view &= '<option value="#group.getProductGroupId()#">#group.getDisplayName()#</option>' />
 									</cfloop>
+								<cfset LOCAL.retStruct.tab_view &= '
 								</select>
 							</div>
 							<div class="col-xs-4" style="padding-right:0;">
 								<select class="form-control" name="search_category_id" id="search-category-id">
-									<option value="0">Choose Category ...</option>
-									<cfloop array="#REQUEST.pageData.categoryTree#" index="cat">
-										<option value="#cat.getCategoryId()#"
+									<option value="0">Choose Category ...</option>' />
+									<cfloop array="#LOCAL.categoryTree#" index="cat">
+										<cfset LOCAL.retStruct.tab_view &= '<option value="#cat.getCategoryId()#"' />
 										<cfif NOT IsNull(REQUEST.pageData.product) AND NOT IsNull(REQUEST.pageData.product.getCategoriesMV()) AND ArrayContains(REQUEST.pageData.product.getCategoriesMV(),cat)>
-										selected
+										<cfset LOCAL.retStruct.tab_view &= ' selected' />
 										</cfif>
-										>#RepeatString("&nbsp;",1)##cat.getDisplayName()#</option>
+										
+										<cfset LOCAL.retStruct.tab_view &= '
+										>#RepeatString("&nbsp;",1)##cat.getDisplayName()#</option>' />
 										<cfloop array="#cat.getSubCategories()#" index="subCat">
-											<option value="#subCat.getCategoryId()#"
+											<cfset LOCAL.retStruct.tab_view &= '<option value="#subCat.getCategoryId()#"' />
 											<cfif NOT IsNull(REQUEST.pageData.product) AND NOT IsNull(REQUEST.pageData.product.getCategoriesMV()) AND ArrayContains(REQUEST.pageData.product.getCategoriesMV(),subCat)>
-											selected
+											<cfset LOCAL.retStruct.tab_view &= ' selected' />
 											</cfif>
-											>#RepeatString("&nbsp;",11)##subCat.getDisplayName()#</option>
+											<cfset LOCAL.retStruct.tab_view &= '>#RepeatString("&nbsp;",11)##subCat.getDisplayName()#</option>' />
 											<cfloop array="#subCat.getSubCategories()#" index="thirdCat">
-												<option value="#thirdCat.getCategoryId()#"
+												<cfset LOCAL.retStruct.tab_view &= '<option value="#thirdCat.getCategoryId()#"' />
 												<cfif NOT IsNull(REQUEST.pageData.product) AND NOT IsNull(REQUEST.pageData.product.getCategoriesMV()) AND ArrayContains(REQUEST.pageData.product.getCategoriesMV(),thirdCat)>
-												selected
+												<cfset LOCAL.retStruct.tab_view &= ' selected' />
 												</cfif>
-												>#RepeatString("&nbsp;",21)##thirdCat.getDisplayName()#</option>
+												<cfset LOCAL.retStruct.tab_view &= '>#RepeatString("&nbsp;",21)##thirdCat.getDisplayName()#</option>' />
 											</cfloop>
-											</li>
+											<cfset LOCAL.retStruct.tab_view &= '</li>' />
 										</cfloop>
-										</li>
+										<cfset LOCAL.retStruct.tab_view &= '</li>' />
 									</cfloop>
-								</select>
+								<cfset LOCAL.retStruct.tab_view &= '</select>
 							</div>
 							<div class="col-xs-4" style="padding-right:0;padding-left:10px;">
 								<input type="text" name="search_keywords" id="search-keywords" class="form-control" placeholder="Keywords">
@@ -71,14 +77,14 @@
 								</a>
 							</div>
 							<div class="col-xs-5">	
-								<select name="products_selected" id="products-selected" multiple class="form-control" style="height:270px;">
-									<cfif NOT IsNull(REQUEST.pageData.bestSellers)>
+								<select name="products_selected" id="products-selected" multiple class="form-control" style="height:270px;">' />
+									<cfif NOT IsNull(LOCAL.products)>
 										<cfloop array="#REQUEST.pageData.bestSellers#" index="bs">	
 											<cfset product = bs.getProduct() />
-											<option value="#product.getProductId()#">#product.getDisplayName()#</option>
+											<cfset LOCAL.retStruct.tab_view &= '<option value="#product.getProductId()#">#product.getDisplayName()#</option>' />
 										</cfloop>
 									</cfif>
-								</select>
+								<cfset LOCAL.retStruct.tab_view &= '</select>
 							</div>
 						</div>' />
 						

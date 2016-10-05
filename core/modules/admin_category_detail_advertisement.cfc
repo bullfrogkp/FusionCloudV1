@@ -9,7 +9,7 @@
 							
 		<cfif NOT IsNull(LOCAL.retStruct.products)>
 			<cfloop array="#LOCAL.retStruct.products#" index="ad">			
-				<cfset LOCAL.retStruct.tab_view += '
+				<cfset LOCAL.retStruct.tab_view &= '
 					<div class="col-xs-2">
 						<div class="box box-warning">
 							<div class="box-body table-responsive no-padding">
@@ -36,10 +36,10 @@
 					</div>' />
 			</cfloop>
 		</cfif>
-		<cfset LOCAL.retStruct.tab_view += '</div>
+		<cfset LOCAL.retStruct.tab_view &= '</div>
 			<div class="form-group">
 				<div id="ads_image">
-					<p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
+					<p>Your browser doesn not have Flash, Silverlight or HTML5 support.</p>
 				</div>
 			</div>
 		</div>'> 
