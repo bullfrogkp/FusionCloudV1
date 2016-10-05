@@ -2,9 +2,11 @@
     <cffunction name="getData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
-		<cfset LOCAL.retStruct.products = EntityLoad("module_admin_category_detail_bestseller", {category=EntityLoadByPK("category",getUrlData().id)})>  
+		<cfset LOCAL.retStruct.products = EntityLoad("module_admin_category_detail_bestseller", {category=EntityLoadByPK("category",getUrlData().id)})> 
 		<cfset LOCAL.retStruct.javascript = "good"> 
 		<cfset LOCAL.retStruct.tab_title = "heiheihei"> 
+		
+		<cfset LOCAL.productGroups = EntityLoad("product_group") />
 		<cfset LOCAL.retStruct.tab_view = '<div class="row">
 							<div class="col-xs-3" style="padding-right:0;">
 								<select name="search_product_group_id" id="search-product-group-id" class="form-control">

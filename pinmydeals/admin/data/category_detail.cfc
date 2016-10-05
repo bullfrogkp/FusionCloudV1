@@ -264,7 +264,6 @@
 		<cfset LOCAL.productService = new "core.services.productService"() />
 		
 		<cfset LOCAL.pageData.categoryTree = LOCAL.categoryService.getCategoryTree() />
-		<cfset LOCAL.pageData.productGroups = EntityLoad("product_group") />
 		<cfset LOCAL.pageData.filters = EntityLoad("filter",{isDeleted = false}, "filterId ASC") />
 		<cfset LOCAL.pageData.totalTabs = 6 />
 		
