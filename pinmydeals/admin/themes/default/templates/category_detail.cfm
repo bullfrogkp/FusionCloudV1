@@ -1,5 +1,4 @@
 ﻿<cfoutput>
-<cfdump var="#REQUEST.pageData#" abort>
 <script>
 	$(document).ready(function() {
 	
