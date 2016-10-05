@@ -28,10 +28,6 @@
 		<cfreturn LOCAL />
 	</cffunction>
 	
-	<cffunction name="getView" access="public" output="false" returnType="string">
-		<cfreturn "" />
-	</cffunction>
-	
 	<cffunction name="processModuleFormData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.redirectUrl = "" />

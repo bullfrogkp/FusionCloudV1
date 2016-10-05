@@ -104,7 +104,7 @@
 				</div>
 				
 				<cfif REQUEST.pageData.product.getProductType().getName() EQ "configurable">
-					#REQUEST.moduleView.product_detail_options#
+					#REQUEST.moduleData.product_detail_options#
 				</cfif>
 				
 				<div class="quantity-selector detail-info-entry">
@@ -336,7 +336,7 @@
 										<div class="current" style="display:none;"></div>
 									</cfif>
 								</div>
-								#REQUEST.moduleView.product_detail_options#
+								#REQUEST.moduleData.product_detail_options#
 								<div class="detail-info-entry">
 									<a class="button style-10" href="#APPLICATION.absoluteUrlSite#cart.cfm">Checkout</a>
 									<a class="button style-11 close-window">Continue Shopping</a>

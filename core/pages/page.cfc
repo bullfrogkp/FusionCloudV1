@@ -183,9 +183,7 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
 		<cfset LOCAL.retStruct.pageData = _loadPageData() />
-		<cfset LOCAL.retStruct.pageView = _loadPageView() />
 		<cfset LOCAL.retStruct.moduleData = _loadModuleData() />
-		<cfset LOCAL.retStruct.moduleView = _loadModuleView() />
 		
 		<cfreturn LOCAL.retStruct />	
 	</cffunction>
@@ -201,13 +199,6 @@
 		<cfreturn LOCAL.pageData />	
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
-	<cffunction name="_loadPageView" access="private" output="false" returnType="struct">
-		<cfset var LOCAL = {} />
-		<cfset LOCAL.pageView = {} />
-				
-		<cfreturn LOCAL.pageView />	
-	</cffunction>
-	<!------------------------------------------------------------------------------->	
 	<cffunction name="_loadModuleData" access="private" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
@@ -219,22 +210,6 @@
 		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
 			<cfset LOCAL.moduleObj =_initModuleObject(moduleName = LOCAL.module.getName()) />
 			<cfset StructInsert(LOCAL.retStruct, LOCAL.module.getName(), LOCAL.moduleObj.getData()) />
-		</cfloop>
-		
-		<cfreturn LOCAL.retStruct />
-	</cffunction>
-	<!------------------------------------------------------------------------------->	
-	<cffunction name="_loadModuleView" access="private" output="false" returnType="struct">
-		<cfset var LOCAL = {} />
-		<cfset LOCAL.retStruct = {} />
-		
-		<cfset LOCAL.site = EntityLoad("site",{name = APPLICATION.applicationName},true) />
-		<cfset LOCAL.pageEntity = EntityLoad("page",{name = getPageName(), site = LOCAL.site},true) />
-		<cfset LOCAL.modules = LOCAL.pageEntity.getModules() />
-		
-		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
-			<cfset LOCAL.moduleObj =_initModuleObject(moduleName = LOCAL.module.getName()) />
-			<cfset StructInsert(LOCAL.retStruct, LOCAL.module.getName(), LOCAL.moduleObj.getView()) />
 		</cfloop>
 		
 		<cfreturn LOCAL.retStruct />

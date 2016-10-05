@@ -1,5 +1,5 @@
 ﻿<cfcomponent extends="core.modules.module">	
-    <cffunction name="getView" access="public" output="false" returnType="string">
+    <cffunction name="getData" access="public" output="false" returnType="string">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retVal = '<div class="information-blocks">
 					<div class="block-title size-2">Sort by brands</div>
