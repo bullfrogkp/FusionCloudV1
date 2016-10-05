@@ -19,6 +19,7 @@
         <link href="#SESSION.absoluteUrlTheme#css/ie9.css" rel="stylesheet" type="text/css" />
     <![endif]-->
     <link rel="shortcut icon" href="#SESSION.absoluteUrlTheme#images/favicon-6.ico" />
+	<cfloop collection=""
 </head>
 <body class="style-10">
 
