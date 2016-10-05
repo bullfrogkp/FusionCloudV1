@@ -85,15 +85,9 @@
 			// Silverlight settings
 			silverlight_xap_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/silverlight/Moxie.cdn.xap'
 		});
-		
-		
 					
 		$( ".delete-image" ).click(function() {
 			$("##deleted_image_id").val($(this).attr('imageid'));
-		});
-		
-		$( ".delete-ad" ).click(function() {
-			$("##deleted_ad_id").val($(this).attr('adid'));
 		});
 		
 		$( "##filter-group-id" ).change(function() {
@@ -140,26 +134,6 @@
 				 selectBox.options[i].selected = true; 
 			} 
 		}); 
-		
-		$('##add-all').click(function() {  
-			$("##products-searched").each(function() {
-				$('##products-searched option').remove().appendTo('##products-selected'); 
-			});
-		});  
-		
-		$('##remove-all').click(function() {  
-			$("##products-selected").each(function() {
-				$('##products-selected option').remove().appendTo('##products-searched'); 
-			});  
-		}); 
-
-		$('##add').click(function() {  
-			return !$('##products-searched option:selected').remove().appendTo('##products-selected').removeAttr("selected"); 
-		});  
-		
-		$('##remove').click(function() {  
-			return !$('##products-selected option:selected').remove().appendTo('##products-searched').removeAttr("selected"); 
-		});		
 		
 		$('##edit-filter-confirm').click(function() {  
 			if(filterChanged == true)

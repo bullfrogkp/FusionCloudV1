@@ -47,6 +47,10 @@
 					// Silverlight settings
 					silverlight_xap_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/silverlight/Moxie.cdn.xap'
 				});
+				
+				$( '.delete-ad' ).click(function() {
+					$('##deleted_ad_id').val($(this).attr('adid'));
+				});
 			});
 		</script>"> 
 		<cfset LOCAL.retStruct.tab_title = "hahaha"> 

@@ -6,7 +6,29 @@
 		
 		<cfset LOCAL.retStruct = {} />
 		<cfset LOCAL.retStruct.products = EntityLoad("module_admin_category_detail_bestseller", {category=EntityLoadByPK("category",getUrlData().id)})> 
-		<cfset LOCAL.retStruct.javascript = "good"> 
+		<cfset LOCAL.retStruct.javascript = "
+			$(document).ready(function() {
+				$('##add-all').click(function() {  
+					$('##products-searched').each(function() {
+						$('##products-searched option').remove().appendTo('##products-selected'); 
+					});
+				});  
+				
+				$('##remove-all').click(function() {  
+					$('##products-selected').each(function() {
+						$('##products-selected option').remove().appendTo('##products-searched'); 
+					});  
+				}); 
+
+				$('##add').click(function() {  
+					return !$('##products-searched option:selected').remove().appendTo('##products-selected').removeAttr('selected'); 
+				});  
+				
+				$('##remove').click(function() {  
+					return !$('##products-selected option:selected').remove().appendTo('##products-searched').removeAttr('selected'); 
+				});	
+			});
+			</script>"> 
 		<cfset LOCAL.retStruct.tab_title = "heiheihei"> 
 		
 		<cfset LOCAL.productGroups = EntityLoad("product_group") />
