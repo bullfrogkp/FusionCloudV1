@@ -536,8 +536,14 @@
 					<li class="tab-title #REQUEST.pageData.tabs['tab_4']#" tabid="tab_4"><a href="##tab_4" data-toggle="tab">Custom Design</a></li>
 					<li class="tab-title #REQUEST.pageData.tabs['tab_5']#" tabid="tab_5"><a href="##tab_5" data-toggle="tab">Thumbnail Image</a></li>
 					<li class="tab-title #REQUEST.pageData.tabs['tab_6']#" tabid="tab_6"><a href="##tab_6" data-toggle="tab">Product</a></li>
-					<li class="tab-title #REQUEST.pageData.tabs['tab_7']#" tabid="tab_7"><a href="##tab_7" data-toggle="tab">Advertisement</a></li>
-					<li class="tab-title #REQUEST.pageData.tabs['tab_8']#" tabid="tab_8"><a href="##tab_8" data-toggle="tab">Best Seller</a></li>
+					
+					<cfset tab_idx = REQUEST.pageData.totalTabs />
+					<cfloop collection="#REQUEST.moduleData#" item="m">
+						<cfif StructKeyExists(REQUEST.moduleData[m],"tab_title")>
+							<cfset tab_idx += 1 />
+							<li class="tab-title #REQUEST.pageData.tabs['tab_#tab_idx#']#" tabid="tab_#tab_idx#"><a href="##tab_#tab_idx#" data-toggle="tab">#REQUEST.moduleData[m].tab_title#</a></li>
+						</cfif>
+					</cfloop>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane #REQUEST.pageData.tabs['tab_1']#" id="tab_1">
@@ -794,122 +800,16 @@
 							</div>
 						</div>
 					</div><!-- /.tab-pane -->
-					<div class="tab-pane #REQUEST.pageData.tabs['tab_7']#" id="tab_7">
-						<div class="form-group">
-							<div class="row">
-								<cfif NOT IsNull(REQUEST.pageData.admin_category_detail_advertisement.advertisements)>
-									<cfloop array="#REQUEST.pageData.admin_category_detail_advertisement.advertisements#" index="ad">						
-										<div class="col-xs-2">
-											<div class="box box-warning">
-												<div class="box-body table-responsive no-padding">
-													<table class="table table-hover">
-														<tr class="warning">
-															<th style="font-size:11px;line-height:20px;">
-																<input type="text" placeholder="Rank" name="advertisement_rank_#ad.getPageSectionAdvertisementId()#" value="#ad.getRank()#" style="width:40px;text-align:center;" />
-															</th>
-															<th><a adid="#ad.getPageSectionAdvertisementId()#" href="" class="delete-ad pull-right" data-toggle="modal" data-target="##delete-ad-modal"><span class="label label-danger">Delete</span></a></th>
-														</tr>
-														<tr>
-															<td colspan="2">
-																<img class="img-responsive" src="#ad.getImageLink(type = "small")#" />
-															</td>
-														</tr>
-														<tr>
-															<td colspan="2">
-																<input type="text" placeholder="Link" name="advertisement_link_#ad.getPageSectionAdvertisementId()#" value="#ad.getLink()#" style="width:100%;padding-left:5px;"/>
-															</td>
-														</tr>
-													</table>
-												</div><!-- /.box-body -->
-											</div><!-- /.box -->
-										</div>
-									</cfloop>
-								</cfif>
-							</div>
-							
-							<div class="form-group">
-								<div id="ads_image">
-									<p>Your browser doesn't have Flash, Silverlight or HTML5 support.</p>
-								</div>
-							</div>
-						</div>
-					</div><!-- /.tab-pane -->
-					<div class="tab-pane #REQUEST.pageData.tabs['tab_8']#" id="tab_8">
-						<div class="row">
-							<div class="col-xs-3" style="padding-right:0;">
-								<select name="search_product_group_id" id="search-product-group-id" class="form-control">
-									<option value="0">Choose Product Group ...</option>
-									<cfloop array="#REQUEST.pageData.productGroups#" index="group">
-										<option value="#group.getProductGroupId()#">#group.getDisplayName()#</option>
-									</cfloop>
-								</select>
-							</div>
-							<div class="col-xs-4" style="padding-right:0;">
-								<select class="form-control" name="search_category_id" id="search-category-id">
-									<option value="0">Choose Category ...</option>
-									<cfloop array="#REQUEST.pageData.categoryTree#" index="cat">
-										<option value="#cat.getCategoryId()#"
-										<cfif NOT IsNull(REQUEST.pageData.product) AND NOT IsNull(REQUEST.pageData.product.getCategoriesMV()) AND ArrayContains(REQUEST.pageData.product.getCategoriesMV(),cat)>
-										selected
-										</cfif>
-										>#RepeatString("&nbsp;",1)##cat.getDisplayName()#</option>
-										<cfloop array="#cat.getSubCategories()#" index="subCat">
-											<option value="#subCat.getCategoryId()#"
-											<cfif NOT IsNull(REQUEST.pageData.product) AND NOT IsNull(REQUEST.pageData.product.getCategoriesMV()) AND ArrayContains(REQUEST.pageData.product.getCategoriesMV(),subCat)>
-											selected
-											</cfif>
-											>#RepeatString("&nbsp;",11)##subCat.getDisplayName()#</option>
-											<cfloop array="#subCat.getSubCategories()#" index="thirdCat">
-												<option value="#thirdCat.getCategoryId()#"
-												<cfif NOT IsNull(REQUEST.pageData.product) AND NOT IsNull(REQUEST.pageData.product.getCategoriesMV()) AND ArrayContains(REQUEST.pageData.product.getCategoriesMV(),thirdCat)>
-												selected
-												</cfif>
-												>#RepeatString("&nbsp;",21)##thirdCat.getDisplayName()#</option>
-											</cfloop>
-											</li>
-										</cfloop>
-										</li>
-									</cfloop>
-								</select>
-							</div>
-							<div class="col-xs-4" style="padding-right:0;padding-left:10px;">
-								<input type="text" name="search_keywords" id="search-keywords" class="form-control" placeholder="Keywords">
-							</div>
-							<div class="col-xs-1" style="padding-left:10px;">
-								<button name="search_product" id="search-product" type="button" class="btn btn-sm btn-primary search-button" style="width:100%">Search</button>
-							</div>
-						</div>
-						<div class="row" style="margin-top:18px;">
-							<div class="col-xs-5">	
-								<select name="products_searched" id="products-searched" multiple class="form-control" style="height:270px;">
-								</select>
-							</div>
-							<div class="col-xs-2" style="text-align:center;">
-								<a class="btn btn-app" id="add-all">
-									<i class="fa fa-angle-double-right"></i> Add All
-								</a>
-								<a class="btn btn-app" id="add">
-									<i class="fa fa-angle-right"></i> Add
-								</a>
-								<a class="btn btn-app" id="remove">
-									<i class="fa fa-angle-left"></i> Remove
-								</a>
-								<a class="btn btn-app" id="remove-all">
-									<i class="fa fa-angle-double-left"></i> Remove All
-								</a>
-							</div>
-							<div class="col-xs-5">	
-								<select name="products_selected" id="products-selected" multiple class="form-control" style="height:270px;">
-									<cfif NOT IsNull(REQUEST.pageData.bestSellers)>
-										<cfloop array="#REQUEST.pageData.bestSellers#" index="bs">	
-											<cfset product = bs.getProduct() />
-											<option value="#product.getProductId()#">#product.getDisplayName()#</option>
-										</cfloop>
-									</cfif>
-								</select>
-							</div>
-						</div>
-					</div><!-- /.tab-pane -->
+					
+					<cfset tab_idx = REQUEST.pageData.totalTabs />
+					<cfloop collection="#REQUEST.moduleData#" item="m">
+						<cfif StructKeyExists(REQUEST.moduleData[m],"tab_view")>
+							<cfset tab_idx += 1 />
+							<div class="tab-pane #REQUEST.pageData.tabs['tab_#tab_idx#']#" id="tab_#tab_idx#">
+								#REQUEST.moduleData[m].tab_view#
+							</div><!-- /.tab-pane -->
+						</cfif>
+					</cfloop>
 				</div><!-- /.tab-content -->
 			</div><!-- nav-tabs-custom -->
 		
