@@ -19,7 +19,6 @@
         <link href="#SESSION.absoluteUrlTheme#css/ie9.css" rel="stylesheet" type="text/css" />
     <![endif]-->
     <link rel="shortcut icon" href="#SESSION.absoluteUrlTheme#images/favicon-6.ico" />
-	<cfloop collection=""
 </head>
 <body class="style-10">
 
@@ -489,6 +488,11 @@
 	<script src="#SESSION.absoluteUrlTheme#js/map.js"></script>
 	--->
 	<script src="#SESSION.absoluteUrlTheme#js/#REQUEST.pageData.currentPageName#.js"></script>
+	<cfloop collection="#REQUEST.moduleData#" item="m">
+		<cfif StructKeyExists(REQUEST.moduleData[m],"javascript")>
+			#REQUEST.moduleData[m].javascript#
+		</cfif>
+	</cfloop>
 </body>
 </html>
 </cfoutput>

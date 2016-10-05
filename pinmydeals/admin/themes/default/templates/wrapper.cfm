@@ -521,6 +521,13 @@
         <script src="#SESSION.absoluteUrlThemeAdmin#js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
         <script src="#SESSION.absoluteUrlThemeAdmin#js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
         <script src="#SESSION.absoluteUrlThemeAdmin#js/bootstrap-colorpicker.js" type="text/javascript"></script>
+		
+		<script src="#SESSION.absoluteUrlThemeAdmin#js/#REQUEST.pageData.currentPageName#.js"></script>
+		<cfloop collection="#REQUEST.moduleData#" item="m">
+			<cfif StructKeyExists(REQUEST.moduleData[m],"javascript")>
+				#REQUEST.moduleData[m].javascript#
+			</cfif>
+		</cfloop>
     </body>
 </html>
 </cfoutput>
