@@ -28,35 +28,35 @@
 					return !$('##products-selected option:selected').remove().appendTo('##products-searched').removeAttr('selected'); 
 				});	
 				
-				$("##search-product").click(function() {
+				$('##search-product').click(function() {
 					$.ajax({
-								type: "get",
+								type: 'get',
 								url: '#APPLICATION.absoluteUrlSite#core/services/productService.cfc',
 								dataType: 'json',
 								data: {
 									method: 'searchProducts',
-									productGroupId: $("##search-product-group-id").val(),
-									categoryId: $("##search-category-id").val(),
-									keywords: $("##search-keywords").val()
+									productGroupId: $('##search-product-group-id').val(),
+									categoryId: $('##search-category-id').val(),
+									keywords: $('##search-keywords').val()
 								},		
 								success: function(response) {
 									var productArray = response.DATA;
 									var productName = '';
 									var productId = '';
 									
-									$("##products-searched").empty();
+									$('##products-searched').empty();
 									for (var i = 0, len = productArray.length; i < len; i++) {
 										productName = productArray[i][0];
 										productId = productArray[i][1];
 										
-										$("##products-searched").append('<option value="' + productId + '">' + productName + '</option>');
+										$('##products-searched').append('<option value=#Chr(34)#' + productId + '#Chr(34)#>' + productName + '</option>');
 									}
 								}
 					});
 				});
 				
 				$('##save-item').click(function() {  
-					selectBox = document.getElementById("products-selected");
+					selectBox = document.getElementById('products-selected');
 
 					for (var i = 0; i < selectBox.options.length; i++) 
 					{ 
