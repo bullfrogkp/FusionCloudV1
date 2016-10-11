@@ -340,13 +340,6 @@ $(function() {
 			});
 			
 			$('#save-item').click(function() {  
-				selectBox = document.getElementById("products-selected");
-
-				for (var i = 0; i < selectBox.options.length; i++) 
-				{ 
-					 selectBox.options[i].selected = true; 
-				} 
-				
 				convertFilterArray();
 				$('form[id=category-detail]').submit();
 			});

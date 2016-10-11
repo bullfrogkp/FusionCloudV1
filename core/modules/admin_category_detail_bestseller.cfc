@@ -28,7 +28,7 @@
 					return !$('##products-selected option:selected').remove().appendTo('##products-searched').removeAttr('selected'); 
 				});	
 				
-				$("#search-product").click(function() {
+				$("##search-product").click(function() {
 					$.ajax({
 								type: "get",
 								url: '#APPLICATION.absoluteUrlSite#core/services/productService.cfc',
@@ -53,6 +53,15 @@
 									}
 								}
 					});
+				});
+				
+				$('##save-item').click(function() {  
+					selectBox = document.getElementById("products-selected");
+
+					for (var i = 0; i < selectBox.options.length; i++) 
+					{ 
+						 selectBox.options[i].selected = true; 
+					} 
 				});
 			});
 			</script>"> 
