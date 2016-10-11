@@ -225,17 +225,6 @@ $(function() {
 			
 			$('#new-filter-option-name-color').colorpicker();
 			
-			
-			
-			$('#save-item').click(function() {  
-				selectBox = document.getElementById("products-selected");
-
-				for (var i = 0; i < selectBox.options.length; i++) 
-				{ 
-					 selectBox.options[i].selected = true; 
-				} 
-			}); 
-			
 			$('#edit-filter-confirm').click(function() {  
 				if(filterChanged == true)
 				{
@@ -350,7 +339,14 @@ $(function() {
 				generateFilters();
 			});
 			
-			$('#save-item').click(function(){
+			$('#save-item').click(function() {  
+				selectBox = document.getElementById("products-selected");
+
+				for (var i = 0; i < selectBox.options.length; i++) 
+				{ 
+					 selectBox.options[i].selected = true; 
+				} 
+				
 				convertFilterArray();
 				$('form[id=category-detail]').submit();
 			});
