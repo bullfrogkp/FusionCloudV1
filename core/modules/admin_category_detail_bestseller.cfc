@@ -27,6 +27,33 @@
 				$('##remove').click(function() {  
 					return !$('##products-selected option:selected').remove().appendTo('##products-searched').removeAttr('selected'); 
 				});	
+				
+				$("#search-product").click(function() {
+					$.ajax({
+								type: "get",
+								url: '#APPLICATION.absoluteUrlSite#core/services/productService.cfc',
+								dataType: 'json',
+								data: {
+									method: 'searchProducts',
+									productGroupId: $("##search-product-group-id").val(),
+									categoryId: $("##search-category-id").val(),
+									keywords: $("##search-keywords").val()
+								},		
+								success: function(response) {
+									var productArray = response.DATA;
+									var productName = '';
+									var productId = '';
+									
+									$("##products-searched").empty();
+									for (var i = 0, len = productArray.length; i < len; i++) {
+										productName = productArray[i][0];
+										productId = productArray[i][1];
+										
+										$("##products-searched").append('<option value="' + productId + '">' + productName + '</option>');
+									}
+								}
+					});
+				});
 			});
 			</script>"> 
 		<cfset LOCAL.retStruct.tab_title = "heiheihei"> 

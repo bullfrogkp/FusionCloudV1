@@ -189,41 +189,30 @@ $(function() {
 			$("#uploader").plupload({
 				// General settings
 				runtimes: 'html5,flash,silverlight,html4',
-				
 				url: absoluteUrlSite + 'ajax/upload_category_images.cfm',
-
 				// Maximum file size
 				max_file_size: '1000mb',
-
 				// User can upload no more then 20 files in one go (sets multiple_queues to false)
 				max_file_count: 20,
-				
 				chunk_size: '1mb',
-
 				// Specify what files to browse for
 				filters: [
 					{ title: "Image files", extensions: "jpg,gif,png" }
 				],
-
 				// Rename files by clicking on their titles
 				rename: true,
-				
 				// Sort files
 				sortable: true,
-
 				// Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
 				dragdrop: true,
-
 				// Views to activate
 				views: {
 					thumbs: true,
 					list: false,
 					active: 'thumbs'
 				},
-
 				// Flash settings
 				flash_swf_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/flash/Moxie.cdn.swf',
-
 				// Silverlight settings
 				silverlight_xap_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/silverlight/Moxie.cdn.xap'
 			});
@@ -232,41 +221,11 @@ $(function() {
 				$("#deleted_image_id").val($(this).attr('imageid'));
 			});
 			
-			$( "#filter-group-id" ).change(function() {
-				$(".filter-group").hide();
-				$("#filter-group-" + $(this).val()).show();
-			});
-			
 			var new_filter_index = 1;
 			
 			$('#new-filter-option-name-color').colorpicker();
 			
-			$("#search-product").click(function() {
-				$.ajax({
-							type: "get",
-							url: absoluteUrlSite + 'core/services/productService.cfc',
-							dataType: 'json',
-							data: {
-								method: 'searchProducts',
-								productGroupId: $("#search-product-group-id").val(),
-								categoryId: $("#search-category-id").val(),
-								keywords: $("#search-keywords").val()
-							},		
-							success: function(response) {
-								var productArray = response.DATA;
-								var productName = '';
-								var productId = '';
-								
-								$("#products-searched").empty();
-								for (var i = 0, len = productArray.length; i < len; i++) {
-									productName = productArray[i][0];
-									productId = productArray[i][1];
-									
-									$("#products-searched").append('<option value="' + productId + '">' + productName + '</option>');
-								}
-							}
-				});
-			});
+			
 			
 			$('#save-item').click(function() {  
 				selectBox = document.getElementById("products-selected");
