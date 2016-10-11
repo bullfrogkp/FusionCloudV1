@@ -285,7 +285,7 @@ $(function() {
 				option.fid = f.fid;
 				option.value = $("#new-filter-option-name").val();
 				option.imageName = 'no_image_available.png';
-				option.imageSrc = absoluteUrlSite + 'images/site/no_image_available.png';
+				option.imageSrc = absoluteUrlThemeAdmin + 'images/site/no_image_available.png';
 				
 				if($("#new-filter-name-hidden").val().toLowerCase() == 'color')
 				{
