@@ -125,10 +125,10 @@ $(function() {
 	
 	function createNewImageUploader() {
 	
-		var imageCount = $('#image-coutnt-hidden').val();
+		var imageCount = $('#image-count-hidden').val();
 		imageCount++;
 		$('.filter-option-image-div').hide();
-		$('#image-coutnt-hidden').val(imageCount);
+		$('#image-count-hidden').val(imageCount);
 		
 		$('#filter-option-modal-div').append('<div class="form-group filter-option-image-div" style="margin-top:15px;" id="filter-option-image-div-'+imageCount+'"><div class="btn btn-success btn-file" style="width:150px;margin-right:20px;"><i class="fa fa-paperclip"></i> &nbsp;&nbsp;Add Image<input type="file" name="new_filter_option_image_'+imageCount+'" id="new-filter-option-image-'+imageCount+'"/></div></div>');
 		$(".new-checkbox").iCheck({
@@ -285,18 +285,18 @@ $(function() {
 				option.fid = f.fid;
 				option.value = $("#new-filter-option-name").val();
 				option.imageName = 'no_image_available.png';
-				option.imageSrc = '#APPLICATION.absoluteUrlSite#images/site/no_image_available.png';
+				option.imageSrc = absoluteUrlSite + 'images/site/no_image_available.png';
 				
 				if($("#new-filter-name-hidden").val().toLowerCase() == 'color')
 				{
 					option.value = $("#new-filter-option-name-color").val();
 				}
 				
-				if($("#new-filter-option-image-" + $('#image-coutnt-hidden').val()).val() != '')
+				if($("#new-filter-option-image-" + $('#image-count-hidden').val()).val() != '')
 				{
-					loadThumbnail($("#new-filter-option-image-" + $('#image-coutnt-hidden').val())[0].files[0], function(image_src) { 
+					loadThumbnail($("#new-filter-option-image-" + $('#image-count-hidden').val())[0].files[0], function(image_src) { 
 					
-						option.imageName = $("#new-filter-option-image-" + $('#image-coutnt-hidden').val())[0].files[0].name;
+						option.imageName = $("#new-filter-option-image-" + $('#image-count-hidden').val())[0].files[0].name;
 						option.imageSrc = image_src;
 						
 						addFilterOption(f, option);

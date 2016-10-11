@@ -57,7 +57,7 @@
 <input type="hidden" name="new_filter_name_hidden" id="new-filter-name-hidden" value="" />
 <input type="hidden" name="deleted_filter_id_hidden" id="deleted-filter-id-hidden" value="" />
 <input type="hidden" name="deleted_filter_option_id_hidden" id="deleted-filter-option-id-hidden" value="" />
-<input type="hidden" name="image_count_hidden" id="image-coutnt-hidden" value="0" />
+<input type="hidden" name="image_count_hidden" id="image-count-hidden" value="0" />
 
 <section class="content">
 	<div class="row">
