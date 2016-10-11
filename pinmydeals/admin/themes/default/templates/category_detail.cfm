@@ -1,7 +1,6 @@
 ﻿<cfoutput>
-<script>
-	$(document).ready(function() {
-	
+<cfsavecontent variable="htmlhead">
+	<script language="javascript" type="text/javascript">
 		var absoluteUrlThemeAdmin = '#SESSION.absoluteUrlThemeAdmin#';
 		var absoluteUrlSite = '#APPLICATION.absoluteUrlSite#';
 	
@@ -34,8 +33,9 @@
 			filter.options = filterOptions;
 			filterArray.push(filter);
 		</cfloop>
-	});
-</script>
+	</script>
+</cfsavecontent>
+<cfhtmlhead text="#htmlhead#">
 <section class="content-header">
 	<h1>
 		Category Detail
