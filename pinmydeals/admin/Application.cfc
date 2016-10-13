@@ -35,6 +35,7 @@
 				<cfset THIS[ "$Config" ].env.absoluteUrlSite = "/" />
 				<cfset THIS[ "$Config" ].env.absolutePathSite = ExpandPath("/site/pinmydeals/admin/") />
 				<cfset THIS[ "$Config" ].env.absolutePathSiteData = ExpandPath("/site/pinmydeals/admin/data/") />
+				<cfset THIS[ "$Config" ].env.absolutePathImages = ExpandPath("/site/pinmydeals/images/") />
 				<cfset THIS[ "$Config" ].env.absolutePathCore = ExpandPath("/site/core/") />
 				<cfset THIS[ "$Config" ].env.urlHttp = "http://#THIS[ "$Config" ].env.domain#" />
 				<cfset THIS[ "$Config" ].env.urlHttps = "http://#THIS[ "$Config" ].env.domain#" />
