@@ -31,6 +31,7 @@
                 <cfset THIS[ "$Config" ].isLive = false />
 				<cfset THIS[ "$Config" ].env.domain = "admin.pinmydeals.loc" />
 				<cfset THIS[ "$Config" ].env.apiDomain = "api.pinmydeals.loc" />
+				<cfset THIS[ "$Config" ].env.imagesDomain = "images.pinmydeals.loc" />
 				<cfset THIS[ "$Config" ].env.absoluteUrlSite = "/" />
 				<cfset THIS[ "$Config" ].env.absolutePathSite = ExpandPath("/site/pinmydeals/admin/") />
 				<cfset THIS[ "$Config" ].env.absolutePathSiteData = ExpandPath("/site/pinmydeals/admin/data/") />
