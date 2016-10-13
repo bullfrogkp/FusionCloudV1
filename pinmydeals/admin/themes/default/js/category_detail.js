@@ -176,7 +176,7 @@ $(function() {
 		$(function() {
 			
 			$(".tab-title").click(function() {
-			  $("#tab_id").val($(this).attr('tabid'));
+			  $("#tab-id").val($(this).attr('tabid'));
 			});
 			
 			CKEDITOR.replace( 'custom_design',
