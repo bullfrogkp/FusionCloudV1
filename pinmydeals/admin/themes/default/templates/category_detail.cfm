@@ -50,8 +50,7 @@
 <form id="category-detail" method="post" enctype="multipart/form-data">
 <input type="hidden" name="id" id="id" value="#REQUEST.pageData.formData.id#" />
 <input type="hidden" name="tab_id" id="tab_id" value="#REQUEST.pageData.tabs.activeTabId#" />
-<input type="hidden" name="deleted_image_id" id="deleted_image_id" value="" />
-<input type="hidden" name="deleted_ad_id" id="deleted_ad_id" value="" />
+<input type="hidden" name="deleted_image_id" id="deleted-image-id" value="" />
 
 <input type="hidden" name="new_filter_id_hidden" id="new-filter-id-hidden" value="" />
 <input type="hidden" name="new_filter_name_hidden" id="new-filter-name-hidden" value="" />

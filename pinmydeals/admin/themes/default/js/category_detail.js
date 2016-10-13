@@ -218,7 +218,7 @@ $(function() {
 			});
 						
 			$( ".delete-image" ).click(function() {
-				$("#deleted_image_id").val($(this).attr('imageid'));
+				$("#deleted-image-id").val($(this).attr('imageid'));
 			});
 			
 			var new_filter_index = 1;
