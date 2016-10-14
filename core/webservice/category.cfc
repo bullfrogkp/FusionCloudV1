@@ -17,7 +17,7 @@
 		<cfreturn LOCAL.category>
 	</cffunction> 
 	
-	<cffunction name="update"
+	<cffunction name="add"
 				access="remote"
 				httpmethod="POST"
 				restpath="{categoryID}"
@@ -26,7 +26,7 @@
 					
 		<cfargument name="categoryID"
 					required="true"
-					restargsource="Path"
+					restargsource="Form"
 					type="numeric"/>
 
 		<cfset var LOCAL = {} />
