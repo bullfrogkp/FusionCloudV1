@@ -7,6 +7,8 @@
 	<cfset this.dataSource = Config().dataSource> 
 	<cfset this.sessionManagement = Config().sessionManagement>
 	<cfset this.sessionTimeout = Config().sessionTimeout>
+	<cfset this.restsettings.cfclocation = "./webservice">
+    <cfset this.restsettings.skipcfcwitherror = false>
 	<!------------------------------------------------------------------------------->
 	<cfset this.mappings[ "/core" ] = Config().env.absolutePathCore />
 	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathSiteData />
@@ -17,7 +19,7 @@
 		<cfif ARGUMENTS.reload EQ true OR NOT StructKeyExists( THIS, "$Config" )>
             <cfset THIS[ "$Config" ] = {} />
 			
-			<cfset THIS[ "$Config" ].name = "PinMyDeals" />
+			<cfset THIS[ "$Config" ].name = "PinMyDeals-API" />
 			<cfset THIS[ "$Config" ].ormEnabled = "true" />
 			<cfset THIS[ "$Config" ].ormSettings = {} />
 			<cfset THIS[ "$Config" ].ormSettings.dbCreate = "update" />

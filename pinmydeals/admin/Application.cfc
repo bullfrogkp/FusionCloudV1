@@ -17,7 +17,7 @@
 		<cfif ARGUMENTS.reload EQ true OR NOT StructKeyExists( THIS, "$Config" )>
             <cfset THIS[ "$Config" ] = {} />
 			
-			<cfset THIS[ "$Config" ].name = "PinMyDeals Admin" />
+			<cfset THIS[ "$Config" ].name = "PinMyDeals-Admin" />
 			<cfset THIS[ "$Config" ].ormEnabled = "true" />
 			<cfset THIS[ "$Config" ].ormSettings = {} />
 			<cfset THIS[ "$Config" ].ormSettings.dbCreate = "update" />
