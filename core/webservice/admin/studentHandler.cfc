@@ -3,15 +3,8 @@
   
  <cffunction name="getHandlerJSON"
                 access="remote"
-                httpmethod="GET"
-                restpath="{customerID}"
-                returntype="query"
-                produces="application/json">
-                    
-        <cfargument name="customerID"
-                    required="true"
-                    restargsource="Path"
-                    type="numeric"/>
+                httpmethod="POST"
+                returntype="string" returnformat="plain">
     
         <cfset myQuery = queryNew("id,name", 
                                   "Integer,varchar",
@@ -20,7 +13,9 @@
                  name="resultQuery">
             select * from myQuery where id = #arguments.customerID#
         </cfquery>
-        <cfreturn resultQuery>
+        <cfset retString = "#URL.callback#(#SerializeJSON(resultQuery)#);" />
+		
+		<cfreturn retString>
     </cffunction>   
   
 </cfcomponent>

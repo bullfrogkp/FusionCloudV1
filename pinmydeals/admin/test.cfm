@@ -1,5 +1,14 @@
- <cfset restInitApplication("#APPLICATION.absolutePathCore#webservice","hh")>
-<!----code starts---->
-<cfhttp url="http://api.pinmydeals.loc:8500/rest/admin/student/1" method="get">
-<cfoutput>#cfhttp.filecontent#</cfoutput>
-<!----code ends----->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$.ajax({
+		type: "post",
+		url: "http://admin.pinmydeals.loc:8500/rest/aa/student/",
+		dataType: 'jsonp',
+		data: {
+				customerID: 1
+			}
+})
+.done(function(data) {		
+	console.log(data);
+});
+</script>
