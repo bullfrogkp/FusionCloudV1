@@ -2,7 +2,7 @@
 <script>
 $.ajax({
 		type: "post",
-		url: "http://admin.pinmydeals.loc:8500/rest/aa/student/",
+		url: "http://api.pinmydeals.loc/rest/admin/student",
 		dataType: 'jsonp',
 		data: {
 				customerID: 1

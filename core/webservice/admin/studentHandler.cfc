@@ -5,6 +5,11 @@
                 access="remote"
                 httpmethod="POST"
                 returntype="string" returnformat="plain">
+                    
+        <cfargument name="customerID"
+                    required="true"
+                    restargsource="FORM"
+                    type="numeric"/>
     
         <cfset myQuery = queryNew("id,name", 
                                   "Integer,varchar",
