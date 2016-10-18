@@ -341,7 +341,8 @@ $(function() {
 			
 			$('#save-item').click(function() {  
 				convertFilterArray();
-				$('form[id=category-detail]').submit();
+				$('.nav-tabs-custom').append('<div class="overlay"></div><div class="loading-img"></div>');
+				/*$('form[id=category-detail]').submit();*/
 			});
 		});
 	})();
