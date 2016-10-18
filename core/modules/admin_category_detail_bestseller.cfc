@@ -63,8 +63,7 @@
 						 selectBox.options[i].selected = true; 
 					} 
 				});
-			});
-			</script>"> 
+			});"> 
 		<cfset LOCAL.retStruct.tab_title = "heiheihei"> 
 		
 		<cfset LOCAL.productGroups = EntityLoad("product_group") />
