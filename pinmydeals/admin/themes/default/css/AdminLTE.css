@@ -1773,6 +1773,26 @@ body > .header .logo .icon {
   z-index: 1020;
   background: transparent url('../img/ajax-loader1.gif') 50% 50% no-repeat;
 }
+
+.nav-tabs-custom > .overlay,
+.nav-tabs-custom > .loading-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.nav-tabs-custom > .overlay {
+  z-index: 1010;
+  background: rgba(255, 255, 255, 0.7);
+}
+.nav-tabs-custom > .overlay.dark {
+  background: rgba(0, 0, 0, 0.5);
+}
+.nav-tabs-custom > .loading-img {
+  z-index: 1020;
+  background: transparent url('../img/ajax-loader1.gif') 50% 50% no-repeat;
+}
 /*
 Component: timeline
 --------------------

@@ -355,6 +355,10 @@
 						</cfif>
 					</cfloop>
 				</div><!-- /.tab-content -->
+				<!-- Loading (remove the following to stop the loading)-->
+				<div class="overlay"></div>
+				<div class="loading-img"></div>
+				<!-- end loading -->
 			</div><!-- nav-tabs-custom -->
 		
 			<div class="form-group">
