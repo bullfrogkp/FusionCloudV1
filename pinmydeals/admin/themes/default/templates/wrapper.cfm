@@ -523,11 +523,13 @@
         <script src="#SESSION.absoluteUrlThemeAdmin#js/bootstrap-colorpicker.js" type="text/javascript"></script>
 		
 		<script src="#SESSION.absoluteUrlThemeAdmin#js/#REQUEST.pageData.currentPageName#.js"></script>
+		<script>
 		<cfloop collection="#REQUEST.moduleData#" item="m">
 			<cfif StructKeyExists(REQUEST.moduleData[m],"javascript")>
 				#REQUEST.moduleData[m].javascript#
 			</cfif>
 		</cfloop>
+		</script>
     </body>
 </html>
 </cfoutput>

@@ -4,7 +4,6 @@
 		<cfset LOCAL.retStruct = {} />
 		<cfset LOCAL.retStruct.products = EntityLoad("module_admin_category_detail_advertisement", {category=EntityLoadByPK("category",getUrlData().id)})> 
 		<cfset LOCAL.retStruct.javascript = "
-		<script>
 			$(document).ready(function() {
 				$('##ads_image').plupload({
 					// General settings
@@ -51,8 +50,7 @@
 				$( '.delete-ad' ).click(function() {
 					$('##deleted_ad_id').val($(this).attr('adid'));
 				});
-			});
-		</script>"> 
+			});"> 
 		<cfset LOCAL.retStruct.tab_title = "hahaha"> 
 		<cfset LOCAL.retStruct.tab_view = '<div class="form-group"><div class="row">' />
 							

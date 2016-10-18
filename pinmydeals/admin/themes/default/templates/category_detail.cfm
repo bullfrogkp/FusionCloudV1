@@ -217,7 +217,7 @@
 																</td>
 																<td>
 																	<div style="width:15px;height:15px;border:1px solid ##CCC;margin-top:2px;">
-																		<img src="#filerValue.getImageLink(type = "thumbnail")#" style="width:100%;height:100%;vertical-align:top;" />
+																		<img src="<cfif CGI.SERVER_PORT EQ "443">https://<cfelse>http://</cfif>"#filerValue.getImageLink(type = "thumbnail")#" style="width:100%;height:100%;vertical-align:top;" />
 																	</div>
 																</td>
 																<td>
