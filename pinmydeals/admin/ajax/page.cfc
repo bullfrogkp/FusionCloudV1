@@ -5,12 +5,10 @@
 		<cfset LOCAL.pageObj = new "siteData.#FORM.pageName#"().init(FORM) />
 		<cfset LOCAL.result = LOCAL.pageObj.validate() />
 		
-		<cfif LOCAL.result.isValid EQ true>
-			<cfset LOCAL.modules = EnityLoad("page_module", {pageName = FORM.pageName, result = LOCAL.result}) />
-			<cfloop array="#LOCAL.modules#" index="LOCAL.module">
-				<cfset LOCAL.result = LOCAL.pageObj.validate() />
-			</cfloop>
-		</cfif>
+		<cfset LOCAL.modules = EnityLoad("page_module", {pageName = FORM.pageName, result = LOCAL.result}) />
+		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
+			<cfset LOCAL.result = LOCAL.pageObj.validate() />
+		</cfloop>
 		
 		<cfreturn LOCAL.result>
 	</cffunction>
@@ -19,13 +17,11 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.pageObj = new "siteData.#FORM.pageName#"().init(FORM) />
 		<cfset LOCAL.result = LOCAL.pageObj.process() />
-		
-		<cfif LOCAL.result.isValid EQ true>
-			<cfset LOCAL.modules = EnityLoad("page_module", {pageName = FORM.pageName, result = LOCAL.result}) />
-			<cfloop array="#LOCAL.modules#" index="LOCAL.module">
-				<cfset LOCAL.result = LOCAL.pageObj.process() />
-			</cfloop>
-		</cfif>
+	
+		<cfset LOCAL.modules = EnityLoad("page_module", {pageName = FORM.pageName, result = LOCAL.result}) />
+		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
+			<cfset LOCAL.result = LOCAL.pageObj.process() />
+		</cfloop>
 		
 		<cfreturn LOCAL.result>
 	</cffunction>
