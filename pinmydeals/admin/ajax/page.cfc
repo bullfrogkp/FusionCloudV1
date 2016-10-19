@@ -2,6 +2,10 @@
 	<!------------------------------------------------------------------------------------------------------------>
 	<cffunction name="validate" access="remote" returntype="struct" returnformat="json" output="false">
 		
+		<cfset var LOCAL = {} />
+		<cfset LOCAL.pageObj = new "siteAdmin.data.#FORM.pageName#"() />
+		<cfset LOCAL.pageObj.validate() />
+		
 		<cfreturn "true">
 	</cffunction>
 	<!------------------------------------------------------------------------------------------------------------>
