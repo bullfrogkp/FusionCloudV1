@@ -1,5 +1,5 @@
 ﻿<cfcomponent extends="core.pages.page">
-	<cffunction name="validateFormData" access="public" output="false" returnType="struct">
+	<cffunction name="validateFormData" access="public" output="false" returnType="struct" returnformat="json">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.redirectUrl = "" />
 	
