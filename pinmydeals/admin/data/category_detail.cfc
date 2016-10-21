@@ -1,31 +1,21 @@
 ﻿<cfcomponent extends="core.pages.page">
-	<cffunction name="validateFormData" access="public" output="false" returnType="struct" returnformat="json">
+	<cffunction name="validate" access="remote" output="false" returnType="struct" returnformat="json">
 		<cfset var LOCAL = {} />
-		<cfset LOCAL.redirectUrl = "" />
+		<cfset LOCAL.retStruct = {} />
+		<cfset LOCAL.retStruct.isValid = true />
 	
-		<cfset LOCAL.messageArray = [] />
+		<cfset LOCAL.retStruct.messageArray = [] />
 		
 		<cfif Trim(FORM.display_name) EQ "">
-			<cfset ArrayAppend(LOCAL.messageArray,"Please enter a valid category name.") />
+			<cfset ArrayAppend(LOCAL.retStruct.messageArray,"Please enter a valid category name.") />
 		</cfif>
 		
-		<cfif ArrayLen(LOCAL.messageArray) GT 0>
-			<cfset SESSION.temp.message = {} />
-			<cfset SESSION.temp.message.messageArray = LOCAL.messageArray />
-			<cfset SESSION.temp.message.messageType = "alert-danger" />
-			<cfset LOCAL.redirectUrl = _setRedirectURL() />
-		</cfif>
-		
-		<cfreturn LOCAL />
+		<cfreturn LOCAL.retStruct />
 	</cffunction>
 
-	<cffunction name="processFormDataAfterValidation" access="public" output="false" returnType="struct">
+	<cffunction name="process" access="remote" output="false" returnType="struct" returnformat="json">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.redirectUrl = "" />
-		
-		<cfset SESSION.temp.message = {} />
-		<cfset SESSION.temp.message.messageArray = [] />
-		<cfset SESSION.temp.message.messageType = "alert-success" />
 				
 		<cfif IsNumeric(FORM.id)>
 			<cfset LOCAL.category = EntityLoadByPK("category", FORM.id)> 
