@@ -60,7 +60,7 @@
 
 <section class="content">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-12" id="messages">
 			<cfif IsDefined("REQUEST.pageData.message") AND NOT StructIsEmpty(REQUEST.pageData.message)>
 				<div class="alert #REQUEST.pageData.message.messageType# alert-dismissable">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

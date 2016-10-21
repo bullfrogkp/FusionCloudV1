@@ -341,29 +341,31 @@ $(function() {
 			
 			$('#save-item').click(function() {  
 				convertFilterArray();
-				$('.nav-tabs-custom').append('<div class="overlay"></div><div class="loading-img"></div>');
+				$('.nav-tabs-custom').append('<div id="loading-overlay" class="overlay"></div><div class="loading-img"></div>');
 				
-				var formData = $('form').serialize();
 				var url = absoluteUrlSite + 'ajax/page.cfc';
+				var myform = document.getElementById("category-detail");
+				var fd = new FormData(myform );
 				
-				formData.pageName = 'category_detail';
+				fd.pageName = 'category_detail';
 				
 				$.ajax({
 						type: "post",
 						url: url,
-						dataType: 'jsonp',
-						data: formData
+						dataType: 'json',
+						data: fd
 				})
 				.done(function(data) {		
-					var str = '';
-					for(var i=0;i<data.PRODUCTS.length;i++) {
-						str += '<div class="cart-entry"><a class="image"><img src="'+data.PRODUCTS[i].IMAGE+'" alt="'+data.PRODUCTS[i].NAME+'"></a><div class="content"><a class="title" href="'+data.PRODUCTS[i].HREF+'">'+data.PRODUCTS[i].NAME+'</a><div class="quantity">Quantity: '+data.PRODUCTS[i].QUANTITY+'</div><div class="price">'+data.PRODUCTS[i].PRICE+'</div></div></div>';
+					var str = '<div class="alert warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+					
+					for(var i=0;i<data.MESSAGEARRAY.length;i++) {
+						str += data.MESSAGEARRAY[i] + '<br/>';
 					}
 					
-					str += '<div class="summary"><div class="subtotal">Subtotal: '+data.SUBTOTAL+'</div><div class="grandtotal">Grand Total <span>'+data.TOTAL+'</span></div></div><div class="cart-buttons"><div class="column"><a class="button style-3" href="'+absoluteUrlSite+'cart.cfm">view cart</a><div class="clear"></div></div><div class="column"><a class="button style-4" href="'+absoluteUrlSite+'checkout/checout_paypal_express.cfm">checkout</a><div class="clear"></div></div><div class="clear"></div></div>';
-					
-					$(".cart-box .popup-container").html(str);   
-					$("#cart-subtotal").html(data.SUBTOTAL); 
+					str += '</div>';
+					$("#messages").html(str); 
+					$("#loading-overlay").remove();
+					$("#loading-img").remove();
 				})
 				.fail(function(data) {
 					alert( "error" );
