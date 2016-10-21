@@ -342,7 +342,34 @@ $(function() {
 			$('#save-item').click(function() {  
 				convertFilterArray();
 				$('.nav-tabs-custom').append('<div class="overlay"></div><div class="loading-img"></div>');
-				/*$('form[id=category-detail]').submit();*/
+				
+				var formData = $('form').serialize();
+				var url = absoluteUrlSite + 'ajax/page.cfc';
+				
+				formData.pageName = 'category_detail';
+				
+				$.ajax({
+						type: "post",
+						url: url,
+						dataType: 'jsonp',
+						data: formData
+				})
+				.done(function(data) {		
+					var str = '';
+					for(var i=0;i<data.PRODUCTS.length;i++) {
+						str += '<div class="cart-entry"><a class="image"><img src="'+data.PRODUCTS[i].IMAGE+'" alt="'+data.PRODUCTS[i].NAME+'"></a><div class="content"><a class="title" href="'+data.PRODUCTS[i].HREF+'">'+data.PRODUCTS[i].NAME+'</a><div class="quantity">Quantity: '+data.PRODUCTS[i].QUANTITY+'</div><div class="price">'+data.PRODUCTS[i].PRICE+'</div></div></div>';
+					}
+					
+					str += '<div class="summary"><div class="subtotal">Subtotal: '+data.SUBTOTAL+'</div><div class="grandtotal">Grand Total <span>'+data.TOTAL+'</span></div></div><div class="cart-buttons"><div class="column"><a class="button style-3" href="'+absoluteUrlSite+'cart.cfm">view cart</a><div class="clear"></div></div><div class="column"><a class="button style-4" href="'+absoluteUrlSite+'checkout/checout_paypal_express.cfm">checkout</a><div class="clear"></div></div><div class="clear"></div></div>';
+					
+					$(".cart-box .popup-container").html(str);   
+					$("#cart-subtotal").html(data.SUBTOTAL); 
+				})
+				.fail(function(data) {
+					alert( "error" );
+				})
+				.always(function(data) {
+				});
 			});
 		});
 	})();
