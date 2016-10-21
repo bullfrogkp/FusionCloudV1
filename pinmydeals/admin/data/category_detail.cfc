@@ -3,11 +3,11 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
 		<cfset LOCAL.retStruct.isValid = true />
-	
 		<cfset LOCAL.retStruct.messageArray = [] />
 		
 		<cfif Trim(FORM.display_name) EQ "">
 			<cfset ArrayAppend(LOCAL.retStruct.messageArray,"Please enter a valid category name.") />
+			<cfset LOCAL.retStruct.isValid = false />
 		</cfif>
 		
 		<cfreturn LOCAL.retStruct />
@@ -15,21 +15,27 @@
 
 	<cffunction name="process" access="remote" output="false" returnType="struct" returnformat="json">
 		<cfset var LOCAL = {} />
-		<cfset LOCAL.redirectUrl = "" />
+		<cfset LOCAL.retStruct = {} />
+		<cfset LOCAL.retStruct.isValid = true />
+		<cfset LOCAL.retStruct.messageArray = [] />
 				
 		<cfif IsNumeric(FORM.id)>
 			<cfset LOCAL.category = EntityLoadByPK("category", FORM.id)> 
-			<cfset LOCAL.category.setUpdatedUser(SESSION.adminUser) />
+			<cfset LOCAL.category.setUpdatedUser(FORM.user) />
 			<cfset LOCAL.category.setUpdatedDatetime(Now()) />
-			<cfset LOCAL.tab_id = FORM.tab_id />
 		<cfelse>
 			<cfset LOCAL.category = EntityNew("category")> 
-			<cfset LOCAL.category.setCreatedUser(SESSION.adminUser) />
+			<cfset LOCAL.category.setCreatedUser(FORM.user) />
 			<cfset LOCAL.category.setCreatedDatetime(Now()) />
 			<cfset LOCAL.category.setIsDeleted(false) />
-			<cfset LOCAL.tab_id = "tab_1" />
 		</cfif>
 		
+		<cfset ArrayAppend(LOCAL.retStruct.messageArray,"Category information has been saved successfully.") />
+		
+		<cfset EntitySave(LOCAL.category) />
+		
+		<cfreturn LOCAL.retStruct />	
+		<!---
 		<cfset LOCAL.currentPageName = "products" />
 		<cfset LOCAL.pageData.currentPage = EntityLoad("page", {name = LOCAL.currentPageName},true)>
 		<cfset LOCAL.advertisementSection = EntityLoad("page_section", {name="advertisement",page=LOCAL.pageData.currentPage},true)> 
@@ -242,8 +248,8 @@
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Advertise image has been deleted.") />
 			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=tab_7" />
 		</cfif>
+		--->
 		
-		<cfreturn LOCAL />	
 	</cffunction>	
 	
 	<cffunction name="_loadPageData" access="public" output="false" returnType="struct">
