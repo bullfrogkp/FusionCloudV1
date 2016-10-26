@@ -5,7 +5,7 @@
 		<cfset LOCAL.retStruct.isValid = true />
 		<cfset LOCAL.retStruct.messageArray = [] />
 		
-		<cfif Trim(FORM.displayName) EQ "">
+		<cfif Trim(FORM.display_name) EQ "">
 			<cfset ArrayAppend(LOCAL.retStruct.messageArray,"Please enter a valid category name.") />
 			<cfset LOCAL.retStruct.isValid = false />
 		</cfif>

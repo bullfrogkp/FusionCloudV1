@@ -171,6 +171,23 @@ $(function() {
 			}
 		}
 	}
+	
+	$.fn.serializeObject = function()
+	{
+	    var o = {};
+	    var a = this.serializeArray();
+	    $.each(a, function() {
+	        if (o[this.name] !== undefined) {
+	            if (!o[this.name].push) {
+	                o[this.name] = [o[this.name]];
+	            }
+	            o[this.name].push(this.value || '');
+	        } else {
+	            o[this.name] = this.value || '';
+	        }
+	    });
+	    return o;
+	};
 			
 	(function main(){
 		$(function() {
@@ -344,20 +361,15 @@ $(function() {
 				$('.nav-tabs-custom').append('<div id="loading-overlay" class="overlay"></div><div class="loading-img"></div>');
 				
 				var url = absoluteUrlSite + 'ajax/page.cfc';
-				var myform = document.getElementById("category-detail");
-				var fd = new FormData(myform );
-				
+				var fd = $('#category-detail').serializeObject();
+				fd.method = 'validateFormData';
 				fd.pageName = 'category_detail';
-
+				
 				$.ajax({
 						type: "post",
 						url: "http://admin.pinmydeals.loc/ajax/page.cfc",
 						dataType: 'json',
-						data: {
-							method: 'validateFormData',
-							displayName: '',
-							pageName: 'category_detail'
-						}
+						data: fd
 				})
 				.done(function(data) {		
 					var str = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
