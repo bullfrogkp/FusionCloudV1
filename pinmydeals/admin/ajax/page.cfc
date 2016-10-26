@@ -7,9 +7,12 @@
 		
 		<cfset LOCAL.modules = EntityLoad("page_module", {page = EntityLoad("page",{name = FORM.pageName}, true)}) />
 		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
-			<cfset LOCAL.moduleResult = LOCAL.pageObj.validateFormData() />
+			<cfset LOCAL.moduleObj = new "core.modules.#LOCAL.module.getName()#"() />
+			<cfset LOCAL.moduleResult = LOCAL.moduleObj.validateFormData() />
 			<cfset LOCAL.result.isValid = LOCAL.moduleResult.isValid />
-			<cfset ArrayAppend(LOCAL.result.messageArray, LOCAL.moduleResult.messageArray, true) />
+			<cfif NOT ArrayIsEmpty(LOCAL.moduleResult.messageArray)>
+				<cfset ArrayAppend(LOCAL.result.messageArray, LOCAL.moduleResult.messageArray, true) />
+			</cfif>
 		</cfloop>
 		
 		<cfreturn LOCAL.result>
@@ -20,9 +23,14 @@
 		<cfset LOCAL.pageObj = new "siteDataAdmin.#FORM.pageName#"().init(FORM) />
 		<cfset LOCAL.result = LOCAL.pageObj.processFormData() />
 	
-		<cfset LOCAL.modules = EntityLoad("page_module", {page = EntityLoad("page",{name = FORM.pageName}, true), result = LOCAL.result}) />
+		<cfset LOCAL.modules = EntityLoad("page_module", {page = EntityLoad("page",{name = FORM.pageName}, true)}) />
 		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
-			<cfset LOCAL.result = LOCAL.pageObj.processFormData() />
+			<cfset LOCAL.moduleObj = new "core.modules.#LOCAL.module.getName()#"() />
+			<cfset LOCAL.moduleResult = LOCAL.moduleObj.validateFormData() />
+			<cfset LOCAL.result.isValid = LOCAL.moduleResult.isValid />
+			<cfif NOT ArrayIsEmpty(LOCAL.moduleResult.messageArray)>
+				<cfset ArrayAppend(LOCAL.result.messageArray, LOCAL.moduleResult.messageArray, true) />
+			</cfif>
 		</cfloop>
 		
 		<cfreturn LOCAL.result>
