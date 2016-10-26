@@ -9,7 +9,9 @@
 		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
 			<cfset LOCAL.moduleObj = new "core.modules.#LOCAL.module.getName()#"() />
 			<cfset LOCAL.moduleResult = LOCAL.moduleObj.validateFormData() />
-			<cfset LOCAL.result.isValid = LOCAL.moduleResult.isValid />
+			<cfif LOCAL.result.isValid EQ true>
+				<cfset LOCAL.result.isValid = LOCAL.moduleResult.isValid />
+			</cfif>
 			<cfif NOT ArrayIsEmpty(LOCAL.moduleResult.messageArray)>
 				<cfset ArrayAppend(LOCAL.result.messageArray, LOCAL.moduleResult.messageArray, true) />
 			</cfif>
