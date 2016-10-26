@@ -354,7 +354,8 @@ $(function() {
 						url: "http://admin.pinmydeals.loc/ajax/page.cfc",
 						dataType: 'json',
 						data: {
-							method: 'validate',
+							method: 'validateFormData',
+							displayName: '',
 							pageName: 'category_detail'
 						}
 				})

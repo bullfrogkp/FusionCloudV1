@@ -163,7 +163,7 @@
 		</cfif>
 		
 		<!--- exclude ajax request --->
-		<cfif NOT StructKeyExists(URL,"method")>
+		<cfif NOT StructKeyExists(URL,"method") AND NOT StructKeyExists(FORM,"method")>
 			<cfset var currentPageName = Replace(Replace(CGI.SCRIPT_NAME,GetDirectoryFromPath(CGI.SCRIPT_NAME),""),".cfm","") />
 			<!---
 			<cftry>		
@@ -181,64 +181,6 @@
 				<cfset pageObj.setCgiData(CGI) />
 				<cfset pageObj.setSessionData(SESSION) />
 				<cfset var returnStruct = {} />
-			
-				<!--- form.file is image upload plugin --->
-				<cfif IsDefined("FORM") AND NOT StructIsEmpty(FORM) AND NOT StructKeyExists(FORM,"file")>
-					<cfset globalPageObj.setFormData(FORM) />
-					<cfset pageObj.setFormData(FORM) />
-					
-					<!--- global data handler --->
-					<cfset returnStruct = globalPageObj.processFormDataBeforeValidation() />
-					<cfif returnStruct.redirectUrl NEQ "">
-						<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
-					</cfif>
-					
-					<cfset returnStruct = globalPageObj.validateFormData() />
-					<cfif returnStruct.redirectUrl NEQ "">
-						<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
-					<cfelse>
-						<cfif IsDefined("SESSION.temp.formData")>
-							<cfset StructDelete(SESSION.temp,"formData") />
-						</cfif>
-					</cfif>
-					
-					<cfset returnStruct = globalPageObj.processFormDataAfterValidation() />
-					<cfif returnStruct.redirectUrl NEQ "">
-						<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
-					</cfif>
-				
-					<!--- page data handler --->
-					<cfset returnStruct = pageObj.processFormDataBeforeValidation() />
-					<cfif returnStruct.redirectUrl NEQ "">
-						<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
-					</cfif>
-					
-					<cfset returnStruct = pageObj.validateFormData() />
-					<cfif returnStruct.redirectUrl NEQ "">
-						<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
-					<cfelse>
-						<cfif IsDefined("SESSION.temp.formData")>
-							<cfset StructDelete(SESSION.temp,"formData") />
-						</cfif>
-					</cfif>
-					
-					<cfset returnStruct = pageObj.processFormDataAfterValidation() />
-					<cfif returnStruct.redirectUrl NEQ "">
-						<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
-					</cfif>
-					
-					<cflocation url = "#_getCurrentURL()#" addToken = "no" />
-				</cfif>
-				
-				<cfset returnStruct = globalPageObj.processURLDataBeforeValidation() />
-				<cfif returnStruct.redirectUrl NEQ "">
-					<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
-				</cfif>		
-						
-				<cfset returnStruct = pageObj.processURLDataBeforeValidation() />
-				<cfif returnStruct.redirectUrl NEQ "">
-					<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
-				</cfif>
 				
 				<cfset returnStruct = globalPageObj.validateAccessData() />
 				<cfif returnStruct.redirectUrl NEQ "">
@@ -246,16 +188,6 @@
 				</cfif>		
 						
 				<cfset returnStruct = pageObj.validateAccessData() />
-				<cfif returnStruct.redirectUrl NEQ "">
-					<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
-				</cfif>
-				
-				<cfset returnStruct = globalPageObj.processURLDataAfterValidation() />
-				<cfif returnStruct.redirectUrl NEQ "">
-					<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
-				</cfif>		
-						
-				<cfset returnStruct = pageObj.processURLDataAfterValidation() />
 				<cfif returnStruct.redirectUrl NEQ "">
 					<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
 				</cfif>

@@ -1,11 +1,11 @@
 ﻿<cfcomponent extends="core.pages.page">
-	<cffunction name="validate" access="remote" output="false" returnType="struct" returnformat="json">
+	<cffunction name="validateFormData" access="remote" output="false" returnType="struct" returnformat="json">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
 		<cfset LOCAL.retStruct.isValid = true />
 		<cfset LOCAL.retStruct.messageArray = [] />
 		
-		<cfif Trim(FORM.display_name) EQ "">
+		<cfif Trim(FORM.displayName) EQ "">
 			<cfset ArrayAppend(LOCAL.retStruct.messageArray,"Please enter a valid category name.") />
 			<cfset LOCAL.retStruct.isValid = false />
 		</cfif>
@@ -13,7 +13,7 @@
 		<cfreturn LOCAL.retStruct />
 	</cffunction>
 
-	<cffunction name="process" access="remote" output="false" returnType="struct" returnformat="json">
+	<cffunction name="processFormData" access="remote" output="false" returnType="struct" returnformat="json">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
 		<cfset LOCAL.retStruct.isValid = true />
