@@ -348,12 +348,15 @@ $(function() {
 				var fd = new FormData(myform );
 				
 				fd.pageName = 'category_detail';
-				
+
 				$.ajax({
 						type: "post",
-						url: url,
+						url: "http://admin.pinmydeals.loc/ajax/page.cfc",
 						dataType: 'json',
-						data: fd
+						data: {
+							method: 'validate',
+							pageName: 'category_detail'
+						}
 				})
 				.done(function(data) {		
 					var str = '<div class="alert warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';

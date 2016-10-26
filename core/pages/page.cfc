@@ -1,22 +1,33 @@
 ﻿<cfcomponent output="false" accessors="true">
-	<cfproperty name="section" type="string" required="true"> 
-	<cfproperty name="formData" type="struct" required="true"> 
-	<cfproperty name="urlData" type="struct" required="true"> 
-	<cfproperty name="cgiData" type="struct" required="true"> 
-	<cfproperty name="sessionData" type="struct" required="true"> 
+	<cfproperty name="formData" type="struct" required="false"> 
+	<cfproperty name="urlData" type="struct" required="false"> 
+	<cfproperty name="cgiData" type="struct" required="false"> 
+	<cfproperty name="sessionData" type="struct" required="false"> 
 	<cfproperty name="pageName" type="string" required="false"> 
 	<!------------------------------------------------------------------------------->	
 	<cffunction name="init" access="public" output="false" returntype="any">
-		<cfargument name="formData" type="struct" required="true" />
-		<cfargument name="urlData" type="struct" required="true" />
-		<cfargument name="cgiData" type="struct" required="true" />
-		<cfargument name="sessionData" type="struct" required="true" />
+		<cfargument name="formData" type="struct" required="false" />
+		<cfargument name="urlData" type="struct" required="false" />
+		<cfargument name="cgiData" type="struct" required="false" />
+		<cfargument name="sessionData" type="struct" required="false" />
 		<cfargument name="pageName" type="string" required="false" />
 		
-		<cfset setFormData(ARGUMENTS.formData) />
-		<cfset setUrlData(ARGUMENTS.urlData) />
-		<cfset setCgiData(ARGUMENTS.cgiData) />
-		<cfset setSessionData(ARGUMENTS.sessionData) />
+		<cfif StructKeyExists(ARGUMENTS,"formData")>
+			<cfset setFormData(ARGUMENTS.formData) />
+		</cfif>
+		
+		<cfif StructKeyExists(ARGUMENTS,"urlData")>
+			<cfset setUrlData(ARGUMENTS.urlData) />
+		</cfif>
+		
+		<cfif StructKeyExists(ARGUMENTS,"cgiData")>
+			<cfset setCgiData(ARGUMENTS.cgiData) />
+		</cfif>
+		
+		<cfif StructKeyExists(ARGUMENTS,"sessionData")>
+			<cfset setSessionData(ARGUMENTS.sessionData) />
+		</cfif>
+		
 		<cfif StructKeyExists(ARGUMENTS,"pageName")>
 			<cfset setPageName(ARGUMENTS.pageName) />
 		</cfif>
@@ -31,7 +42,7 @@
 		<cfreturn LOCAL />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
-	<cffunction name="processFormDataBeforeValidation" access="public" output="false" returnType="struct">
+	<cffunction name="validateFormData" access="remote" output="false" returnType="struct" returnformat="json">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.redirectUrl = "" />
 		
@@ -41,29 +52,8 @@
 		
 		<cfreturn LOCAL />	
 	</cffunction>	
-	<!------------------------------------------------------------------------------->	
-	<cffunction name="validateFormData" access="public" output="false" returnType="struct">
-		<cfset var LOCAL = {} />
-		<cfset LOCAL.redirectUrl = "" />
-		
-		<cfreturn LOCAL />
-	</cffunction>
 	<!------------------------------------------------------------------------------->
-	<cffunction name="processFormDataAfterValidation" access="public" output="false" returnType="struct">
-		<cfset var LOCAL = {} />
-		<cfset LOCAL.redirectUrl = "" />
-		
-		<cfreturn LOCAL />	
-	</cffunction>	
-	<!------------------------------------------------------------------------------->
-	<cffunction name="processURLDataBeforeValidation" access="public" output="false" returnType="struct">
-		<cfset var LOCAL = {} />
-		<cfset LOCAL.redirectUrl = "" />
-		
-		<cfreturn LOCAL />	
-	</cffunction>	
-	<!------------------------------------------------------------------------------->
-	<cffunction name="processURLDataAfterValidation" access="public" output="false" returnType="struct">
+	<cffunction name="processFormData" access="remote" output="false" returnType="struct" returnformat="json">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.redirectUrl = "" />
 		
