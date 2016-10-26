@@ -372,14 +372,20 @@ $(function() {
 						data: fd
 				})
 				.done(function(data) {		
-					var str = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
-					
-					for(var i=0;i<data.MESSAGEARRAY.length;i++) {
-						str += data.MESSAGEARRAY[i] + '<br/>';
+					if(data.ISVALID == true) {
+						var str = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Category information has been saved successfully.</div>';
+						$("#messages").html(str); 
+					} else {
+						var str = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+						
+						for(var i=0;i<data.MESSAGEARRAY.length;i++) {
+							str += data.MESSAGEARRAY[i] + '<br/>';
+						}
+						
+						str += '</div>';
+						$("#messages").html(str); 
 					}
-					
-					str += '</div>';
-					$("#messages").html(str); 
+
 					$("#loading-overlay").remove();
 					$(".loading-img").remove();
 				})
