@@ -3,7 +3,8 @@
 	<script language="javascript" type="text/javascript">
 		var absoluteUrlThemeAdmin = '#SESSION.absoluteUrlThemeAdmin#';
 		var absoluteUrlSite = '#APPLICATION.absoluteUrlSite#';
-	
+		var categoryId = #URL.id#;
+		
 		var filterChanged = false;
 		var filterArray = new Array();
 		<cfloop array="#REQUEST.pageData.filters#" index="filter">
