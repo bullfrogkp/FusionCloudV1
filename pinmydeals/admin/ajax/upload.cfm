@@ -18,6 +18,9 @@
 		);
 	// We are executing a chunked upload.
 	} else {
+		if(NOT DirectoryExists("#APPLICATION.absolutePathImages##folder#/chunks/#URL.id#/")) {
+			DirectoryCreate("#APPLICATION.absolutePathImages##folder#/chunks/#URL.id#/");
+		}
 
 		// Since we are dealing with chunks, instead of a full file, we'll be appending each
 		// chunk to the known file. However, for the demo, let's keep the transient file out
@@ -36,6 +39,7 @@
 				"#APPLICATION.absolutePathImages##folder#/#URL.id#/#form.name#"
 			);
 		}
+		DirectoryDelete("#APPLICATION.absolutePathImages##folder#/chunks/#URL.id#/");
 	}
 
 </cfscript>
