@@ -1,23 +1,14 @@
 ﻿<cfcomponent extends="core.pages.page">
 	<!------------------------------------------------------------------------------->	
-	<cffunction name="validateAccessData" access="public" output="false" returnType="struct">
-		<cfset var LOCAL = {} />
-		<cfset LOCAL.redirectUrl = "" />
-		
-		<cfif NOT StructKeyExists(SESSION,"adminUser") AND getPageName() NEQ "login">
-			<cfset LOCAL.redirectUrl = "login.cfm" />
-		</cfif>
-		
-		<cfreturn LOCAL />
-	</cffunction>
-	<!------------------------------------------------------------------------------->	
-	<cffunction name="processURLDataBeforeValidation" access="public" output="false" returnType="struct">
+	<cffunction name="processURLData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.redirectUrl = "" />
 			
-		<cfif StructKeyExists(URL,"logout")>
+		<cfif NOT StructKeyExists(SESSION,"adminUser") AND getPageName() NEQ "login">
+			<cfset LOCAL.redirectUrl = "login.cfm" />
+		<cfelseif StructKeyExists(URL,"logout")>
 			<cfset StructDelete(SESSION,"adminUser") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#index.cfm" />
+			<cfset LOCAL.redirectUrl = "login.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

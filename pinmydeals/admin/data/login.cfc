@@ -1,4 +1,5 @@
 ﻿<cfcomponent extends="core.pages.page">
+	<!------------------------------------------------------------------------------->	
 	<cffunction name="validateFormData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.redirectUrl = "" />
@@ -30,8 +31,8 @@
 		
 		<cfreturn LOCAL />
 	</cffunction>
-	
-	<cffunction name="processFormDataAfterValidation" access="public" output="false" returnType="struct">
+	<!------------------------------------------------------------------------------->	
+	<cffunction name="processFormData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		
 		<cfset LOCAL.user = EntityLoad("admin_user",{username=Trim(FORM.username)},true) />
@@ -44,7 +45,7 @@
 		
 		<cfreturn LOCAL />	
 	</cffunction>	
-	
+	<!------------------------------------------------------------------------------->	
 	<cffunction name="_loadPageData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.pageData = {} />
@@ -53,4 +54,5 @@
 		
 		<cfreturn LOCAL.pageData />	
 	</cffunction>
+	<!------------------------------------------------------------------------------->	
 </cfcomponent>

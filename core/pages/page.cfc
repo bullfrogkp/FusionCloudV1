@@ -35,7 +35,7 @@
 		<cfreturn this />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
-	<cffunction name="validateAccessData" access="public" output="false" returnType="struct">
+	<cffunction name="processURLData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.redirectUrl = "" />
 		

@@ -181,13 +181,42 @@
 				<cfset pageObj.setCgiData(CGI) />
 				<cfset pageObj.setSessionData(SESSION) />
 				<cfset var returnStruct = {} />
+			
+				<!--- form.file is image upload plugin --->
+				<cfif IsDefined("FORM") AND NOT StructIsEmpty(FORM) AND NOT StructKeyExists(FORM,"file")>
+					<cfset globalPageObj.setFormData(FORM) />
+					<cfset pageObj.setFormData(FORM) />
+					
+					<cfset returnStruct = globalPageObj.validateFormData() />
+					<cfif returnStruct.redirectUrl NEQ "">
+						<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
+					</cfif>
+					
+					<cfset returnStruct = globalPageObj.processFormData() />
+					<cfif returnStruct.redirectUrl NEQ "">
+						<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
+					</cfif>
 				
-				<cfset returnStruct = globalPageObj.validateAccessData() />
+					<!--- page data handler --->
+					<cfset returnStruct = pageObj.validateFormData() />
+					<cfif returnStruct.redirectUrl NEQ "">
+						<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
+					</cfif>
+					
+					<cfset returnStruct = pageObj.processFormData() />
+					<cfif returnStruct.redirectUrl NEQ "">
+						<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
+					</cfif>
+					
+					<cflocation url = "#_getCurrentURL()#" addToken = "no" />
+				</cfif>
+				
+				<cfset returnStruct = globalPageObj.processURLData() />
 				<cfif returnStruct.redirectUrl NEQ "">
 					<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
 				</cfif>		
 						
-				<cfset returnStruct = pageObj.validateAccessData() />
+				<cfset returnStruct = pageObj.processURLData() />
 				<cfif returnStruct.redirectUrl NEQ "">
 					<cflocation url = "#returnStruct.redirectUrl#" addToken = "no" />
 				</cfif>
