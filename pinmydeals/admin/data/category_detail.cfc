@@ -132,8 +132,7 @@
 					<cfset EntitySave(LOCAL.categoryImage) />
 					<cfset LOCAL.category.addImage(LOCAL.categoryImage) />
 					
-					<cfset LOCAL.sizeArray = [{name = "thumbnail", width = "30", height = "30", position="center", crop = true}
-											] />			
+					<cfset LOCAL.sizeArray = [{name = "thumbnail", width = "30", height = "30", position="center", crop = true}] />			
 					<cfset _createImages(	imagePath = LOCAL.imageDir,
 											imageNameWithExtension = cffile.serverFile,
 											sizeArray = LOCAL.sizeArray) />
@@ -143,6 +142,7 @@
 			<cfset EntitySave(LOCAL.category) />	
 				
 			<cfset ArrayAppend(LOCAL.retStruct.messageArray,"Category information has been saved successfully.") />
+			
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 		
 			<cfset LOCAL.category.setIsDeleted(true) />
@@ -160,14 +160,6 @@
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Image has been deleted.") />
 			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin##getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=tab_5" />
 		
-		<cfelseif StructKeyExists(FORM,"delete_ad")>
-			
-			<cfset LOCAL.ad = EntityLoadByPK("page_section_advertisement",FORM.deleted_ad_id) />			
-			<cfset LOCAL.advertisementSection.removeAdvertisement(LOCAL.ad) />
-			<cfset EntitySave(LOCAL.advertisementSection) />
-			
-			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Advertise image has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin##getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=tab_7" />
 		</cfif>
 			
 		<cfreturn LOCAL.retStruct />
