@@ -19,23 +19,168 @@
 		<cfset LOCAL.retStruct.isValid = true />
 		<cfset LOCAL.retStruct.messageArray = [] />
 				
-		<cfif IsNumeric(FORM.id)>
-			<cfset LOCAL.category = EntityLoadByPK("category", FORM.id)> 
-			<cfset LOCAL.category.setUpdatedUser(SESSION.adminUser) />
-			<cfset LOCAL.category.setUpdatedDatetime(Now()) />
-		<cfelse>
-			<cfset LOCAL.category = EntityNew("category")> 
-			<cfset LOCAL.category.setCreatedUser(SESSION.adminUser) />
-			<cfset LOCAL.category.setCreatedDatetime(Now()) />
-			<cfset LOCAL.category.setIsDeleted(false) />
+		<cfif StructKeyExists(FORM,"save_item")>		
+			<cfif IsNumeric(FORM.id)>
+				<cfset LOCAL.category = EntityLoadByPK("category", FORM.id)> 
+				<cfset LOCAL.category.setUpdatedUser(SESSION.adminUser) />
+				<cfset LOCAL.category.setUpdatedDatetime(Now()) />
+			<cfelse>
+				<cfset LOCAL.category = EntityNew("category")> 
+				<cfset LOCAL.category.setCreatedUser(SESSION.adminUser) />
+				<cfset LOCAL.category.setCreatedDatetime(Now()) />
+				<cfset LOCAL.category.setIsDeleted(false) />
+			</cfif>
+			
+			<cfif FORM.parent_category_id NEQ "">
+				<cfset LOCAL.category.setParentCategory(EntityLoadByPK("category",FORM.parent_category_id)) />
+			</cfif>
+			<cfset LOCAL.category.setName(LCase(Trim(FORM.display_name))) />
+			<cfset LOCAL.category.setDisplayName(Trim(FORM.display_name)) />
+			<cfset LOCAL.category.setRank(Val(Trim(FORM.rank))) />
+			<cfset LOCAL.category.setIsEnabled(FORM.is_enabled) />
+			<cfset LOCAL.category.setDisplayCategoryList(FORM.display_category_list) />
+			<cfset LOCAL.category.setIsSpecial(FORM.is_special) />
+			<cfset LOCAL.category.setDisplayCustomDesign(FORM.display_custom_design) />
+			<cfset LOCAL.category.setDisplayFilter(FORM.display_filter) />
+			<cfset LOCAL.category.setShowCategoryOnNavigation(FORM.show_category_on_navigation) />
+			<cfset LOCAL.category.setTitle(Trim(FORM.title)) />
+			<cfset LOCAL.category.setKeywords(Trim(FORM.keywords)) />
+			<cfset LOCAL.category.setDescription(Trim(FORM.description)) />
+			<cfset LOCAL.category.setCustomDesign(Trim(FORM.custom_design)) />
+			
+			
+			<cfset EntitySave(LOCAL.category) />
+			
+			
+			<cfif NOT IsNull(LOCAL.category.getImages())>
+				<cfloop array="#LOCAL.category.getImages()#" index="LOCAL.img">
+					<cfif IsNumeric(FORM["rank_#LOCAL.img.getCategoryImageId()#"])>
+						<cfset LOCAL.img.setRank(FORM["rank_#LOCAL.img.getCategoryImageId()#"]) />
+						<cfset EntitySave(LOCAL.img) />
+					</cfif>
+				</cfloop>
+			</cfif>
+			
+			<cfif FORM["uploader_count"] NEQ 0>
+				<cfloop collection="#FORM#" item="LOCAL.key">
+					<cfif Find("UPLOADER_",LOCAL.key) AND Find("_STATUS",LOCAL.key)>
+						<cfset LOCAL.currentIndex = Replace(Replace(LOCAL.key,"UPLOADER_",""),"_STATUS","") />
+						<cfif StructFind(FORM,LOCAL.key) EQ "done">
+							<cfset LOCAL.imgName = StructFind(FORM,"UPLOADER_#LOCAL.currentIndex#_NAME") />
+							<cfset LOCAL.imagePath = ExpandPath("#APPLICATION.urlHttpsAdmin#images/uploads/category/") />
+						
+							<cfset LOCAL.imageDir = LOCAL.imagePath & LOCAL.category.getCategoryId() />
+							<cfif NOT DirectoryExists(LOCAL.imageDir)>
+								<cfdirectory action = "create" directory = "#LOCAL.imageDir#" />
+							</cfif>
+							
+							<cffile action = "move" source = "#LOCAL.imagePath##LOCAL.imgName#" destination = "#LOCAL.imagePath##LOCAL.category.getCategoryId()#\#LOCAL.imgName#">
+						
+							<cfset LOCAL.categoryImage = EntityNew("category_image") />
+							<cfset LOCAL.categoryImage.setName(LOCAL.imgName) />
+							<cfset LOCAL.categoryImage.setIsDefault(false) />
+							<cfset EntitySave(LOCAL.categoryImage) />
+							<cfset LOCAL.category.addImage(LOCAL.categoryImage) />
+						</cfif>
+					</cfif>
+				</cfloop>
+			</cfif>
+			
+			<cfif StructKeyExists(FORM,"default_image_id") AND FORM.default_image_id NEQ "">
+				<cfset LOCAL.currentDefaultImage = EntityLoad("category_image",{category=LOCAL.category,isDefault=true},true) />
+				<cfif NOT IsNull(LOCAL.currentDefaultImage)>
+					<cfset LOCAL.currentDefaultImage.setIsDefault(false) />
+					<cfset EntitySave(LOCAL.currentDefaultImage) />
+				</cfif>
+				<cfset LOCAL.newDefaultImage = EntityLoadByPK("category_image", FORM.default_image_id) />
+				<cfset LOCAL.newDefaultImage.setIsDefault(true) />
+				<cfset EntitySave(LOCAL.newDefaultImage) />
+			</cfif>
+				
+			<!--- filters --->
+			<cfif IsNumeric(FORM.id)>
+				<!--- category filters and values --->
+				<cfset LOCAL.category.removeCategoryFilterRelas() />
+			</cfif>
+			
+			<cfloop list="#FORM.c_filter_id#" index="LOCAL.filter_id">
+				<cfset LOCAL.categoryFilterRela = EntityNew("category_filter_rela") />
+				<cfset LOCAL.categoryFilterRela.setCategory(LOCAL.category) />
+				<cfset LOCAL.categoryFilterRela.setFilter(EntityLoadByPK("filter",LOCAL.filter_id)) />
+				<cfset LOCAL.category.addCategoryFilterRela(LOCAL.categoryFilterRela) /> 
+				
+				<cfif StructKeyExists(FORM,"c_filter_option_id_#LOCAL.filter_id#")>
+					<cfloop list="#FORM["c_filter_option_id_#LOCAL.filter_id#"]#" index="LOCAL.foid">
+						<cfset LOCAL.filterValue = EntityNew("filter_value") />
+						<cfset LOCAL.filterValue.setValue(Trim(FORM["c_filter_option_value_#LOCAL.filter_id#_#LOCAL.foid#"])) />
+						<cfif NOT Find("no_image_available.png", FORM["c_filter_option_imagename_#LOCAL.filter_id#_#LOCAL.foid#"])>
+							<cfset LOCAL.filterValue.setImageName(FORM["c_filter_option_imagename_#LOCAL.filter_id#_#LOCAL.foid#"]) />
+						</cfif>
+						<cfset LOCAL.filterValue.setCategoryFilterRela(LOCAL.categoryFilterRela) />
+						
+						<cfset EntitySave(LOCAL.filterValue) />
+						<cfset LOCAL.categoryFilterRela.addFilterValue(LOCAL.filterValue) />
+					</cfloop>
+				</cfif>
+				
+				<cfset EntitySave(LOCAL.categoryFilterRela) />
+			</cfloop>
+			
+			<!--- filter option images --->
+			<cfif FORM.image_count_hidden GT 0>
+				<cfset LOCAL.imageDir = "#APPLICATION.absolutePathRoot#images\uploads\category\#LOCAL.category.getCategoryId()#\filters\" />
+				<cfif NOT DirectoryExists(LOCAL.imageDir)>
+					<cfdirectory action = "create" directory = "#LOCAL.imageDir#" />
+				</cfif>	
+				<cfloop from="1" to="#FORM.image_count_hidden#" index="LOCAL.i">
+					<cffile action = "upload"  
+							fileField = "new_filter_option_image_#LOCAL.i - 1#"
+							destination = "#LOCAL.imageDir#"
+							nameConflict = "MakeUnique"> 
+					
+					<cfset LOCAL.categoryImage = EntityNew("category_image") />
+					<cfset LOCAL.categoryImage.setName(cffile.serverFile) />
+					<cfset EntitySave(LOCAL.categoryImage) />
+					<cfset LOCAL.category.addImage(LOCAL.categoryImage) />
+					
+					<cfset LOCAL.sizeArray = [{name = "thumbnail", width = "30", height = "30", position="center", crop = true}
+											] />			
+					<cfset _createImages(	imagePath = LOCAL.imageDir,
+											imageNameWithExtension = cffile.serverFile,
+											sizeArray = LOCAL.sizeArray) />
+				</cfloop>
+			</cfif>
+			
+			<cfset EntitySave(LOCAL.category) />	
+				
+			<cfset ArrayAppend(LOCAL.retStruct.messageArray,"Category information has been saved successfully.") />
+		<cfelseif StructKeyExists(FORM,"delete_item")>
+		
+			<cfset LOCAL.category.setIsDeleted(true) />
+			<cfset EntitySave(LOCAL.category) />
+			
+			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Category: #LOCAL.category.getDisplayName()# has been deleted.") />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin#categories.cfm" />
+		
+		<cfelseif StructKeyExists(FORM,"delete_image")>
+		
+			<cfset LOCAL.image = EntityLoadByPK("category_image",FORM.deleted_image_id) />
+			<cfset LOCAL.category.removeImage(LOCAL.image) />
+			<cfset EntitySave(LOCAL.category) />
+			
+			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Image has been deleted.") />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin##getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=tab_5" />
+		
+		<cfelseif StructKeyExists(FORM,"delete_ad")>
+			
+			<cfset LOCAL.ad = EntityLoadByPK("page_section_advertisement",FORM.deleted_ad_id) />			
+			<cfset LOCAL.advertisementSection.removeAdvertisement(LOCAL.ad) />
+			<cfset EntitySave(LOCAL.advertisementSection) />
+			
+			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Advertise image has been deleted.") />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin##getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=tab_7" />
 		</cfif>
-		
-		<cfset LOCAL.category.setName(LCase(Trim(FORM.display_name))) />
-		
-		<cfset ArrayAppend(LOCAL.retStruct.messageArray,"Category information has been saved successfully.") />
-		
-		<cfset EntitySave(LOCAL.category) />
-		
+			
 		<cfreturn LOCAL.retStruct />	
 		<!---
 		<cfset LOCAL.currentPageName = "products" />
@@ -90,30 +235,7 @@
 				</cfloop>
 			</cfif>
 		
-			<cfif FORM["uploader_count"] NEQ 0>
-				<cfloop collection="#FORM#" item="LOCAL.key">
-					<cfif Find("UPLOADER_",LOCAL.key) AND Find("_STATUS",LOCAL.key)>
-						<cfset LOCAL.currentIndex = Replace(Replace(LOCAL.key,"UPLOADER_",""),"_STATUS","") />
-						<cfif StructFind(FORM,LOCAL.key) EQ "done">
-							<cfset LOCAL.imgName = StructFind(FORM,"UPLOADER_#LOCAL.currentIndex#_NAME") />
-							<cfset LOCAL.imagePath = ExpandPath("#APPLICATION.urlHttpsAdmin#images/uploads/category/") />
-						
-							<cfset LOCAL.imageDir = LOCAL.imagePath & LOCAL.category.getCategoryId() />
-							<cfif NOT DirectoryExists(LOCAL.imageDir)>
-								<cfdirectory action = "create" directory = "#LOCAL.imageDir#" />
-							</cfif>
-							
-							<cffile action = "move" source = "#LOCAL.imagePath##LOCAL.imgName#" destination = "#LOCAL.imagePath##LOCAL.category.getCategoryId()#\#LOCAL.imgName#">
-						
-							<cfset LOCAL.categoryImage = EntityNew("category_image") />
-							<cfset LOCAL.categoryImage.setName(LOCAL.imgName) />
-							<cfset LOCAL.categoryImage.setIsDefault(false) />
-							<cfset EntitySave(LOCAL.categoryImage) />
-							<cfset LOCAL.category.addImage(LOCAL.categoryImage) />
-						</cfif>
-					</cfif>
-				</cfloop>
-			</cfif>
+			
 			
 			<cfif FORM["ads_image_count"] NEQ 0>
 				<cfloop collection="#FORM#" item="LOCAL.key">
@@ -138,16 +260,7 @@
 				</cfloop>
 			</cfif>
 			
-			<cfif StructKeyExists(FORM,"default_image_id") AND FORM.default_image_id NEQ "">
-				<cfset LOCAL.currentDefaultImage = EntityLoad("category_image",{category=LOCAL.category,isDefault=true},true) />
-				<cfif NOT IsNull(LOCAL.currentDefaultImage)>
-					<cfset LOCAL.currentDefaultImage.setIsDefault(false) />
-					<cfset EntitySave(LOCAL.currentDefaultImage) />
-				</cfif>
-				<cfset LOCAL.newDefaultImage = EntityLoadByPK("category_image", FORM.default_image_id) />
-				<cfset LOCAL.newDefaultImage.setIsDefault(true) />
-				<cfset EntitySave(LOCAL.newDefaultImage) />
-			</cfif>
+			
 			
 			<cfset LOCAL.sectionProducts = EntityLoad("page_section_product", {section = LOCAL.bestSellerSection, category = LOCAL.category})> 
 			<cfloop array="#LOCAL.sectionProducts#" index="LOCAL.sectionProduct">
@@ -163,93 +276,14 @@
 				</cfloop>
 			</cfif>
 			
-			<!--- filters --->
-			<cfif IsNumeric(FORM.id)>
-				<!--- category filters and values --->
-				<cfset LOCAL.category.removeCategoryFilterRelas() />
-			</cfif>
 			
-			<cfloop list="#FORM.c_filter_id#" index="LOCAL.filter_id">
-				<cfset LOCAL.categoryFilterRela = EntityNew("category_filter_rela") />
-				<cfset LOCAL.categoryFilterRela.setCategory(LOCAL.category) />
-				<cfset LOCAL.categoryFilterRela.setFilter(EntityLoadByPK("filter",LOCAL.filter_id)) />
-				<cfset LOCAL.category.addCategoryFilterRela(LOCAL.categoryFilterRela) /> 
-				
-				<cfif StructKeyExists(FORM,"c_filter_option_id_#LOCAL.filter_id#")>
-					<cfloop list="#FORM["c_filter_option_id_#LOCAL.filter_id#"]#" index="LOCAL.foid">
-						<cfset LOCAL.filterValue = EntityNew("filter_value") />
-						<cfset LOCAL.filterValue.setValue(Trim(FORM["c_filter_option_value_#LOCAL.filter_id#_#LOCAL.foid#"])) />
-						<cfif NOT Find("no_image_available.png", FORM["c_filter_option_imagename_#LOCAL.filter_id#_#LOCAL.foid#"])>
-							<cfset LOCAL.filterValue.setImageName(FORM["c_filter_option_imagename_#LOCAL.filter_id#_#LOCAL.foid#"]) />
-						</cfif>
-						<cfset LOCAL.filterValue.setCategoryFilterRela(LOCAL.categoryFilterRela) />
 						
-						<cfset EntitySave(LOCAL.filterValue) />
-						<cfset LOCAL.categoryFilterRela.addFilterValue(LOCAL.filterValue) />
-					</cfloop>
-				</cfif>
-				
-				<cfset EntitySave(LOCAL.categoryFilterRela) />
-			</cfloop>
 			
-			<cfset EntitySave(LOCAL.category) />
-						
-			<!--- filter option images --->
-			<cfif FORM.image_count_hidden GT 0>
-				<cfset LOCAL.imageDir = "#APPLICATION.absolutePathRoot#images\uploads\category\#LOCAL.category.getCategoryId()#\filters\" />
-				<cfif NOT DirectoryExists(LOCAL.imageDir)>
-					<cfdirectory action = "create" directory = "#LOCAL.imageDir#" />
-				</cfif>	
-				<cfloop from="1" to="#FORM.image_count_hidden#" index="LOCAL.i">
-					<cffile action = "upload"  
-							fileField = "new_filter_option_image_#LOCAL.i - 1#"
-							destination = "#LOCAL.imageDir#"
-							nameConflict = "MakeUnique"> 
-					
-					<cfset LOCAL.categoryImage = EntityNew("category_image") />
-					<cfset LOCAL.categoryImage.setName(cffile.serverFile) />
-					<cfset EntitySave(LOCAL.categoryImage) />
-					<cfset LOCAL.category.addImage(LOCAL.categoryImage) />
-					
-					<cfset LOCAL.sizeArray = [{name = "thumbnail", width = "30", height = "30", position="center", crop = true}
-											] />			
-					<cfset _createImages(	imagePath = LOCAL.imageDir,
-											imageNameWithExtension = cffile.serverFile,
-											sizeArray = LOCAL.sizeArray) />
-				</cfloop>
-			</cfif>
-			
-			<cfset EntitySave(LOCAL.category) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Category has been saved successfully.") />
 			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin##getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=#LOCAL.tab_id#" />
 		
-		<cfelseif StructKeyExists(FORM,"delete_item")>
 		
-			<cfset LOCAL.category.setIsDeleted(true) />
-			<cfset EntitySave(LOCAL.category) />
-			
-			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Category: #LOCAL.category.getDisplayName()# has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin#categories.cfm" />
-		
-		<cfelseif StructKeyExists(FORM,"delete_image")>
-		
-			<cfset LOCAL.image = EntityLoadByPK("category_image",FORM.deleted_image_id) />
-			<cfset LOCAL.category.removeImage(LOCAL.image) />
-			<cfset EntitySave(LOCAL.category) />
-			
-			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Image has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin##getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=tab_5" />
-		
-		<cfelseif StructKeyExists(FORM,"delete_ad")>
-			
-			<cfset LOCAL.ad = EntityLoadByPK("page_section_advertisement",FORM.deleted_ad_id) />			
-			<cfset LOCAL.advertisementSection.removeAdvertisement(LOCAL.ad) />
-			<cfset EntitySave(LOCAL.advertisementSection) />
-			
-			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Advertise image has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin##getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=tab_7" />
-		</cfif>
 		--->
 		
 	</cffunction>	
