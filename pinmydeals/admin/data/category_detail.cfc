@@ -10,6 +10,10 @@
 			<cfset LOCAL.retStruct.isValid = false />
 		</cfif>
 		
+		<cfif LOCAL.retStruct.isValid EQ true>
+			<cfset ArrayAppend(LOCAL.retStruct.messageArray,"Category information has been saved successfully.") />
+		</cfif>
+		
 		<cfreturn LOCAL.retStruct />
 	</cffunction>
 
