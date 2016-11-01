@@ -360,7 +360,7 @@ $(function() {
 				convertFilterArray();
 				$('.nav-tabs-custom').append('<div id="loading-overlay" class="overlay"></div><div class="loading-img"></div>');
 				
-				var url = absoluteUrlSite + 'ajax/page.cfc';
+				var url = urlHttpsAdmin + 'ajax/page.cfc';
 				var fd = $('#category-detail').serializeObject();
 				fd.method = 'validateFormData';
 				fd.pageName = 'category_detail';

@@ -71,7 +71,7 @@
             <cfelse>
                 <cfset THIS[ "$Config" ].isLive = true />
 				<cfset THIS[ "$Config" ].env.domain = "www.pinmydeals.com" />
-				<cfset THIS[ "$Config" ].env.absoluteUrlSite = "/" />
+				<cfset THIS[ "$Config" ].env.urlHttpsAdmin = "/" />
 				<cfset THIS[ "$Config" ].env.absolutePathSite = ExpandPath("/site/pinmydeals/www/") />
 				<cfset THIS[ "$Config" ].env.absolutePathCore = ExpandPath("/site/core/") />
 				<cfset THIS[ "$Config" ].env.urlHttp = "http://#THIS[ "$Config" ].env.domain#" />

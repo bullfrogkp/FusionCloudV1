@@ -2,7 +2,7 @@
 	<!------------------------------------------------------------------------------------------------------------>
 	<cffunction name="validateFormData" access="remote" returntype="struct" returnformat="json" output="false">
 		<cfset var LOCAL = {} />
-		<cfset LOCAL.pageObj = new "siteDataAdmin.#FORM.pageName#"().init(FORM) />
+		<cfset LOCAL.pageObj = new "dataAdmin.#FORM.pageName#"().init(FORM) />
 		<cfset LOCAL.result = LOCAL.pageObj.validateFormData() />
 		
 		<cfset LOCAL.modules = EntityLoad("page_module", {page = EntityLoad("page",{name = FORM.pageName}, true)}) />
@@ -22,7 +22,7 @@
 	<!------------------------------------------------------------------------------------------------------------>
 	<cffunction name="processFormData" access="remote" returntype="struct" returnformat="json" output="false">
 		<cfset var LOCAL = {} />
-		<cfset LOCAL.pageObj = new "siteDataAdmin.#FORM.pageName#"().init(FORM) />
+		<cfset LOCAL.pageObj = new "dataAdmin.#FORM.pageName#"().init(FORM) />
 		<cfset LOCAL.result = LOCAL.pageObj.processFormData() />
 	
 		<cfset LOCAL.modules = EntityLoad("page_module", {page = EntityLoad("page",{name = FORM.pageName}, true)}) />
