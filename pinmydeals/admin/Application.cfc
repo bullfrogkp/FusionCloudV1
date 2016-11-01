@@ -242,7 +242,7 @@
 			<!---	
 				<cfcatch type="any">
 					<cfset new "#APPLICATION.componentPathRoot#core.utils.utils().handleError(cfcatch = cfcatch) />
-					<cflocation url="#APPLICATION.urlAdmin#error.cfm" addtoken="false" />
+					<cflocation url="#APPLICATION.urlHttpsAdmin#error.cfm" addtoken="false" />
 				</cfcatch>
 			</cftry>
 			--->
@@ -255,8 +255,7 @@
 		<cfargument type="string" name="folderNameTheme" required=true /> 
 		
 		<cfset var folderNameThemeAdmin = ARGUMENTS.folderNameTheme>		
-		<cfset SESSION.urlThemeAdmin = "#APPLICATION.urlHttpAdmin#themes/#folderNameThemeAdmin#/">
-		<cfset SESSION.urlAbsoluteThemeAdmin = getAbsoluteTemplateFromURL(SESSION.urlThemeAdmin)>
+		<cfset SESSION.urlThemeAdmin = "/themes/#folderNameThemeAdmin#/">
 		<cfset SESSION.pathThemeAdmin = "#APPLICATION.pathAdmin#themes\#folderNameThemeAdmin#\">
 	</cffunction>
 	<!------------------------------------------------------------------------------->
@@ -273,7 +272,7 @@
    
 		<cflog text="cannot find page: #ARGUMENTS.targetPage#" />
 		
-		<cflocation url="#APPLICATION.urlAdmin#error.cfm" addtoken="false" />
+		<cflocation url="#APPLICATION.urlHttpsAdmin#error.cfm" addtoken="false" />
 	</cffunction>--->
 	<!------------------------------------------------------------------------------->
 </cfcomponent>

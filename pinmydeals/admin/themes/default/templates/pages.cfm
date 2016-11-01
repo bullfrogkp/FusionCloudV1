@@ -38,7 +38,7 @@
 			<div class="box box-primary">
 				<div class="box-header">
 					<h3 class="box-title">Pages</h3>
-					<a href="#APPLICATION.urlAdmin#page_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Page</a>
+					<a href="#APPLICATION.urlHttpsAdmin#page_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Page</a>
 				</div><!-- /.box-header -->
 				<div class="box-body table-responsive">
 					<table class="table table-bordered table-hover">

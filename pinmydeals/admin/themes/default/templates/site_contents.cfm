@@ -52,8 +52,8 @@
 								<tr>
 									<td>#content.getTitle()#</td>
 									<td>
-										<a href="#APPLICATION.urlAdmin#site_content.cfm/#content.getName()#" target="_blank">
-											#APPLICATION.urlAdmin#site_content.cfm/#content.getName()#
+										<a href="#APPLICATION.urlHttpsAdmin#site_content.cfm/#content.getName()#" target="_blank">
+											#APPLICATION.urlHttpsAdmin#site_content.cfm/#content.getName()#
 										</a>
 									</td>
 									<td>#DateFormat(content.getCreatedDatetime(),"mmm dd,yyyy")#</td>
@@ -64,7 +64,7 @@
 											<span class="label label-danger">Disabled</span>
 										</cfif>
 									</td>
-									<td><a href="#APPLICATION.urlAdmin#site_content_detail.cfm?id=#content.getSiteContentId()#">View Detail</a></td>
+									<td><a href="#APPLICATION.urlHttpsAdmin#site_content_detail.cfm?id=#content.getSiteContentId()#">View Detail</a></td>
 								</tr>
 							</cfloop>
 						<cfelse>

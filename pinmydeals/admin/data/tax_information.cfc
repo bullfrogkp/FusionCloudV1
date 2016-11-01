@@ -13,7 +13,7 @@
 			<cfset EntitySave(LOCAL.tax) />		
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Tax information has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin##getPageName()#.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin##getPageName()#.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

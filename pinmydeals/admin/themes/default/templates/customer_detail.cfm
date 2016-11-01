@@ -84,7 +84,7 @@
 											<tr>
 												<td>#product.getDisplayName()#</td>
 												<td>#product.getDescription()#</td>
-												<td><a href="#APPLICATION.urlAdmin#product_detail.cfm?id=#product.getProductId()#">View Detail</a></td>
+												<td><a href="#APPLICATION.urlHttpsAdmin#product_detail.cfm?id=#product.getProductId()#">View Detail</a></td>
 											</tr>
 											</cfloop>
 										<cfelse>
@@ -115,7 +115,7 @@
 												<tr>
 													<td>#product.getDisplayName()#</td>
 													<td>#product.getDescription()#</td>
-													<td><a href="#APPLICATION.urlAdmin#product_detail.cfm?id=#product.getProductId()#">View Detail</a></td>
+													<td><a href="#APPLICATION.urlHttpsAdmin#product_detail.cfm?id=#product.getProductId()#">View Detail</a></td>
 												</tr>
 											</cfloop>
 										<cfelse>
@@ -147,7 +147,7 @@
 												<tr>
 													<td>#product.getDisplayName()#</td>
 													<td>#product.getDescription()#</td>
-													<td><a href="#APPLICATION.urlAdmin#product_detail.cfm?id=#product.getProductId()#">View Detail</a></td>
+													<td><a href="#APPLICATION.urlHttpsAdmin#product_detail.cfm?id=#product.getProductId()#">View Detail</a></td>
 												</tr>
 											</cfloop>
 										<cfelse>
@@ -263,7 +263,7 @@
 										<td>#order.getOrderTrackingNumber()#</td>
 										<td>#order.getCreatedDatetime()#</td>
 										<td>#order.getBillingFirstName()# #order.getBillingMiddleName()# #order.getBillingLastName()#</td>
-										<td><a href="#APPLICATION.urlAdmin#order_detail.cfm?id=#order.getOrderId()#">View Detail</a></td>
+										<td><a href="#APPLICATION.urlHttpsAdmin#order_detail.cfm?id=#order.getOrderId()#">View Detail</a></td>
 									</tr>
 								</cfloop>
 							<cfelse>
@@ -362,7 +362,7 @@
 										<td>#review.getRating()#</td>
 										<td>#review.getCreatedDatetime()#</td>
 										<td>#review.getCreatedUser()#</td>
-										<td><a href="#APPLICATION.urlAdmin#review_detail.cfm?id=#review.getReviewId()#">View Detail</a></td>
+										<td><a href="#APPLICATION.urlHttpsAdmin#review_detail.cfm?id=#review.getReviewId()#">View Detail</a></td>
 									</tr>
 								</cfloop>
 							<cfelse>
@@ -413,7 +413,7 @@
 										<td>#conv.getDescription()#</td>
 										<td>#conv.getCreatedDatetime()#</td>
 										<td>#conv.getCreatedUser()#</td>
-										<td><a href="#APPLICATION.urlAdmin#conversation_detail.cfm?id=#conv.getConversationId()#">View Detail</a></td>
+										<td><a href="#APPLICATION.urlHttpsAdmin#conversation_detail.cfm?id=#conv.getConversationId()#">View Detail</a></td>
 									</tr>
 								</cfloop>
 							<cfelse>
@@ -436,8 +436,8 @@
 			<div class="form-group">
 				<button name="save_item" type="submit" class="btn btn-primary top-nav-button">Save Customer</button>
 				<cfif NOT IsNull(REQUEST.pageData.customer)>
-					<a href="#APPLICATION.urlAdmin#new_order.cfm?customer_id=#REQUEST.pageData.customer.getCustomerId()#" class="btn btn-primary top-nav-button">Add Order</a>
-					<a href="#APPLICATION.urlAdmin#conversation_detail.cfm?customer_id=#REQUEST.pageData.customer.getCustomerId()#" class="btn btn-primary top-nav-button">Add Conversation</a>
+					<a href="#APPLICATION.urlHttpsAdmin#new_order.cfm?customer_id=#REQUEST.pageData.customer.getCustomerId()#" class="btn btn-primary top-nav-button">Add Order</a>
+					<a href="#APPLICATION.urlHttpsAdmin#conversation_detail.cfm?customer_id=#REQUEST.pageData.customer.getCustomerId()#" class="btn btn-primary top-nav-button">Add Conversation</a>
 				</cfif>
 				<button type="button" class="btn btn-danger pull-right #REQUEST.pageData.deleteButtonClass#" data-toggle="modal" data-target="##delete-current-entity-modal">Delete Customer</button>
 			</div>

@@ -14,7 +14,7 @@
 			<div class="box box-primary">
 				<div class="box-header">
 					<h3 class="box-title">Customer Groups</h3>
-					<a href="#APPLICATION.urlAdmin#customer_group_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Customer Group</a>
+					<a href="#APPLICATION.urlHttpsAdmin#customer_group_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Customer Group</a>
 				</div><!-- /.box-header -->
 				<div class="box-body table-responsive">
 					<table class="table table-bordered table-hover">
@@ -29,7 +29,7 @@
 							<tr>
 								<td>#group.getDisplayName()#</td>
 								<td>#group.getIsDefault()#</td>
-								<td><a href="#APPLICATION.urlAdmin#customer_group_detail.cfm?id=#group.getCustomerGroupId()#">View Detail</a></td>
+								<td><a href="#APPLICATION.urlHttpsAdmin#customer_group_detail.cfm?id=#group.getCustomerGroupId()#">View Detail</a></td>
 							</tr>
 						</cfloop>
 				

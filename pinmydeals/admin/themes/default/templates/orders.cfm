@@ -39,7 +39,7 @@
 			<div class="box box-primary">
 				<div class="box-header">
 					<h3 class="box-title">Orders</h3>
-					<a href="#APPLICATION.urlAdmin#new_order.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Order</a>
+					<a href="#APPLICATION.urlHttpsAdmin#new_order.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Order</a>
 				</div><!-- /.box-header -->
 				<div class="box-body table-responsive">
 					<table class="table table-bordered table-hover">
@@ -73,8 +73,8 @@
 									</td>
 									<td>#DateFormat(order.getCreatedDatetime(),"mmm dd,yyyy")#</td>
 									<td>#isNull(EntityLoad("order_status",{order = order, current = true}, true))?"":EntityLoad("order_status",{order = order, current = true}, true).getOrderStatusType().getDisplayName()#</td>
-									<td><a href="#APPLICATION.urlAdmin#order_detail.cfm?id=#order.getOrderId()#&active_tab_id=tab_4">Invoice</a></td>
-									<td><a href="#APPLICATION.urlAdmin#order_detail.cfm?id=#order.getOrderId()#">View Detail</a></td>
+									<td><a href="#APPLICATION.urlHttpsAdmin#order_detail.cfm?id=#order.getOrderId()#&active_tab_id=tab_4">Invoice</a></td>
+									<td><a href="#APPLICATION.urlHttpsAdmin#order_detail.cfm?id=#order.getOrderId()#">View Detail</a></td>
 								</tr>
 							</cfloop>
 						<cfelse>

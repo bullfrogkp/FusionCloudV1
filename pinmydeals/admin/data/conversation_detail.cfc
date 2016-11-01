@@ -67,7 +67,7 @@
 			<cfset EntitySave(LOCAL.conv) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Conversation has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin##getPageName()#.cfm?id=#LOCAL.conv.getConversationId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin##getPageName()#.cfm?id=#LOCAL.conv.getConversationId()#" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

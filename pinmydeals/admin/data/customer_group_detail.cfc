@@ -58,7 +58,7 @@
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Customer group has been saved successfully.") />
 			
-			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin##getPageName()#.cfm?id=#LOCAL.customerGroup.getCustomerGroupId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin##getPageName()#.cfm?id=#LOCAL.customerGroup.getCustomerGroupId()#" />
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 			
 			<cfset LOCAL.customerGroup.setIsDeleted(true) />
@@ -67,7 +67,7 @@
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Customer group #LOCAL.customerGroup.getDisplayName()# has been deleted.") />
 			
-			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#customer_groups.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin#customer_groups.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

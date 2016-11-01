@@ -39,7 +39,7 @@
 			<div class="box box-primary">
 				<div class="box-header">
 					<h3 class="box-title">Customers</h3>
-					<a href="#APPLICATION.urlAdmin#customer_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Customer</a>
+					<a href="#APPLICATION.urlHttpsAdmin#customer_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Customer</a>
 				</div><!-- /.box-header -->
 				<div class="box-body table-responsive">
 					<table class="table table-bordered table-hover">
@@ -74,7 +74,7 @@
 											<cfcase value="no"><span class="label label-danger">Disabled</span></cfcase>
 										</cfswitch>
 									</td>
-									<td><a href="#APPLICATION.urlAdmin#customer_detail.cfm?id=#c.getCustomerId()#">View Detail</a></td>
+									<td><a href="#APPLICATION.urlHttpsAdmin#customer_detail.cfm?id=#c.getCustomerId()#">View Detail</a></td>
 								</tr>
 							</cfloop>
 						<cfelse>

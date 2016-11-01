@@ -52,7 +52,7 @@
 			<cfset EntitySave(LOCAL.filterGroup) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Filter group has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin##getPageName()#.cfm?id=#LOCAL.filterGroup.getFilterGroupId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin##getPageName()#.cfm?id=#LOCAL.filterGroup.getFilterGroupId()#" />
 			
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 			<cfset LOCAL.filterGroup.setIsDeleted(true) />
@@ -60,7 +60,7 @@
 			<cfset EntitySave(LOCAL.filterGroup) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Filter group has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#filter_groups.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin#filter_groups.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

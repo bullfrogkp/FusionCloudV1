@@ -261,7 +261,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#APPLICATION.urlAdmin#user_detail.cfm?id=#SESSION.adminUserId#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="#APPLICATION.urlHttpsAdmin#user_detail.cfm?id=#SESSION.adminUserId#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="#CGI.SCRIPT_NAME#?logout" class="btn btn-default btn-flat">Sign out</a>
@@ -302,7 +302,7 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                      <ul class="sidebar-menu">
                         <li class="index">
-                            <a href="#APPLICATION.urlAdmin#index.cfm">
+                            <a href="#APPLICATION.urlHttpsAdmin#index.cfm">
                                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
@@ -313,8 +313,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="categories"><a href="#APPLICATION.urlAdmin#categories.cfm"><i class="fa fa-angle-double-right"></i> Categories</a></li>
-                                <li class="category_detail"><a href="#APPLICATION.urlAdmin#category_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Category</a></li>
+                                <li class="categories"><a href="#APPLICATION.urlHttpsAdmin#categories.cfm"><i class="fa fa-angle-double-right"></i> Categories</a></li>
+                                <li class="category_detail"><a href="#APPLICATION.urlHttpsAdmin#category_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Category</a></li>
                             </ul>
                         </li>
 						<li class="treeview">
@@ -324,10 +324,10 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="products"><a href="#APPLICATION.urlAdmin#products.cfm"><i class="fa fa-angle-double-right"></i> Products</a></li>
-                                <li class="product_detail"><a href="#APPLICATION.urlAdmin#product_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Product</a></li>
-								<li class="product_groups"><a href="#APPLICATION.urlAdmin#product_groups.cfm"><i class="fa fa-angle-double-right"></i> Product Groups</a></li>
-                                <li class="product_group_detail"><a href="#APPLICATION.urlAdmin#product_group_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Product Group</a></li>
+                                <li class="products"><a href="#APPLICATION.urlHttpsAdmin#products.cfm"><i class="fa fa-angle-double-right"></i> Products</a></li>
+                                <li class="product_detail"><a href="#APPLICATION.urlHttpsAdmin#product_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Product</a></li>
+								<li class="product_groups"><a href="#APPLICATION.urlHttpsAdmin#product_groups.cfm"><i class="fa fa-angle-double-right"></i> Product Groups</a></li>
+                                <li class="product_group_detail"><a href="#APPLICATION.urlHttpsAdmin#product_group_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Product Group</a></li>
                             </ul>
                         </li>
 						
@@ -338,10 +338,10 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="customers"><a href="#APPLICATION.urlAdmin#customers.cfm"><i class="fa fa-angle-double-right"></i> Customers</a></li>
-                                <li class="customer_detail"><a href="#APPLICATION.urlAdmin#customer_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Customer</a></li>
-                                <li class="customer_groups"><a href="#APPLICATION.urlAdmin#customer_groups.cfm"><i class="fa fa-angle-double-right"></i> Customer Groups</a></li>
-                                <li class="customer_group_detail"><a href="#APPLICATION.urlAdmin#customer_group_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Customer Group</a></li>
+                                <li class="customers"><a href="#APPLICATION.urlHttpsAdmin#customers.cfm"><i class="fa fa-angle-double-right"></i> Customers</a></li>
+                                <li class="customer_detail"><a href="#APPLICATION.urlHttpsAdmin#customer_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Customer</a></li>
+                                <li class="customer_groups"><a href="#APPLICATION.urlHttpsAdmin#customer_groups.cfm"><i class="fa fa-angle-double-right"></i> Customer Groups</a></li>
+                                <li class="customer_group_detail"><a href="#APPLICATION.urlHttpsAdmin#customer_group_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Customer Group</a></li>
                             </ul>
                         </li>
 						<li class="treeview">
@@ -351,10 +351,10 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="coupons"><a href="#APPLICATION.urlAdmin#coupons.cfm"><i class="fa fa-angle-double-right"></i> Coupons</a></li>
-                                <li class="coupon_detail"><a href="#APPLICATION.urlAdmin#coupon_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Coupon</a></li>
-								<li class="discount_types"><a href="#APPLICATION.urlAdmin#discount_types.cfm"><i class="fa fa-angle-double-right"></i> Discount Types</a></li>
-                                <li class="discount_type_detail"><a href="#APPLICATION.urlAdmin#discount_type_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Discount Type</a></li>
+                                <li class="coupons"><a href="#APPLICATION.urlHttpsAdmin#coupons.cfm"><i class="fa fa-angle-double-right"></i> Coupons</a></li>
+                                <li class="coupon_detail"><a href="#APPLICATION.urlHttpsAdmin#coupon_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Coupon</a></li>
+								<li class="discount_types"><a href="#APPLICATION.urlHttpsAdmin#discount_types.cfm"><i class="fa fa-angle-double-right"></i> Discount Types</a></li>
+                                <li class="discount_type_detail"><a href="#APPLICATION.urlHttpsAdmin#discount_type_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Discount Type</a></li>
                             </ul>
                         </li>
 						<li class="treeview">
@@ -364,10 +364,10 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="newsletters"><a href="#APPLICATION.urlAdmin#newsletters.cfm"><i class="fa fa-angle-double-right"></i> Newsletters</a></li>
-                                <li class="newsletter_detail"><a href="#APPLICATION.urlAdmin#newsletter_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Newsletter</a></li>
-								<li class="system_emails"><a href="#APPLICATION.urlAdmin#system_emails.cfm"><i class="fa fa-angle-double-right"></i> System Emails</a></li>
-                                <li class="system_email_detail"><a href="#APPLICATION.urlAdmin#system_email_detail.cfm"><i class="fa fa-angle-double-right"></i> Add System Email</a></li>
+                                <li class="newsletters"><a href="#APPLICATION.urlHttpsAdmin#newsletters.cfm"><i class="fa fa-angle-double-right"></i> Newsletters</a></li>
+                                <li class="newsletter_detail"><a href="#APPLICATION.urlHttpsAdmin#newsletter_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Newsletter</a></li>
+								<li class="system_emails"><a href="#APPLICATION.urlHttpsAdmin#system_emails.cfm"><i class="fa fa-angle-double-right"></i> System Emails</a></li>
+                                <li class="system_email_detail"><a href="#APPLICATION.urlHttpsAdmin#system_email_detail.cfm"><i class="fa fa-angle-double-right"></i> Add System Email</a></li>
                             </ul>
                         </li>		
 						<li class="treeview">
@@ -377,8 +377,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="orders"><a href="#APPLICATION.urlAdmin#orders.cfm"><i class="fa fa-angle-double-right"></i> Orders</a></li>
-                                <li class="order_detail new_order"><a href="#APPLICATION.urlAdmin#new_order.cfm"><i class="fa fa-angle-double-right"></i> Add Order</a></li>
+                                <li class="orders"><a href="#APPLICATION.urlHttpsAdmin#orders.cfm"><i class="fa fa-angle-double-right"></i> Orders</a></li>
+                                <li class="order_detail new_order"><a href="#APPLICATION.urlHttpsAdmin#new_order.cfm"><i class="fa fa-angle-double-right"></i> Add Order</a></li>
                             </ul>
                         </li>
 						<li class="treeview">
@@ -388,8 +388,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="conversations"><a href="#APPLICATION.urlAdmin#conversations.cfm"><i class="fa fa-angle-double-right"></i> Conversations</a></li>
-                                <li class="conversation_detail"><a href="#APPLICATION.urlAdmin#conversation_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Conversation</a></li>
+                                <li class="conversations"><a href="#APPLICATION.urlHttpsAdmin#conversations.cfm"><i class="fa fa-angle-double-right"></i> Conversations</a></li>
+                                <li class="conversation_detail"><a href="#APPLICATION.urlHttpsAdmin#conversation_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Conversation</a></li>
                             </ul>
                         </li>
 						<li class="treeview">
@@ -399,12 +399,12 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="users"><a href="#APPLICATION.urlAdmin#users.cfm"><i class="fa fa-angle-double-right"></i> Users</a></li>
-                                <li class="user_detail"><a href="#APPLICATION.urlAdmin#user_detail.cfm"><i class="fa fa-angle-double-right"></i> Add User</a></li>
+                                <li class="users"><a href="#APPLICATION.urlHttpsAdmin#users.cfm"><i class="fa fa-angle-double-right"></i> Users</a></li>
+                                <li class="user_detail"><a href="#APPLICATION.urlHttpsAdmin#user_detail.cfm"><i class="fa fa-angle-double-right"></i> Add User</a></li>
                             </ul>
                         </li>
 						<li class="reviews">
-                            <a href="#APPLICATION.urlAdmin#reviews.cfm">
+                            <a href="#APPLICATION.urlHttpsAdmin#reviews.cfm">
                                 <i class="fa fa-comment"></i> <span>Reviews</span>
                             </a>
                         </li>	
@@ -415,8 +415,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="homepage"><a href="#APPLICATION.urlAdmin#pages.cfm"><i class="fa fa-angle-double-right"></i> Pages</a></li>
-                                <li class="site_content_detail"><a href="#APPLICATION.urlAdmin#page_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Page</a></li>
+                                <li class="homepage"><a href="#APPLICATION.urlHttpsAdmin#pages.cfm"><i class="fa fa-angle-double-right"></i> Pages</a></li>
+                                <li class="site_content_detail"><a href="#APPLICATION.urlHttpsAdmin#page_detail.cfm"><i class="fa fa-angle-double-right"></i> Add Page</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -426,18 +426,18 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li class="attributes attribute_detail"><a href="#APPLICATION.urlAdmin#attributes.cfm"><i class="fa fa-angle-double-right"></i> Attributes</a></li>		
-                                <li class="filters filter_detail"><a href="#APPLICATION.urlAdmin#filters.cfm"><i class="fa fa-angle-double-right"></i> Filters</a></li>		
-                                <li class="currencies currency_detail"><a href="#APPLICATION.urlAdmin#currencies.cfm"><i class="fa fa-angle-double-right"></i> Currencies</a></li>
-                                <li class="tax_information"><a href="#APPLICATION.urlAdmin#tax_information.cfm"><i class="fa fa-angle-double-right"></i> Taxes</a></li>
-                                <li class="site_info"><a href="#APPLICATION.urlAdmin#site_info.cfm"><i class="fa fa-angle-double-right"></i> Site Info</a></li>
+                                <li class="attributes attribute_detail"><a href="#APPLICATION.urlHttpsAdmin#attributes.cfm"><i class="fa fa-angle-double-right"></i> Attributes</a></li>		
+                                <li class="filters filter_detail"><a href="#APPLICATION.urlHttpsAdmin#filters.cfm"><i class="fa fa-angle-double-right"></i> Filters</a></li>		
+                                <li class="currencies currency_detail"><a href="#APPLICATION.urlHttpsAdmin#currencies.cfm"><i class="fa fa-angle-double-right"></i> Currencies</a></li>
+                                <li class="tax_information"><a href="#APPLICATION.urlHttpsAdmin#tax_information.cfm"><i class="fa fa-angle-double-right"></i> Taxes</a></li>
+                                <li class="site_info"><a href="#APPLICATION.urlHttpsAdmin#site_info.cfm"><i class="fa fa-angle-double-right"></i> Site Info</a></li>
 								<!---
-								<li class="order_status_types"><a href="#APPLICATION.urlAdmin#order_status_types.cfm"><i class="fa fa-angle-double-right"></i> Order Status Types</a></li>								
-                                <li class="order_product_status_types"><a href="#APPLICATION.urlAdmin#order_product_status_types.cfm"><i class="fa fa-angle-double-right"></i> Product Status Types</a></li>		
-                                <li class="payment_methods"><a href="#APPLICATION.urlAdmin#payment_methods.cfm"><i class="fa fa-angle-double-right"></i> Payment</a></li>	
-                                <li class="shipping_methods"><a href="#APPLICATION.urlAdmin#shipping_methods.cfm"><i class="fa fa-angle-double-right"></i> Shipping</a></li>	
-                                <li class="countries"><a href="#APPLICATION.urlAdmin#countries.cfm"><i class="fa fa-angle-double-right"></i> Countries</a></li>
-                                <li class="provinces"><a href="#APPLICATION.urlAdmin#provinces.cfm"><i class="fa fa-angle-double-right"></i> Provinces</a></li>
+								<li class="order_status_types"><a href="#APPLICATION.urlHttpsAdmin#order_status_types.cfm"><i class="fa fa-angle-double-right"></i> Order Status Types</a></li>								
+                                <li class="order_product_status_types"><a href="#APPLICATION.urlHttpsAdmin#order_product_status_types.cfm"><i class="fa fa-angle-double-right"></i> Product Status Types</a></li>		
+                                <li class="payment_methods"><a href="#APPLICATION.urlHttpsAdmin#payment_methods.cfm"><i class="fa fa-angle-double-right"></i> Payment</a></li>	
+                                <li class="shipping_methods"><a href="#APPLICATION.urlHttpsAdmin#shipping_methods.cfm"><i class="fa fa-angle-double-right"></i> Shipping</a></li>	
+                                <li class="countries"><a href="#APPLICATION.urlHttpsAdmin#countries.cfm"><i class="fa fa-angle-double-right"></i> Countries</a></li>
+                                <li class="provinces"><a href="#APPLICATION.urlHttpsAdmin#provinces.cfm"><i class="fa fa-angle-double-right"></i> Provinces</a></li>
 								--->								
                             </ul>
                         </li>
@@ -449,10 +449,10 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#APPLICATION.urlAdmin#"><i class="fa fa-angle-double-right"></i> Sales</a></li>
-                                <li><a href="#APPLICATION.urlAdmin#"><i class="fa fa-angle-double-right"></i> Customers</a></li>
-                                <li><a href="#APPLICATION.urlAdmin#"><i class="fa fa-angle-double-right"></i> Products</a></li>
-                                <li><a href="#APPLICATION.urlAdmin#"><i class="fa fa-angle-double-right"></i> Reviews</a></li>
+                                <li><a href="#APPLICATION.urlHttpsAdmin#"><i class="fa fa-angle-double-right"></i> Sales</a></li>
+                                <li><a href="#APPLICATION.urlHttpsAdmin#"><i class="fa fa-angle-double-right"></i> Customers</a></li>
+                                <li><a href="#APPLICATION.urlHttpsAdmin#"><i class="fa fa-angle-double-right"></i> Products</a></li>
+                                <li><a href="#APPLICATION.urlHttpsAdmin#"><i class="fa fa-angle-double-right"></i> Reviews</a></li>
                             </ul>
                         </li>
 							--->

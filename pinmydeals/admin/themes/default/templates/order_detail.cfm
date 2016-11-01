@@ -179,7 +179,7 @@
 													<cfloop array="#REQUEST.pageData.order.getProducts()#" index="product">
 														<tr>
 															<td><img class="img-responsive" src="#product.getImageName()#" style="width:100px;" /></td>
-															<td><a href="#APPLICATION.urlAdmin#product_detail.cfm?id=#product.getProduct().getProductId()#">#product.getProductName()#</a></td>
+															<td><a href="#APPLICATION.urlHttpsAdmin#product_detail.cfm?id=#product.getProduct().getProductId()#">#product.getProductName()#</a></td>
 															<td>#product.getSKU()#</td>
 															<td>#product.getPrice()#</td>
 															<td>#product.getQuantity()#</td>

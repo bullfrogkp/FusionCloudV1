@@ -14,7 +14,7 @@
 			<div class="box box-primary">
 				<div class="box-header">
 					<h3 class="box-title">Discount Types</h3>
-					<a href="#APPLICATION.urlAdmin#discount_type_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Discount Type</a>
+					<a href="#APPLICATION.urlHttpsAdmin#discount_type_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Discount Type</a>
 				</div><!-- /.box-header -->
 				<div class="box-body table-responsive">
 					<table class="table table-bordered table-hover">
@@ -32,7 +32,7 @@
 									<td>#type.getDisplayName()#</td>
 									<td>#type.getCalculationType().getDisplayName()#</td>
 									<td>#type.getAmount()#</td>
-									<td><a href="#APPLICATION.urlAdmin#discount_type_detail.cfm?id=#type.getDiscountTypeId()#">View Detail</a></td>
+									<td><a href="#APPLICATION.urlHttpsAdmin#discount_type_detail.cfm?id=#type.getDiscountTypeId()#">View Detail</a></td>
 								</tr>
 							</cfloop>
 						<cfelse>
