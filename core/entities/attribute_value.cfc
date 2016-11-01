@@ -22,9 +22,9 @@
 		</cfif>
 		
 		<cfif IsNull(getImageName()) OR Trim(getImageName()) EQ "">
-			<cfset imageLink = "#APPLICATION.urlAdmin#images/site/no_image_available.png" />
+			<cfset imageLink = "#APPLICATION.urlHttpsAdmin#images/site/no_image_available.png" />
 		<cfelse>
-			<cfset imageLink = "#APPLICATION.urlAdmin#images/uploads/product/#LOCAL.productId#/#imageType##getImageName()#" />
+			<cfset imageLink = "#APPLICATION.urlHttpsAdmin#images/uploads/product/#LOCAL.productId#/#imageType##getImageName()#" />
 		</cfif>
 		
 		<cfreturn imageLink />

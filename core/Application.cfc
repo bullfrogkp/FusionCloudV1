@@ -7,11 +7,9 @@
 	<cfset this.dataSource = Config().dataSource> 
 	<cfset this.sessionManagement = Config().sessionManagement>
 	<cfset this.sessionTimeout = Config().sessionTimeout>
-	<cfset this.restsettings.cfclocation = "./webservice">
-    <cfset this.restsettings.skipcfcwitherror = false>
 	<!------------------------------------------------------------------------------->
-	<cfset this.mappings[ "/core" ] = Config().env.absolutePathCore />
-	<cfset this.mappings[ "/siteData" ] = Config().env.absolutePathSiteData />
+	<cfset this.mappings[ "/core" ] = Config().env.pathCore />
+	<cfset this.mappings[ "/dataAdmin" ] = Config().env.dataPathAdmin />
 	<!------------------------------------------------------------------------------->
     <cffunction name="Config" access="public" returntype="struct" output="false" hint="Returns the Application.cfc configuration settings struct based on the execution environment (production, staging, development, etc).">
 		<cfargument type="boolean" name="reload" required="false" default="false"/>
@@ -31,14 +29,21 @@
 			<cfset THIS[ "$Config" ].env = {} />
             <cfif Find( "127.0.0.1", CGI.server_name ) OR Find( ".loc", CGI.server_name )>
                 <cfset THIS[ "$Config" ].isLive = false />
-				<cfset THIS[ "$Config" ].env.domain = "www.pinmydeals.loc" />
-				<cfset THIS[ "$Config" ].env.apiDomain = "api.pinmydeals.loc" />
-				<cfset THIS[ "$Config" ].env.absoluteUrlSite = "/" />
-				<cfset THIS[ "$Config" ].env.absolutePathSite = ExpandPath("/site/pinmydeals/www/") />
-				<cfset THIS[ "$Config" ].env.absolutePathSiteData = ExpandPath("/site/pinmydeals/www/data/") />
-				<cfset THIS[ "$Config" ].env.absolutePathCore = ExpandPath("/site/core/") />
-				<cfset THIS[ "$Config" ].env.urlHttp = "http://#THIS[ "$Config" ].env.domain#" />
-				<cfset THIS[ "$Config" ].env.urlHttps = "http://#THIS[ "$Config" ].env.domain#" />
+                <cfset THIS[ "$Config" ].env.domain = "pinmydeals.loc" />
+                <cfset THIS[ "$Config" ].env.domainSite = "www.#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.domainAdmin = "admin.#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.domainAPI = "api.#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.domainImages = "images.#THIS[ "$Config" ].env.domain#" />
+				<cfset THIS[ "$Config" ].env.urlHttpSite = "http://#THIS[ "$Config" ].env.domainSite#/" />
+				<cfset THIS[ "$Config" ].env.urlHttpsSite = "http://#THIS[ "$Config" ].env.domainSite#/" />
+				<cfset THIS[ "$Config" ].env.urlHttpAdmin = "http://#THIS[ "$Config" ].env.domainAdmin#/" />
+				<cfset THIS[ "$Config" ].env.urlHttpsAdmin = "http://#THIS[ "$Config" ].env.domainAdmin#/" />
+				<cfset THIS[ "$Config" ].env.pathSite = ExpandPath("/site/pinmydeals/www/") />
+				<cfset THIS[ "$Config" ].env.pathAdmin = ExpandPath("/site/pinmydeals/admin/") />
+				<cfset THIS[ "$Config" ].env.pathImages = ExpandPath("/site/pinmydeals/images/") />
+				<cfset THIS[ "$Config" ].env.pathCore = ExpandPath("/site/core/") />
+				<cfset THIS[ "$Config" ].env.dataPathSite = ExpandPath("/site/pinmydeals/www/data/") />
+				<cfset THIS[ "$Config" ].env.dataPathAdmin = ExpandPath("/site/pinmydeals/admin/data/") />
 				
 				<cfset THIS[ "$Config" ].env.ups = {} />
 				<cfset THIS[ "$Config" ].env.ups.accesskey = "CC9C9C10118EBCF0">

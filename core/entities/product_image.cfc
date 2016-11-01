@@ -12,6 +12,6 @@
 			<cfset imageType = "#Trim(ARGUMENTS.type)#_" />
 		</cfif>
 		
-		<cfreturn "#APPLICATION.urlAdmin#images/uploads/product/#getProduct().getProductId()#/#imageType##getName()#" />
+		<cfreturn "#APPLICATION.urlHttpsAdmin#images/uploads/product/#getProduct().getProductId()#/#imageType##getName()#" />
 	</cffunction>
 </cfcomponent>

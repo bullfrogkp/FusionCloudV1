@@ -63,12 +63,12 @@
 	<cffunction name="_setRedirectURL" access="private" output="false" returnType="string">
 		<cfif StructKeyExists(URL,"id") AND IsNumeric(URL.id)>	
 			<cfif StructKeyExists(URL,"active_tab_id")>	
-				<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#admin/#getPageName()#.cfm?id=#URL.id#&active_tab_id=#URL.active_tab_id#" />
+				<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin#admin/#getPageName()#.cfm?id=#URL.id#&active_tab_id=#URL.active_tab_id#" />
 			<cfelse>
-				<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#admin/#getPageName()#.cfm?id=#URL.id#" />
+				<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin#admin/#getPageName()#.cfm?id=#URL.id#" />
 			</cfif>
 		<cfelse>
-			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#admin/#getPageName()#.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin#admin/#getPageName()#.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL.redirectUrl />	
