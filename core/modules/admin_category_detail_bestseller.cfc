@@ -1,4 +1,5 @@
 ﻿<cfcomponent extends="core.modules.module">	
+	<!------------------------------------------------------------------------------->
     <cffunction name="getData" access="public" output="false" returnType="struct">
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.categoryService = new "core.services.categoryService"() />
@@ -90,4 +91,30 @@
 		</cfif>				
 		<cfreturn LOCAL.retStruct />
 	</cffunction>
+	<!------------------------------------------------------------------------------->	
+	<cffunction name="processFormData" access="remote" output="false" returnType="struct" returnformat="json">
+		<cfset var LOCAL = {} />
+		<cfset LOCAL.retStruct = {} />
+		<cfset LOCAL.retStruct.isValid = true />
+		<cfset LOCAL.retStruct.messageArray = [] />
+		
+		<cfif StructKeyExists(FORM,"save_item")>	
+			<cfset LOCAL.sectionProducts = EntityLoad("page_section_product", {section = LOCAL.bestSellerSection, category = LOCAL.category})> 
+			<cfloop array="#LOCAL.sectionProducts#" index="LOCAL.sectionProduct">
+				<cfset EntityDelete(LOCAL.sectionProduct) />
+			</cfloop>
+			<cfif StructKeyExists(FORM,"products_selected") AND FORM.products_selected NEQ "">
+				<cfloop list="#FORM.products_selected#" index="LOCAL.productId">
+					<cfset LOCAL.newSectionProduct = EntityNew("page_section_product") />
+					<cfset LOCAL.newSectionProduct.setSection(LOCAL.bestSellerSection) />
+					<cfset LOCAL.newSectionProduct.setProduct(EntityLoadByPK("product",LOCAL.productId)) />
+					<cfset LOCAL.newSectionProduct.setCategory(LOCAL.category) />
+					<cfset EntitySave(LOCAL.newSectionProduct) />
+				</cfloop>
+			</cfif>
+		</cfif>
+			
+		<cfreturn LOCAL.retStruct />
+	</cffunction>
+	<!------------------------------------------------------------------------------->
 </cfcomponent>
