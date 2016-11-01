@@ -48,40 +48,13 @@
 			<cfset LOCAL.category.setDescription(Trim(FORM.description)) />
 			<cfset LOCAL.category.setCustomDesign(Trim(FORM.custom_design)) />
 			
-			
 			<cfset EntitySave(LOCAL.category) />
-			
 			
 			<cfif NOT IsNull(LOCAL.category.getImages())>
 				<cfloop array="#LOCAL.category.getImages()#" index="LOCAL.img">
 					<cfif IsNumeric(FORM["rank_#LOCAL.img.getCategoryImageId()#"])>
 						<cfset LOCAL.img.setRank(FORM["rank_#LOCAL.img.getCategoryImageId()#"]) />
 						<cfset EntitySave(LOCAL.img) />
-					</cfif>
-				</cfloop>
-			</cfif>
-			
-			<cfif FORM["uploader_count"] NEQ 0>
-				<cfloop collection="#FORM#" item="LOCAL.key">
-					<cfif Find("UPLOADER_",LOCAL.key) AND Find("_STATUS",LOCAL.key)>
-						<cfset LOCAL.currentIndex = Replace(Replace(LOCAL.key,"UPLOADER_",""),"_STATUS","") />
-						<cfif StructFind(FORM,LOCAL.key) EQ "done">
-							<cfset LOCAL.imgName = StructFind(FORM,"UPLOADER_#LOCAL.currentIndex#_NAME") />
-							<cfset LOCAL.imagePath = ExpandPath("#APPLICATION.urlHttpsAdmin#images/uploads/category/") />
-						
-							<cfset LOCAL.imageDir = LOCAL.imagePath & LOCAL.category.getCategoryId() />
-							<cfif NOT DirectoryExists(LOCAL.imageDir)>
-								<cfdirectory action = "create" directory = "#LOCAL.imageDir#" />
-							</cfif>
-							
-							<cffile action = "move" source = "#LOCAL.imagePath##LOCAL.imgName#" destination = "#LOCAL.imagePath##LOCAL.category.getCategoryId()#\#LOCAL.imgName#">
-						
-							<cfset LOCAL.categoryImage = EntityNew("category_image") />
-							<cfset LOCAL.categoryImage.setName(LOCAL.imgName) />
-							<cfset LOCAL.categoryImage.setIsDefault(false) />
-							<cfset EntitySave(LOCAL.categoryImage) />
-							<cfset LOCAL.category.addImage(LOCAL.categoryImage) />
-						</cfif>
 					</cfif>
 				</cfloop>
 			</cfif>
@@ -96,7 +69,23 @@
 				<cfset LOCAL.newDefaultImage.setIsDefault(true) />
 				<cfset EntitySave(LOCAL.newDefaultImage) />
 			</cfif>
-				
+			
+			<cfif FORM["uploader_count"] NEQ 0>
+				<cfloop collection="#FORM#" item="LOCAL.key">
+					<cfif Find("UPLOADER_",LOCAL.key) AND Find("_STATUS",LOCAL.key)>
+						<cfset LOCAL.currentIndex = Replace(Replace(LOCAL.key,"UPLOADER_",""),"_STATUS","") />
+						<cfif StructFind(FORM,LOCAL.key) EQ "done">
+							<cfset LOCAL.imgName = StructFind(FORM,"UPLOADER_#LOCAL.currentIndex#_NAME") />
+							<cfset LOCAL.categoryImage = EntityNew("category_image") />
+							<cfset LOCAL.categoryImage.setName(LOCAL.imgName) />
+							<cfset LOCAL.categoryImage.setIsDefault(false) />
+							<cfset LOCAL.categoryImage.setCategory(LOCAL.category) />
+							<cfset EntitySave(LOCAL.categoryImage) />
+						</cfif>
+					</cfif>
+				</cfloop>
+			</cfif>
+			
 			<!--- filters --->
 			<cfif IsNumeric(FORM.id)>
 				<!--- category filters and values --->
