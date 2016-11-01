@@ -371,30 +371,54 @@ $(function() {
 						dataType: 'json',
 						data: fd
 				})
-				.done(function(data) {	
-					var str = '<div class="alert ';
-					
-					if(data.ISVALID == true)
-						str += 'alert-success ';
-					else
-						str += 'alert-danger ';
-					
-					str += 'alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
-					
-					for(var i=0;i<data.MESSAGEARRAY.length;i++) {
-						str += data.MESSAGEARRAY[i] + '<br/>';
+				.done(function(data) {		
+					if(data.ISVALID == true) {
+						fd.method = 'processFormData';
+						$.ajax({
+							type: "post",
+							url: "http://admin.pinmydeals.loc/ajax/page.cfc",
+							dataType: 'json',
+							data: fd
+						})
+						.done(function(data) {	
+							var str = '<div class="alert ';
+							
+							if(data.ISVALID == true)
+								str += 'alert-success ';
+							else
+								str += 'alert-danger ';
+							
+							str += 'alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+							
+							for(var i=0;i<data.MESSAGEARRAY.length;i++) {
+								str += data.MESSAGEARRAY[i] + '<br/>';
+							}
+							
+							str += '</div>';
+							$("#messages").html(str); 
+	
+							$("#loading-overlay").remove();
+							$(".loading-img").remove();
+						})
+						.fail(function(data) {
+							alert( "error" );
+						});
+					} else {
+						var str = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+						
+						for(var i=0;i<data.MESSAGEARRAY.length;i++) {
+							str += data.MESSAGEARRAY[i] + '<br/>';
+						}
+						
+						str += '</div>';
+						$("#messages").html(str); 
 					}
-					
-					str += '</div>';
-					$("#messages").html(str); 
 
 					$("#loading-overlay").remove();
 					$(".loading-img").remove();
 				})
 				.fail(function(data) {
 					alert( "error" );
-				})
-				.always(function(data) {
 				});
 			});
 		});

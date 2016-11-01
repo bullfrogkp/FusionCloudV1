@@ -10,10 +10,6 @@
 			<cfset LOCAL.retStruct.isValid = false />
 		</cfif>
 		
-		<cfif LOCAL.retStruct.isValid EQ true>
-			<cfset ArrayAppend(LOCAL.retStruct.messageArray,"Category information has been saved successfully.") />
-		</cfif>
-		
 		<cfreturn LOCAL.retStruct />
 	</cffunction>
 
@@ -25,11 +21,11 @@
 				
 		<cfif IsNumeric(FORM.id)>
 			<cfset LOCAL.category = EntityLoadByPK("category", FORM.id)> 
-			<cfset LOCAL.category.setUpdatedUser(FORM.user) />
+			<cfset LOCAL.category.setUpdatedUser(SESSION.adminUser) />
 			<cfset LOCAL.category.setUpdatedDatetime(Now()) />
 		<cfelse>
 			<cfset LOCAL.category = EntityNew("category")> 
-			<cfset LOCAL.category.setCreatedUser(FORM.user) />
+			<cfset LOCAL.category.setCreatedUser(SESSION.adminUser) />
 			<cfset LOCAL.category.setCreatedDatetime(Now()) />
 			<cfset LOCAL.category.setIsDeleted(false) />
 		</cfif>
