@@ -5,11 +5,11 @@
 		<cfif StructKeyExists(getUrlData(),"id") AND IsNumeric(getUrlData().id)>
 			<cfset LOCAL.retStruct.products = EntityLoad("module_admin_category_detail_advertisement", {category=EntityLoadByPK("category",getUrlData().id)})> 
 			<cfset LOCAL.retStruct.tab_title = "hahaha"> 
-			<cfset LOCAL.retStruct.tab_view = '<div class="form-group"><div class="row">' />
+			<cfset LOCAL.retStruct.tab_content = '<div class="form-group"><div class="row">' />
 								
 			<cfif NOT IsNull(LOCAL.retStruct.products)>
 				<cfloop array="#LOCAL.retStruct.products#" index="ad">			
-					<cfset LOCAL.retStruct.tab_view &= '
+					<cfset LOCAL.retStruct.tab_content &= '
 						<div class="col-xs-2">
 							<div class="box box-warning">
 								<div class="box-body table-responsive no-padding">
@@ -36,7 +36,7 @@
 						</div>' />
 				</cfloop>
 			</cfif>
-			<cfset LOCAL.retStruct.tab_view &= '</div>
+			<cfset LOCAL.retStruct.tab_content &= '</div>
 				<div class="form-group">
 					<div id="ads_image">
 						<p>Your browser doesn not have Flash, Silverlight or HTML5 support.</p>

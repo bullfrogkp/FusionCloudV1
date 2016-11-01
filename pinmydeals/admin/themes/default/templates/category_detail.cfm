@@ -348,10 +348,10 @@
 					
 					<cfset tab_idx = REQUEST.pageData.totalTabs />
 					<cfloop collection="#REQUEST.moduleData#" item="m">
-						<cfif StructKeyExists(REQUEST.moduleData[m],"tab_view")>
+						<cfif StructKeyExists(REQUEST.moduleData[m],"tab_content")>
 							<cfset tab_idx += 1 />
 							<div class="tab-pane #REQUEST.pageData.tabs['tab_#tab_idx#']#" id="tab_#tab_idx#">
-								#REQUEST.moduleData[m].tab_view#
+								#REQUEST.moduleData[m].tab_content#
 							</div><!-- /.tab-pane -->
 						</cfif>
 					</cfloop>
