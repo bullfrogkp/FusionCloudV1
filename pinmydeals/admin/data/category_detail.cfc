@@ -30,6 +30,8 @@
 			<cfset LOCAL.category.setIsDeleted(false) />
 		</cfif>
 		
+		<cfset LOCAL.category.setName(LCase(Trim(FORM.display_name))) />
+		
 		<cfset ArrayAppend(LOCAL.retStruct.messageArray,"Category information has been saved successfully.") />
 		
 		<cfset EntitySave(LOCAL.category) />
