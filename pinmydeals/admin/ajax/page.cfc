@@ -1,4 +1,4 @@
-﻿<cfcomponent output="false" accessors="true">
+﻿<cfcomponent output="false">
 	<!------------------------------------------------------------------------------------------------------------>
 	<cffunction name="validateFormData" access="remote" returntype="struct" returnformat="json" output="false">
 		<cfset var LOCAL = {} />
