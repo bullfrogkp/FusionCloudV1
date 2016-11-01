@@ -32,7 +32,7 @@
 				<table>
 					<tr>
 						<td>
-							<div id="top-currency-icon" style="background: url(#APPLICATION.absoluteUrlSite#images/#SESSION.currency.code#.png) no-repeat;">
+							<div id="top-currency-icon" style="background: url(#APPLICATION.urlAdmin#images/#SESSION.currency.code#.png) no-repeat;">
 								<form method="post">
 									<select name="currency_id" style="font-size:10px;margin-top:-5px;" onchange="this.form.submit()">
 										<cfloop array="#REQUEST.pageData.currencies#" index="currency">
@@ -55,7 +55,7 @@
 							<cfif IsNumeric(SESSION.user.customerId)>
 								<a href="#CGI.SCRIPT_NAME#?logout">Logout</a>
 							<cfelse>
-								<a href="#APPLICATION.absoluteUrlSite#login.cfm">Sign In</a> / <a href="#APPLICATION.absoluteUrlSite#login.cfm">Create Account</a>
+								<a href="#APPLICATION.urlAdmin#login.cfm">Sign In</a> / <a href="#APPLICATION.urlAdmin#login.cfm">Create Account</a>
 							</cfif>
 						</td>
 					</tr>
@@ -67,31 +67,31 @@
 						<td>
 							<div id="top-order-tracking-icon"></div>
 						</td>
-						<td><a href="#APPLICATION.absoluteUrlSite#order_tracking.cfm">Order Tracking</a>&nbsp;&nbsp;&nbsp;</td>
+						<td><a href="#APPLICATION.urlAdmin#order_tracking.cfm">Order Tracking</a>&nbsp;&nbsp;&nbsp;</td>
 						<td>
 							<div id="top-myaccount-icon"></div>
 						</td>
 						<td>
 							<cfif IsNumeric(SESSION.user.customerId)>
-								<a href="#APPLICATION.absoluteUrlSite#myaccount/dashboard.cfm">My Account</a>&nbsp;&nbsp;&nbsp;
+								<a href="#APPLICATION.urlAdmin#myaccount/dashboard.cfm">My Account</a>&nbsp;&nbsp;&nbsp;
 							<cfelse>
-								<a href="#APPLICATION.absoluteUrlSite#login.cfm">My Account</a>&nbsp;&nbsp;&nbsp;
+								<a href="#APPLICATION.urlAdmin#login.cfm">My Account</a>&nbsp;&nbsp;&nbsp;
 							</cfif>
 						</td>
 						<td>
 							<div id="top-faq-icon"></div>
 						</td>
-						<td><a href="#APPLICATION.absoluteUrlSite#faq.cfm">FAQs</a></td>
+						<td><a href="#APPLICATION.urlAdmin#faq.cfm">FAQs</a></td>
 					</tr>
 				</table>
 			</div>
 		</div>
 	</div>
 	<div id="header" class="container">
-		<a href="#APPLICATION.absoluteUrlSite#index.cfm"><div id="logo"></div></a>
+		<a href="#APPLICATION.urlAdmin#index.cfm"><div id="logo"></div></a>
 		<div id="minicart">
 			<div style="position:relative;">
-				<a class="btn" href="#APPLICATION.absoluteUrlSite#cart.cfm">Shopping Cart </a>
+				<a class="btn" href="#APPLICATION.urlAdmin#cart.cfm">Shopping Cart </a>
 				<div id="cart-info">#REQUEST.pageData.shoppingCartItemTotalCount#</div>
 			</div>
 		</div>
@@ -133,7 +133,7 @@
 			<div class="container">
 				<ul>
 					<li>
-						<a href="#APPLICATION.absoluteUrlSite#index.cfm">Home</a>
+						<a href="#APPLICATION.urlAdmin#index.cfm">Home</a>
 					</li>
 					<li>|</li>
 					<cfloop array="#REQUEST.pageData.specialCategories#" index="sc">
@@ -143,7 +143,7 @@
 					<li>|</li>
 					</cfloop>
 					<li>
-						<a href="#APPLICATION.absoluteUrlSite#view_history.cfm">View History</a>
+						<a href="#APPLICATION.urlAdmin#view_history.cfm">View History</a>
 					</li>
 				</ul>
 			</div>
@@ -201,27 +201,27 @@
 					<td style="padding-bottom:10px;"><strong>CONNECT</strong></td>
 				</tr>
 				<tr>
-					<td><a href="#APPLICATION.absoluteUrlSite#site_content.cfm/payment">Payment Info</a></td>
+					<td><a href="#APPLICATION.urlAdmin#site_content.cfm/payment">Payment Info</a></td>
 					<td></td>
-					<td><a href="#APPLICATION.absoluteUrlSite#site_content.cfm/privacy">Privacy Policy</a></td>
+					<td><a href="#APPLICATION.urlAdmin#site_content.cfm/privacy">Privacy Policy</a></td>
 					<td></td>
-					<td><a href="#APPLICATION.absoluteUrlSite#site_content.cfm/about-us">About Us</a></td>
+					<td><a href="#APPLICATION.urlAdmin#site_content.cfm/about-us">About Us</a></td>
 					<td></td>
 					<td rowspan="5" valign="top">
 						<div>
-							<a href="#APPLICATION.absoluteUrlSite#">
+							<a href="#APPLICATION.urlAdmin#">
 							<img src="#SESSION.absoluteUrlTheme#images/facebook.png" style="width:24px;margin-right:10px;">
 							</a>
-							<a href="#APPLICATION.absoluteUrlSite#">
+							<a href="#APPLICATION.urlAdmin#">
 							<img src="#SESSION.absoluteUrlTheme#images/google.png" style="width:24px;margin-right:10px;">
 							</a>
-							<a href="#APPLICATION.absoluteUrlSite#">
+							<a href="#APPLICATION.urlAdmin#">
 							<img src="#SESSION.absoluteUrlTheme#images/YouTube2.png" style="width:24px;margin-right:10px;">
 							</a>
-							<a href="#APPLICATION.absoluteUrlSite#">
+							<a href="#APPLICATION.urlAdmin#">
 							<img src="#SESSION.absoluteUrlTheme#images/Linkedein.png" style="width:24px;margin-right:10px;">
 							</a>
-							<a href="#APPLICATION.absoluteUrlSite#">
+							<a href="#APPLICATION.urlAdmin#">
 							<img src="#SESSION.absoluteUrlTheme#images/Instagram.png" style="width:24px;">
 							</a>
 						</div>
@@ -231,27 +231,27 @@
 					</td>
 				</tr>
 				<tr>
-					<td><a href="#APPLICATION.absoluteUrlSite#site_content.cfm/shipping">Shipping Info</a></td>
+					<td><a href="#APPLICATION.urlAdmin#site_content.cfm/shipping">Shipping Info</a></td>
 					<td></td>
-					<td><a href="#APPLICATION.absoluteUrlSite#site_content.cfm/term-of-use">Terms of Use</a></td>
+					<td><a href="#APPLICATION.urlAdmin#site_content.cfm/term-of-use">Terms of Use</a></td>
 					<td></td>
-					<td><a href="#APPLICATION.absoluteUrlSite#contact_us.cfm">Contact Us</a></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td><a href="#APPLICATION.absoluteUrlSite#site_content.cfm/delivery-estimate">Delivery Estimate</a></td>
-					<td></td>
-					<td><a href="#APPLICATION.absoluteUrlSite#site_content.cfm/return-policy">Return Policy</a></td>
-					<td></td>
-					<td><a href="#APPLICATION.absoluteUrlSite#site_content.cfm/faqs">FAQs</a></td>
+					<td><a href="#APPLICATION.urlAdmin#contact_us.cfm">Contact Us</a></td>
 					<td></td>
 				</tr>
 				<tr>
-					<td><a href="#APPLICATION.absoluteUrlSite#site_content.cfm/locations">Locations</a></td>
+					<td><a href="#APPLICATION.urlAdmin#site_content.cfm/delivery-estimate">Delivery Estimate</a></td>
 					<td></td>
-					<td><a href="#APPLICATION.absoluteUrlSite#site_content.cfm/wholesale">Wholesale</a></td>
+					<td><a href="#APPLICATION.urlAdmin#site_content.cfm/return-policy">Return Policy</a></td>
 					<td></td>
-					<td><a href="#APPLICATION.absoluteUrlSite#report_problems.cfm">Report Problems</a></td>
+					<td><a href="#APPLICATION.urlAdmin#site_content.cfm/faqs">FAQs</a></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td><a href="#APPLICATION.urlAdmin#site_content.cfm/locations">Locations</a></td>
+					<td></td>
+					<td><a href="#APPLICATION.urlAdmin#site_content.cfm/wholesale">Wholesale</a></td>
+					<td></td>
+					<td><a href="#APPLICATION.urlAdmin#report_problems.cfm">Report Problems</a></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -263,13 +263,13 @@
 							<img src="#SESSION.absoluteUrlTheme#images/paypal.gif">
 						</div>
 						<div id="bottom-secure-shopping">
-							<a href="#APPLICATION.absoluteUrlSite#site_content.cfm/secure-shopping" style="color:##333;">SECURE SHOPPING</a>
+							<a href="#APPLICATION.urlAdmin#site_content.cfm/secure-shopping" style="color:##333;">SECURE SHOPPING</a>
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="6" style="padding-top:15px;">
-						1998 - 2014, PinMyDeals, Inc. | <a href="#APPLICATION.absoluteUrlSite#conditions_of_use.cfm">Conditions of Use</a> | <a href="#APPLICATION.absoluteUrlSite#site_index.cfm">Site Index</a>
+						1998 - 2014, PinMyDeals, Inc. | <a href="#APPLICATION.urlAdmin#conditions_of_use.cfm">Conditions of Use</a> | <a href="#APPLICATION.urlAdmin#site_index.cfm">Site Index</a>
 					</td>
 					<td>
 					</td>

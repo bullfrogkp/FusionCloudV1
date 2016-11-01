@@ -92,7 +92,7 @@
 		$(".use-this-address").click(function() {
 			$.ajax({
 						type: "get",
-						url: "#APPLICATION.absoluteUrlSite#core/services/cartService.cfc",
+						url: "#APPLICATION.urlAdmin#core/services/cartService.cfc",
 						dataType: 'json',
 						data: {
 							method: 'cartLogin',
@@ -114,7 +114,7 @@
 		$("##add-new-address").click(function() {
 			$.ajax({
 						type: "get",
-						url: "#APPLICATION.absoluteUrlSite#core/services/cartService.cfc",
+						url: "#APPLICATION.urlAdmin#core/services/cartService.cfc",
 						dataType: 'json',
 						data: {
 							method: 'cartLogin',
@@ -136,7 +136,7 @@
 		$(".shipping-method").click(function() {
 			$.ajax({
 						type: "get",
-						url: "#APPLICATION.absoluteUrlSite#core/services/cartService.cfc",
+						url: "#APPLICATION.urlAdmin#core/services/cartService.cfc",
 						dataType: 'json',
 						data: {
 							method: 'cartLogin',
@@ -317,7 +317,7 @@
 									<div class="sub-total">Shipping & Handling: $990,00</div>
 									<div class="sub-total">Tax: $990,00</div>
 									<div class="grand-total">Grand Total $1029,79</div>
-									<a class="button style-10" href="#APPLICATION.absoluteUrlSite#checkout/checkout_thankyou.cfm">Pay with PayPal</a>
+									<a class="button style-10" href="#APPLICATION.urlAdmin#checkout/checkout_thankyou.cfm">Pay with PayPal</a>
 								</div>
 							</div>
 						</div>

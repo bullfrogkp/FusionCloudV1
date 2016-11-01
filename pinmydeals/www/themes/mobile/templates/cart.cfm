@@ -96,7 +96,7 @@
 		<div class="col-md-4 information-entry">
 			<div class="cart-summary-box">
 				<div class="grand-total">Subtotal: #REQUEST.pageData.cart.getDisplaySubTotal()#</div>
-				<a class="button style-10" href="#APPLICATION.absoluteUrlSite#checkout/checkout_paypal_express.cfm">Proceed To Checkout</a>
+				<a class="button style-10" href="#APPLICATION.urlAdmin#checkout/checkout_paypal_express.cfm">Proceed To Checkout</a>
 			</div>
 		</div>
 	</div>

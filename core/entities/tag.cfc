@@ -5,7 +5,7 @@
 	
 	<!------------------------------------------------------------------------------->	
 	<cffunction name="getTagPageURL" access="public" output="false" returnType="string">
-		<cfreturn "#APPLICATION.absoluteUrlSite#products.cfm/#URLEncodedFormat(getLabel())#/#getTagId()#/1/1/-/-/" />
+		<cfreturn "#APPLICATION.urlAdmin#products.cfm/#URLEncodedFormat(getLabel())#/#getTagId()#/1/1/-/-/" />
 	</cffunction>
 	<!------------------------------------------------------------------------------->	
 </cfcomponent>

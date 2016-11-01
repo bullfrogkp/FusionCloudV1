@@ -41,7 +41,7 @@
 
                     <div class="header-product">
                         <div class="logo-wrapper">
-                            <a href="#APPLICATION.absoluteUrlSite#" id="logo"><img alt="" src="#SESSION.absoluteUrlTheme#images/logo-9.png"></a>
+                            <a href="#APPLICATION.urlAdmin#" id="logo"><img alt="" src="#SESSION.absoluteUrlTheme#images/logo-9.png"></a>
                         </div>
                         <div class="product-header-message">
                             #REQUEST.pageData.slogan#
@@ -54,9 +54,9 @@
                                 </div>
                                 <div class="header-top-entry increase-icon-responsive">
                                 	<cfif IsNumeric(SESSION.user.customerId)>
-                                    	<div class="title"><i class="fa fa-user"></i> <a href="#APPLICATION.absoluteUrlSite#myaccount/dashboard.cfm"><span>My Account</span></a></div>
+                                    	<div class="title"><i class="fa fa-user"></i> <a href="#APPLICATION.urlAdmin#myaccount/dashboard.cfm"><span>My Account</span></a></div>
                                    	<cfelse>
-                                    	<div class="title"><i class="fa fa-user"></i> <a href="#APPLICATION.absoluteUrlSite#signin.cfm"><span>Sign In</span></a></div>
+                                    	<div class="title"><i class="fa fa-user"></i> <a href="#APPLICATION.urlAdmin#signin.cfm"><span>Sign In</span></a></div>
                                		</cfif>
                                 </div>
                                 <div class="header-top-entry">
@@ -82,8 +82,8 @@
                             <div class="middle-line"></div>
                             <div class="line-entry">
                                 <a href="##" class="header-functionality-entry"><i class="fa fa-copy"></i><span>Compare</span></a>
-                                <a href="#APPLICATION.absoluteUrlSite#wishlist.cfm" class="header-functionality-entry"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>
-                                <a href="#APPLICATION.absoluteUrlSite#cart.cfm" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> &nbsp;&nbsp;&nbsp;<b id="cart-subtotal">#REQUEST.pageData.cart.getSubTotalWCLocal()#</b></a>
+                                <a href="#APPLICATION.urlAdmin#wishlist.cfm" class="header-functionality-entry"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>
+                                <a href="#APPLICATION.urlAdmin#cart.cfm" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> &nbsp;&nbsp;&nbsp;<b id="cart-subtotal">#REQUEST.pageData.cart.getSubTotalWCLocal()#</b></a>
                             </div>
                         </div>
                     </div>

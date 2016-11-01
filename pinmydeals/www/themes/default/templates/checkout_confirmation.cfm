@@ -117,7 +117,7 @@
 				<tbody>
 					<cfif SESSION.cart.getSameAddress() EQ true>
 					<tr>
-						<td>Billing address is same as shipping address. If you would like to change it, please click <a href="#APPLICATION.absoluteUrlSite#checkout/checkout_change_address.cfm">here</a>.</td>
+						<td>Billing address is same as shipping address. If you would like to change it, please click <a href="#APPLICATION.urlAdmin#checkout/checkout_change_address.cfm">here</a>.</td>
 					</tr>
 					<cfelse>
 					<tr>

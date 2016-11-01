@@ -9,7 +9,7 @@
 		$("##search-product").click(function() {
 			$.ajax({
 						type: "get",
-						url: "#APPLICATION.absoluteUrlSite#core/services/productService.cfc",
+						url: "#APPLICATION.urlAdmin#core/services/productService.cfc",
 						dataType: 'json',
 						data: {
 							method: 'searchProducts',

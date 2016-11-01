@@ -44,7 +44,7 @@
 			<cfset LOCAL.order = EntityLoad("order",{orderTrackingNumber = Trim(FORM.order_number), customerEmail = Trim(FORM.email)},true) />
 			<cfif NOT IsNull(LOCAL.order)>
 				<cfset SESSION.temp.orderId = LOCAL.order.getOrderId() />
-				<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#order_tracking_detail.cfm" />
+				<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#order_tracking_detail.cfm" />
 			<cfelse>
 				<cfset LOCAL.messageArray = [] />
 				<cfset ArrayAppend(LOCAL.messageArray,"Sorry we cannot find this order.") />

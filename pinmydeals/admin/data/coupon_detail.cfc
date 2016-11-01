@@ -55,7 +55,7 @@
 			<cfset EntitySave(LOCAL.coupon) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Coupon has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.coupon.getCouponId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin##getPageName()#.cfm?id=#LOCAL.coupon.getCouponId()#" />
 			
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 			
@@ -63,7 +63,7 @@
 			<cfset EntitySave(LOCAL.coupon) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Coupon #LOCAL.coupon.getCouponCode()# has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#coupons.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#coupons.cfm" />
 			
 		</cfif>
 		

@@ -102,10 +102,10 @@
 		<!-- accepted payments column -->
 		<div class="col-xs-6">
 			<p class="lead">Payment Methods:</p>
-			<img src="#SESSION.absoluteUrlThemeAdmin#img/credit/visa.png" alt="Visa"/>
-			<img src="#SESSION.absoluteUrlThemeAdmin#img/credit/mastercard.png" alt="Mastercard"/>
-			<img src="#SESSION.absoluteUrlThemeAdmin#img/credit/american-express.png" alt="American Express"/>
-			<img src="#SESSION.absoluteUrlThemeAdmin#img/credit/paypal2.png" alt="Paypal"/>
+			<img src="#SESSION.urlThemeAdmin#img/credit/visa.png" alt="Visa"/>
+			<img src="#SESSION.urlThemeAdmin#img/credit/mastercard.png" alt="Mastercard"/>
+			<img src="#SESSION.urlThemeAdmin#img/credit/american-express.png" alt="American Express"/>
+			<img src="#SESSION.urlThemeAdmin#img/credit/paypal2.png" alt="Paypal"/>
 			<p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
 				Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
 			</p>

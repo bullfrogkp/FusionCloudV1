@@ -47,7 +47,7 @@
 			<cfset EntitySave(LOCAL.filter) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Filter has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.filter.getFilterId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin##getPageName()#.cfm?id=#LOCAL.filter.getFilterId()#" />
 			
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 			<cfset LOCAL.filter.setIsDeleted(true) />
@@ -55,7 +55,7 @@
 			<cfset EntitySave(LOCAL.filter) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Filter has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#filters.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#filters.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

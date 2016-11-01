@@ -128,7 +128,7 @@ $(function() {
 			$("##add-current-to-wishlist").click(function() {
 				$.ajax({
 							type: "get",
-							url: "#APPLICATION.absoluteUrlSite#core/services/trackingService.cfc",
+							url: "#APPLICATION.urlAdmin#core/services/trackingService.cfc",
 							dataType: 'json',
 							data: {
 								method: 'addTrackingRecord',

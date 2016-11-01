@@ -206,7 +206,7 @@ $(function() {
 			$("#uploader").plupload({
 				// General settings
 				runtimes: 'html5,flash,silverlight,html4',
-				url: absoluteUrlSite + 'ajax/upload_category_images.cfm?method=upload&id=' + categoryId,
+				url: urlAdmin + 'ajax/upload_category_images.cfm?method=upload&id=' + categoryId,
 				// Maximum file size
 				max_file_size: '1000mb',
 				// User can upload no more then 20 files in one go (sets multiple_queues to false)

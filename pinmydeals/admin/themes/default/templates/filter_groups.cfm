@@ -14,7 +14,7 @@
 			<div class="box box-primary">
 				<div class="box-header">
 					<h3 class="box-title">Filter Groups</h3>
-					<a href="#APPLICATION.absoluteUrlSite#filter_group_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Filter Group</a>
+					<a href="#APPLICATION.urlAdmin#filter_group_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Filter Group</a>
 				</div><!-- /.box-header -->
 				<div class="box-body table-responsive">
 					<table class="table table-bordered table-hover data-table">
@@ -30,7 +30,7 @@
 								<tr>
 									<td>#filterGroup.getFilterGroupId()#</td>
 									<td>#filterGroup.getDisplayName()#</td>
-									<td><a href="#APPLICATION.absoluteUrlSite#filter_group_detail.cfm?id=#filterGroup.getFilterGroupId()#">View Detail</a></td>
+									<td><a href="#APPLICATION.urlAdmin#filter_group_detail.cfm?id=#filterGroup.getFilterGroupId()#">View Detail</a></td>
 								</tr>
 							</cfloop>
 						<cfelse>

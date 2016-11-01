@@ -38,7 +38,7 @@
 			<div class="box box-primary">
 				<div class="box-header">
 					<h3 class="box-title">Product Groups</h3>
-					<a href="#APPLICATION.absoluteUrlSite#product_group_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Product Group</a>
+					<a href="#APPLICATION.urlAdmin#product_group_detail.cfm" class="btn btn-default btn-sm pull-right top-nav-anchor">Add New Product Group</a>
 				</div><!-- /.box-header -->
 				<div class="box-body table-responsive">
 					<table class="table table-bordered table-hover">
@@ -54,7 +54,7 @@
 								<tr>
 									<td>#group.getProductGroupId()#</td>
 									<td>#group.getDisplayName()#</td>
-									<td><a href="#APPLICATION.absoluteUrlSite#product_group_detail.cfm?id=#group.getProductGroupId()#">View Detail</a></td>
+									<td><a href="#APPLICATION.urlAdmin#product_group_detail.cfm?id=#group.getProductGroupId()#">View Detail</a></td>
 								</tr>
 								</cfloop>
 							<cfelse>

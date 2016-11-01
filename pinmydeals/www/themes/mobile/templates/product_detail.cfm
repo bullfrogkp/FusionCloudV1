@@ -3,7 +3,7 @@
 	<script language="javascript" type="text/javascript">
 		var productType = '#REQUEST.pageData.product.getProductType().getName()#';
 		var cartRequestUrl = 'http://api.pinmydeals.loc/services/cartService.cfc';
-		var absoluteUrlSite = '#APPLICATION.absoluteUrlSite#';
+		var absoluteUrlSite = '#APPLICATION.urlAdmin#';
 		var trackingEntityId = #REQUEST.pageData.trackingEntityId#;
 		var customerGroupId = #SESSION.user.customerGroupId#;
 		var currencyId = #SESSION.currency.id#;
@@ -338,7 +338,7 @@
 								</div>
 								#REQUEST.moduleData.product_detail_options#
 								<div class="detail-info-entry">
-									<a class="button style-10" href="#APPLICATION.absoluteUrlSite#cart.cfm">Checkout</a>
+									<a class="button style-10" href="#APPLICATION.urlAdmin#cart.cfm">Checkout</a>
 									<a class="button style-11 close-window">Continue Shopping</a>
 									<div class="clear"></div>
 								</div>

@@ -30,7 +30,7 @@
 				<div class="box-body">
 					<cfif IsNumeric(REQUEST.pageData.formData.id)>
 						<div class="form-group">
-							<label>Customer <a href="#APPLICATION.absoluteUrlSite#customer_detail.cfm?id=#REQUEST.pageData.conversation.getCustomer().getCustomerId()#" class="form-link" style="margin-left:18px;">#REQUEST.pageData.conversation.getCustomer().getFullName()#</a></label>
+							<label>Customer <a href="#APPLICATION.urlAdmin#customer_detail.cfm?id=#REQUEST.pageData.conversation.getCustomer().getCustomerId()#" class="form-link" style="margin-left:18px;">#REQUEST.pageData.conversation.getCustomer().getFullName()#</a></label>
 						</div>
 						<div class="form-group">
 							<label>Post By <a href="" class="form-link">#REQUEST.pageData.conversation.getCreatedUser()# (#REQUEST.pageData.conversation.getCreatedDatetime()#)</a></label>

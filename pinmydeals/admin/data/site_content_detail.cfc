@@ -56,7 +56,7 @@
 			<cfset EntitySave(LOCAL.content) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Content has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm?id=#LOCAL.content.getSiteContentId()#" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin##getPageName()#.cfm?id=#LOCAL.content.getSiteContentId()#" />
 			
 		<cfelseif StructKeyExists(FORM,"delete_item")>
 			
@@ -64,7 +64,7 @@
 			<cfset EntitySave(LOCAL.content) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Content '#LOCAL.content.getName()#' has been deleted.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#contents.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#contents.cfm" />
 			
 		</cfif>
 		

@@ -21,7 +21,7 @@
 			var couponCode = $("##coupon_code").val();
 			$.ajax({
 						type: "get",
-						url: "#APPLICATION.absoluteUrlSite#core/services/cartService.cfc",
+						url: "#APPLICATION.urlAdmin#core/services/cartService.cfc",
 						dataType: 'json',
 						data: {
 							method: 'applyCouponCode',

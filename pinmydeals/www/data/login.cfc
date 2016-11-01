@@ -98,7 +98,7 @@
 			<cfset SESSION.cart.calculate() />
 		</cfif>
 		
-		<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#myaccount/dashboard.cfm" />
+		<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#myaccount/dashboard.cfm" />
 		
 		<cfreturn LOCAL />	
 	</cffunction>	

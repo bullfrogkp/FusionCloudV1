@@ -1,8 +1,8 @@
 ﻿<cfoutput>
 <cfsavecontent variable="htmlhead">
 	<script language="javascript" type="text/javascript">
-		var absoluteUrlThemeAdmin = '#SESSION.absoluteUrlThemeAdmin#';
-		var absoluteUrlSite = '#APPLICATION.absoluteUrlSite#';
+		var urlThemeAdmin = '#SESSION.urlThemeAdmin#';
+		var urlAdmin = '#APPLICATION.urlAdmin#';
 		var categoryId = #URL.id#;
 		
 		var filterChanged = false;
@@ -263,7 +263,7 @@
 													</tr>
 													<tr>
 														<td colspan="2">
-															<img class="img-responsive" src="#APPLICATION.absoluteUrlSite#images/uploads/category/#REQUEST.pageData.category.getCategoryId()#/#img.getName()#" />
+															<img class="img-responsive" src="#APPLICATION.urlAdmin#images/uploads/category/#REQUEST.pageData.category.getCategoryId()#/#img.getName()#" />
 														</td>
 													</tr>
 													<tr>
@@ -319,7 +319,7 @@
 														<td>#DateFormat(product[1].getCreatedDatetime(),"mmm dd,yyyy")#</td>
 														<td>#product[1].getSku()#</td>
 														<td>#product[1].getIsEnabled()#</td>
-														<td><a href="#APPLICATION.absoluteUrlSite#product_detail.cfm?id=#product[1].getProductId()#">View Detail</a></td>
+														<td><a href="#APPLICATION.urlAdmin#product_detail.cfm?id=#product[1].getProductId()#">View Detail</a></td>
 													</tr>
 												</cfloop>
 											<cfelse>

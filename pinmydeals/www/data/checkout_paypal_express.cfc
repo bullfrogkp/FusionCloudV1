@@ -144,7 +144,7 @@
 			<cfset getSessionData().cart.setBillingAddressStruct(LOCAL.billingAddress) />
 			<cfset getSessionData().cart.calculate() />
 			
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#checkout/checkout_step2.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#checkout/checkout_step2.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

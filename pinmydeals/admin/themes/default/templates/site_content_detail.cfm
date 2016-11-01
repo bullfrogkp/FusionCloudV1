@@ -3,9 +3,9 @@
 	$(document).ready(function() {
 		CKEDITOR.replace( 'site_content',
 		{
-			filebrowserBrowseUrl :'#SESSION.absoluteUrlThemeAdmin#js/plugins/ckeditor/filemanager/index.html',
-			filebrowserImageBrowseUrl : '#SESSION.absoluteUrlThemeAdmin#js/plugins/ckeditor/filemanager/index.html',
-			filebrowserFlashBrowseUrl :'#SESSION.absoluteUrlThemeAdmin#js/plugins/ckeditor/filemanager/index.html'}
+			filebrowserBrowseUrl :'#SESSION.urlThemeAdmin#js/plugins/ckeditor/filemanager/index.html',
+			filebrowserImageBrowseUrl : '#SESSION.urlThemeAdmin#js/plugins/ckeditor/filemanager/index.html',
+			filebrowserFlashBrowseUrl :'#SESSION.urlThemeAdmin#js/plugins/ckeditor/filemanager/index.html'}
 		 );
 	});
 </script>

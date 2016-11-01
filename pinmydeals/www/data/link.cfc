@@ -13,7 +13,7 @@
 			<cfset SESSION.temp.message = {} />
 			<cfset SESSION.temp.message.messageArray = LOCAL.messageArray />
 			<cfset SESSION.temp.message.messageType = "alert-danger" />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#invalid_link.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#invalid_link.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />
@@ -26,10 +26,10 @@
 		<cfset LOCAL.linkStatusType = EntityLoad("link_status_type",{name="active"},true) />
 		<cfset LOCAL.link = EntityLoad("link",{uuid = Trim(URL.u), linkStatusType = LOCAL.linkStatusType}, true) />
 		<cfif IsNull(LOCAL.link)>
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#invalid_link.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#invalid_link.cfm" />
 		<cfelse>
 			<cfset SESSION.temp.linkId = LOCAL.link.getLinkId() />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#links/#LOCAL.link.getLinkType().getRedirectURL()#.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#links/#LOCAL.link.getLinkType().getRedirectURL()#.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

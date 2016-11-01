@@ -7,9 +7,9 @@
 	
 		CKEDITOR.replace( 'detail',
 		{
-			filebrowserBrowseUrl :'#SESSION.absoluteUrlThemeAdmin#js/plugins/ckeditor/filemanager/index.html',
-			filebrowserImageBrowseUrl : '#SESSION.absoluteUrlThemeAdmin#js/plugins/ckeditor/filemanager/index.html',
-			filebrowserFlashBrowseUrl :'#SESSION.absoluteUrlThemeAdmin#js/plugins/ckeditor/filemanager/index.html'}
+			filebrowserBrowseUrl :'#SESSION.urlThemeAdmin#js/plugins/ckeditor/filemanager/index.html',
+			filebrowserImageBrowseUrl : '#SESSION.urlThemeAdmin#js/plugins/ckeditor/filemanager/index.html',
+			filebrowserFlashBrowseUrl :'#SESSION.urlThemeAdmin#js/plugins/ckeditor/filemanager/index.html'}
 		 );
 		
 		$(".top-level-tab").click(function() {
@@ -20,7 +20,7 @@
 			// General settings
 			runtimes: 'html5,flash,silverlight,html4',
 			
-			url: "#APPLICATION.absoluteUrlSite#ajax/upload_product_images.cfm",
+			url: "#APPLICATION.urlAdmin#ajax/upload_product_images.cfm",
 
 			// Maximum file size
 			max_file_size: '1000mb',
@@ -105,7 +105,7 @@
 			option.aid = attr.aid;
 			option.value = $("##new-attribute-option-name").val();
 			option.imageName = 'no_image_available.png';
-			option.imageSrc = '#APPLICATION.absoluteUrlSite#images/site/no_image_available.png';
+			option.imageSrc = '#APPLICATION.urlAdmin#images/site/no_image_available.png';
 			option.hasThumbnail = thumb;
 			
 			if($("##new-attribute-name-hidden").val().toLowerCase() == 'color')
@@ -212,7 +212,7 @@
 		$("##search-product").click(function() {
 			$.ajax({
 						type: "get",
-						url: "#APPLICATION.absoluteUrlSite#core/services/productService.cfc",
+						url: "#APPLICATION.urlAdmin#core/services/productService.cfc",
 						dataType: 'json',
 						data: {
 							method: 'searchProducts',
@@ -1359,7 +1359,7 @@
 													<div class="box-body table-responsive no-padding">
 														<table class="table table-hover">
 															<tr class="warning">
-																<th><img src="#APPLICATION.absoluteUrlSite#images/uploads/shipping/#sc.getImageName()#" style="height:25px;vertical-align:top;" /></th>
+																<th><img src="#APPLICATION.urlAdmin#images/uploads/shipping/#sc.getImageName()#" style="height:25px;vertical-align:top;" /></th>
 																<th colspan="2" style="padding-right:10px;" nowrap>#sc.getDisplayName()#</th>
 																<th style="text-align:right;">
 																	<input type="checkbox" class="form-control pull-right" name="shipping_carrier_id" value="#sc.getShippingCarrierId()#"
@@ -1535,7 +1535,7 @@
 														<td>#review.getMessage()#</td>
 														<td>#review.getRating()#</td>
 														<td>#review.getCreatedDatetime()#</td>
-														<td><a href="#APPLICATION.absoluteUrlSite#review_detail.cfm?id=#review.getReviewId()#">View Detail</a></td>
+														<td><a href="#APPLICATION.urlAdmin#review_detail.cfm?id=#review.getReviewId()#">View Detail</a></td>
 													</tr>
 													</cfloop>
 												</cfif>

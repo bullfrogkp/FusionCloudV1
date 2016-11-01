@@ -66,7 +66,7 @@
 			<cfset LOCAL.emailService.setReplaceStruct(LOCAL.replaceStruct) />
 			<cfset LOCAL.emailService.sendEmail() />
 		
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#email_sent.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#email_sent.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

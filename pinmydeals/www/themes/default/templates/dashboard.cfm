@@ -18,7 +18,7 @@
 			<li style="width:29%;float:left;margin-left:0.5%;padding-right:20px;height:160px;line-height:20px;">
 				<div style="font-weight:bold;padding-bottom:10px;margin-bottom:5px;border-bottom:1px solid ##CCC;">
 					Contact Information
-					<a style="float:right;font-size:12px;" href="#APPLICATION.absoluteUrlSite#myaccount/profile.cfm">Edit</a>
+					<a style="float:right;font-size:12px;" href="#APPLICATION.urlAdmin#myaccount/profile.cfm">Edit</a>
 				</div>
 				
 				<p style="line-height:23px;">
@@ -32,7 +32,7 @@
 			
 				<div style="font-weight:bold;padding-bottom:10px;margin-bottom:5px;border-bottom:1px solid ##CCC;line-height:20px;">
 					Latest Order
-					<a style="float:right;font-size:12px;" href="#APPLICATION.absoluteUrlSite#myaccount/orders.cfm">View</a>
+					<a style="float:right;font-size:12px;" href="#APPLICATION.urlAdmin#myaccount/orders.cfm">View</a>
 				</div>
 				<p>
 				<cfif NOT ArrayIsEmpty(REQUEST.pageData.latestOrderArray)>
@@ -49,7 +49,7 @@
 			<li style="width:29%;float:left;margin-left:0.5%;padding-left:20px;height:160px;border-left:1px solid ##CCC;line-height:20px;">
 				<div style="font-weight:bold;padding-bottom:10px;margin-bottom:5px;border-bottom:1px solid ##CCC;">
 					Subscription
-					<a style="float:right;font-size:12px;" href="#APPLICATION.absoluteUrlSite#myaccount/profile.cfm">Edit</a>
+					<a style="float:right;font-size:12px;" href="#APPLICATION.urlAdmin#myaccount/profile.cfm">Edit</a>
 				</div>
 				<cfif REQUEST.pageData.customer.getSubscribed() EQ true>
 					<p>You are currently subscribed to our newsletter.</p>

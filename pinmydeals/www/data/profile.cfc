@@ -48,7 +48,7 @@
 			<cfset EntitySave(LOCAL.customer) />
 		</cfif>
 		
-		<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#myaccount/profile.cfm" />
+		<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#myaccount/profile.cfm" />
 		
 		<cfreturn LOCAL />	
 	</cffunction>	

@@ -59,7 +59,7 @@
 				<cfset LOCAL.emailService.setReplaceStruct(LOCAL.replaceStruct) />
 				<cfset LOCAL.emailService.sendEmail() />
 				
-				<cflocation url="#APPLICATION.absoluteUrlSite#checkout/checkout_thankyou.cfm" addToken="false" />
+				<cflocation url="#APPLICATION.urlAdmin#checkout/checkout_thankyou.cfm" addToken="false" />
 			<cfelse>
 				<cfdump var="#LOCAL.responseStruct#" abort>
 				<!---

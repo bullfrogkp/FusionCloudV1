@@ -1,1 +1,1 @@
-﻿<cfinclude template="#SESSION.absoluteUrlThemeAdmin#templates/wrapper.cfm" />
+﻿<cfinclude template="#SESSION.urlThemeAdmin#templates/wrapper.cfm" />

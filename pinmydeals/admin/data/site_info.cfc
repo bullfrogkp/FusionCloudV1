@@ -31,7 +31,7 @@
 			<cfset EntitySave(LOCAL.siteInfo) />
 			
 			<cfset ArrayAppend(SESSION.temp.message.messageArray,"Company information has been saved successfully.") />
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite##getPageName()#.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin##getPageName()#.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />	

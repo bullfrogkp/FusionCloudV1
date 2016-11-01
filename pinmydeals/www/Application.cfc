@@ -259,7 +259,7 @@
 			<!---	
 				<cfcatch type="any">
 					<cfset new "core.utils.utils().handleError(cfcatch = cfcatch) />
-					<cflocation url="#APPLICATION.absoluteUrlSite#error.cfm" addtoken="false" />
+					<cflocation url="#APPLICATION.urlAdmin#error.cfm" addtoken="false" />
 				</cfcatch>
 			</cftry>
 			--->
@@ -298,9 +298,9 @@
 		<cfargument type="string" name="folderNameTheme" required=true /> 
 		
 		<cfset SESSION.folderNameTheme = ARGUMENTS.folderNameTheme>		
-		<cfset SESSION.urlTheme = "#APPLICATION.urlHttp#themes/#SESSION.folderNameTheme#/">
-		<cfset SESSION.absoluteUrlTheme = "#APPLICATION.absoluteUrlSite#themes/#SESSION.folderNameTheme#/">
-		<cfset SESSION.absolutePathTheme = "#APPLICATION.absolutePathSite#themes\#SESSION.folderNameTheme#\">
+		<cfset SESSION.urlTheme = "#APPLICATION.urlHttpAdmin#themes/#SESSION.folderNameTheme#/">
+		<cfset SESSION.absoluteUrlTheme = "#APPLICATION.urlAdmin#themes/#SESSION.folderNameTheme#/">
+		<cfset SESSION.absolutePathTheme = "#APPLICATION.pathAdmin#themes\#SESSION.folderNameTheme#\">
 	</cffunction>
 	<!----------------------------------------------------------------------------
 	<cffunction name="onMissingTemplate" returnType="any">
@@ -308,7 +308,7 @@
    
 		<cflog text="cannot find page: #ARGUMENTS.targetPage#" />
 		
-		<cflocation url="#APPLICATION.absoluteUrlSite#error.cfm" addtoken="false" />
+		<cflocation url="#APPLICATION.urlAdmin#error.cfm" addtoken="false" />
 	</cffunction>--->
 	<!------------------------------------------------------------------------------->
 </cfcomponent>

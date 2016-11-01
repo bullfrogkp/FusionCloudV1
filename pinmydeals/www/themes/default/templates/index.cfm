@@ -163,17 +163,17 @@
 					<tr>
 						<td>
 							<ul>
-								<li><a href="#APPLICATION.absoluteUrlSite#payment_info.cfm">Payment Info</a></li>
-								<li><a href="#APPLICATION.absoluteUrlSite#shipping_info.cfm">Shipping Info</a></li>
-								<li><a href="#APPLICATION.absoluteUrlSite#estimate.cfm">Delivery Estimate</a></li>
-								<li><a href="#APPLICATION.absoluteUrlSite#locations.cfm">Locations</a></li>
-								<li><a href="#APPLICATION.absoluteUrlSite#privacy.cfm">Privacy Policy</a></li>
-								<li><a href="#APPLICATION.absoluteUrlSite#term_of_use.cfm">Terms of Use</a></li>
-								<li><a href="#APPLICATION.absoluteUrlSite#return_policy.cfm">Return Policy</a></li>
-								<li><a href="#APPLICATION.absoluteUrlSite#wholesale.cfm">Wholesale</a></li>
-								<li><a href="#APPLICATION.absoluteUrlSite#about_us.cfm">About Us</a></li>
-								<li><a href="#APPLICATION.absoluteUrlSite#contact_us.cfm">Contact Us</a></li>
-								<li><a href="#APPLICATION.absoluteUrlSite#faq.cfm">FAQs</a></li>
+								<li><a href="#APPLICATION.urlAdmin#payment_info.cfm">Payment Info</a></li>
+								<li><a href="#APPLICATION.urlAdmin#shipping_info.cfm">Shipping Info</a></li>
+								<li><a href="#APPLICATION.urlAdmin#estimate.cfm">Delivery Estimate</a></li>
+								<li><a href="#APPLICATION.urlAdmin#locations.cfm">Locations</a></li>
+								<li><a href="#APPLICATION.urlAdmin#privacy.cfm">Privacy Policy</a></li>
+								<li><a href="#APPLICATION.urlAdmin#term_of_use.cfm">Terms of Use</a></li>
+								<li><a href="#APPLICATION.urlAdmin#return_policy.cfm">Return Policy</a></li>
+								<li><a href="#APPLICATION.urlAdmin#wholesale.cfm">Wholesale</a></li>
+								<li><a href="#APPLICATION.urlAdmin#about_us.cfm">About Us</a></li>
+								<li><a href="#APPLICATION.urlAdmin#contact_us.cfm">Contact Us</a></li>
+								<li><a href="#APPLICATION.urlAdmin#faq.cfm">FAQs</a></li>
 							</ul>
 						</td>
 					</tr>

@@ -101,7 +101,7 @@
 						<div class="thumbnail-name"><a href="#product.getDetailPageURL()#">#product.getDisplayName()#</a></div>
 						<div class="thumbnail-price">#LSCurrencyFormat(product.getPrice(customerGroupId = SESSION.user.customerGroupId, currencyId = SESSION.currency.id),"local",SESSION.currency.locale)#</div>
 						<cfif product.isFreeShipping()>
-						<img class="free-shipping-icon" src="#APPLICATION.absoluteUrlSite#images/freeshipping.jpg" style="width:120px;margin-top:7px;" />
+						<img class="free-shipping-icon" src="#APPLICATION.urlAdmin#images/freeshipping.jpg" style="width:120px;margin-top:7px;" />
 						</cfif>
 						<div class="product-overlay">
 							<div class="overlay-content">
@@ -183,7 +183,7 @@ margin-top: -1px;padding: 2px 5px 3px 3px;">
 						<img src="#product.getDefaultImageLink(type='small')#" />
 						<div class="recommendation-list-detail">
 							<div class="recommendation-list-name">
-								<a href="#APPLICATION.absoluteUrlSite#product_detail.cfm/#URLEncodedFormat(product.getDisplayName())#/#product.getProductId()#">
+								<a href="#APPLICATION.urlAdmin#product_detail.cfm/#URLEncodedFormat(product.getDisplayName())#/#product.getProductId()#">
 									#product.getDisplayName()#
 								</a>
 							</div>
@@ -199,7 +199,7 @@ margin-top: -1px;padding: 2px 5px 3px 3px;">
 	</cfif>
 	<cfif ArrayLen(REQUEST.pageData.advertisementSection.getSectionData()) GT 0>
 		<cfloop array="#REQUEST.pageData.advertisementSection.getSectionData()#" index="ad">	
-			<img src="#APPLICATION.absoluteUrlSite#images/uploads/advertise/#ad.getName()#" style="width:228px;border:1px solid ##CCC">
+			<img src="#APPLICATION.urlAdmin#images/uploads/advertise/#ad.getName()#" style="width:228px;border:1px solid ##CCC">
 		</cfloop>
 	</cfif>
 </div>

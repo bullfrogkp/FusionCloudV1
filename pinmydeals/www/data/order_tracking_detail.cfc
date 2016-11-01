@@ -4,7 +4,7 @@
 		<cfset LOCAL.redirectUrl = "" />
 		
 		<cfif IsNull(SESSION.temp.orderId)>
-			<cfset LOCAL.redirectUrl = "#APPLICATION.absoluteUrlSite#order_tracking.cfm" />
+			<cfset LOCAL.redirectUrl = "#APPLICATION.urlAdmin#order_tracking.cfm" />
 		</cfif>
 		
 		<cfreturn LOCAL />
