@@ -198,9 +198,9 @@ $(function() {
 			
 			CKEDITOR.replace( 'custom_design',
 			{
-				filebrowserBrowseUrl :absoluteUrlThemeAdmin + 'js/plugins/ckeditor/filemanager/index.html',
-				filebrowserImageBrowseUrl : absoluteUrlThemeAdmin + 'js/plugins/ckeditor/filemanager/index.html',
-				filebrowserFlashBrowseUrl :absoluteUrlThemeAdmin + 'js/plugins/ckeditor/filemanager/index.html'}
+				filebrowserBrowseUrl :urlThemeAdmin + 'js/plugins/ckeditor/filemanager/index.html',
+				filebrowserImageBrowseUrl : urlThemeAdmin + 'js/plugins/ckeditor/filemanager/index.html',
+				filebrowserFlashBrowseUrl :urlThemeAdmin + 'js/plugins/ckeditor/filemanager/index.html'}
 			 );
 			
 			$("#uploader").plupload({
@@ -302,7 +302,7 @@ $(function() {
 				option.fid = f.fid;
 				option.value = $("#new-filter-option-name").val();
 				option.imageName = 'no_image_available.png';
-				option.imageSrc = absoluteUrlThemeAdmin + 'images/site/no_image_available.png';
+				option.imageSrc = urlThemeAdmin + 'images/site/no_image_available.png';
 				
 				if($("#new-filter-name-hidden").val().toLowerCase() == 'color')
 				{

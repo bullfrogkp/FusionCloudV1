@@ -10,9 +10,9 @@
 		<cfset LOCAL.categoryId = getCategoryFilterRela().getCategory().getCategoryId() />
 		
 		<cfif IsNull(getImageName()) OR Trim(getImageName()) EQ "">
-			<cfset imageLink = "#APPLICATION.imagesDomain#/no_image_available.png" />
+			<cfset imageLink = "#APPLICATION.domainImages#/no_image_available.png" />
 		<cfelse>
-			<cfset imageLink = "#APPLICATION.imagesDomain#/category/#LOCAL.categoryId#/filters/#getImageName()#" />
+			<cfset imageLink = "#APPLICATION.domainImages#/category/#LOCAL.categoryId#/filters/#getImageName()#" />
 		</cfif>
 		
 		<cfreturn imageLink />

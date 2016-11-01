@@ -143,7 +143,7 @@
 	<cffunction name="onRequestStart" returntype="boolean" output="false">
 		<cfargument type="String" name="targetPage" required="true"/>
 
-		<cfif NOT StructKeyExists(SESSION,"absoluteUrlThemeAdmin")>
+		<cfif NOT StructKeyExists(SESSION,"urlThemeAdmin")>
 			<cfset onSessionStart() />
 		</cfif>
 		
