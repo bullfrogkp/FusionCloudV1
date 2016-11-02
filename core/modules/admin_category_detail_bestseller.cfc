@@ -99,9 +99,9 @@
 		<cfset LOCAL.retStruct.messageArray = [] />
 		
 		<cfif StructKeyExists(FORM,"save_item")>	
-			<cfset LOCAL.sectionProducts = EntityLoad("page_section_product", {section = LOCAL.bestSellerSection, category = LOCAL.category})> 
-			<cfloop array="#LOCAL.sectionProducts#" index="LOCAL.sectionProduct">
-				<cfset EntityDelete(LOCAL.sectionProduct) />
+			<cfset LOCAL.products = EntityLoad("module_admin_category_detail_bestseller", {category = getEntityId()})> 
+			<cfloop array="#LOCAL.products#" index="LOCAL.product">
+				<cfset EntityDelete(LOCAL.product) />
 			</cfloop>
 			<cfif StructKeyExists(FORM,"products_selected") AND FORM.products_selected NEQ "">
 				<cfloop list="#FORM.products_selected#" index="LOCAL.productId">

@@ -4,6 +4,7 @@
 	<cfproperty name="cgiData" type="struct" required="false"> 
 	<cfproperty name="sessionData" type="struct" required="false"> 
 	<cfproperty name="pageName" type="string" required="false"> 
+	<cfproperty name="entityId" type="numeric" required="false"> 
 	<!------------------------------------------------------------------------------->	
 	<cffunction name="init" access="public" output="false" returntype="any">
 		<cfargument name="formData" type="struct" required="false" />
@@ -11,6 +12,7 @@
 		<cfargument name="cgiData" type="struct" required="false" />
 		<cfargument name="sessionData" type="struct" required="false" />
 		<cfargument name="pageName" type="string" required="false" />
+		<cfproperty name="entityId" type="numeric" required="false"> 
 		
 		<cfif StructKeyExists(ARGUMENTS,"formData")>
 			<cfset setFormData(ARGUMENTS.formData) />
@@ -30,6 +32,10 @@
 		
 		<cfif StructKeyExists(ARGUMENTS,"pageName")>
 			<cfset setPageName(ARGUMENTS.pageName) />
+		</cfif>
+		
+		<cfif StructKeyExists(ARGUMENTS,"entityId")>
+			<cfset setEntityId(ARGUMENTS.entityId) />
 		</cfif>
 		
 		<cfreturn this />

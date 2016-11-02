@@ -161,6 +161,8 @@
 			<cfset LOCAL.redirectUrl = "#APPLICATION.urlHttpsAdmin##getPageName()#.cfm?id=#LOCAL.category.getCategoryId()#&active_tab_id=tab_5" />
 		
 		</cfif>
+		
+		<cfset LOCAL.retStruct.id = LOCAL.category.getCategoryId() />
 			
 		<cfreturn LOCAL.retStruct />
 	</cffunction>	

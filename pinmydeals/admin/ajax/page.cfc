@@ -28,6 +28,7 @@
 		<cfset LOCAL.modules = EntityLoad("page_module", {page = EntityLoad("page",{name = FORM.pageName}, true)}) />
 		<cfloop array="#LOCAL.modules#" index="LOCAL.module">
 			<cfset LOCAL.moduleObj = new "core.modules.#LOCAL.module.getName()#"() />
+			<cfset LOCAL.moduleObj.setEntityId(LOCAL.result.id) />
 			<cfset LOCAL.moduleResult = LOCAL.moduleObj.processFormData() />
 			<cfif LOCAL.result.isValid EQ true>
 				<cfset LOCAL.result.isValid = LOCAL.moduleResult.isValid />
