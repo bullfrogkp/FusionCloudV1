@@ -7,8 +7,8 @@
 		
 		<cfset LOCAL.retStruct = {} />
 		<cfif StructKeyExists(getUrlData(),"id") AND IsNumeric(getUrlData().id)>
-			<cfset LOCAL.retStruct.products = EntityLoad("module_admin_category_detail_bestseller", {category=EntityLoadByPK("category",getUrlData().id)})> 
-			<cfset LOCAL.retStruct.tab_title = "heiheihei"> 
+			<cfset LOCAL.retStruct.products = EntityLoad("module_admin_category_detail_bestseller", {category = EntityLoadByPK("category",getUrlData().id)})> 
+			<cfset LOCAL.retStruct.tab_title = "Best Seller"> 
 			
 			<cfset LOCAL.productGroups = EntityLoad("product_group") />
 			<cfset LOCAL.retStruct.tab_content = '<div class="row">
@@ -99,17 +99,17 @@
 		<cfset LOCAL.retStruct.messageArray = [] />
 		
 		<cfif StructKeyExists(FORM,"save_item")>	
-			<cfset LOCAL.products = EntityLoad("module_admin_category_detail_bestseller", {category = getEntityId()})> 
+			<cfset LOCAL.category = EntityLoadByPK("category",getEntityId()) />
+			<cfset LOCAL.products = EntityLoad("module_admin_category_detail_bestseller", {category = LOCAL.category})> 
 			<cfloop array="#LOCAL.products#" index="LOCAL.product">
 				<cfset EntityDelete(LOCAL.product) />
 			</cfloop>
 			<cfif StructKeyExists(FORM,"products_selected") AND FORM.products_selected NEQ "">
 				<cfloop list="#FORM.products_selected#" index="LOCAL.productId">
-					<cfset LOCAL.newSectionProduct = EntityNew("page_section_product") />
-					<cfset LOCAL.newSectionProduct.setSection(LOCAL.bestSellerSection) />
-					<cfset LOCAL.newSectionProduct.setProduct(EntityLoadByPK("product",LOCAL.productId)) />
-					<cfset LOCAL.newSectionProduct.setCategory(LOCAL.category) />
-					<cfset EntitySave(LOCAL.newSectionProduct) />
+					<cfset LOCAL.newProduct = EntityNew("module_admin_category_detail_bestseller") />
+					<cfset LOCAL.newProduct.setProduct(EntityLoadByPK("product",LOCAL.productId)) />
+					<cfset LOCAL.newProduct.setCategory(LOCAL.category) />
+					<cfset EntitySave(LOCAL.newProduct) />
 				</cfloop>
 			</cfif>
 		</cfif>
