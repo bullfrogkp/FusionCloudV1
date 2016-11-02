@@ -4,8 +4,8 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
 		<cfif StructKeyExists(getUrlData(),"id") AND IsNumeric(getUrlData().id)>
-			<cfset LOCAL.retStruct.products = EntityLoad("module_admin_category_detail_advertisement", {category=EntityLoadByPK("category",getUrlData().id)})> 
-			<cfset LOCAL.retStruct.tab_title = "hahaha"> 
+			<cfset LOCAL.retStruct.products = EntityLoad("module_admin_category_detail_advertisement", {category = EntityLoadByPK("category",getUrlData().id)})> 
+			<cfset LOCAL.retStruct.tab_title = "Advertisement"> 
 			<cfset LOCAL.retStruct.tab_content = '<div class="form-group"><div class="row">' />
 								
 			<cfif NOT IsNull(LOCAL.retStruct.products)>
@@ -17,9 +17,9 @@
 									<table class="table table-hover">
 										<tr class="warning">
 											<th style="font-size:11px;line-height:20px;">
-												<input type="text" placeholder="Rank" name="advertisement_rank_#ad.getPageSectionAdvertisementId()#" value="#ad.getRank()#" style="width:40px;text-align:center;" />
+												<input type="text" placeholder="Rank" name="advertisement_rank_#ad.getId()#" value="#ad.getRank()#" style="width:40px;text-align:center;" />
 											</th>
-											<th><a adid="#ad.getPageSectionAdvertisementId()#" href="" class="delete-ad pull-right" data-toggle="modal" data-target="##delete-ad-modal"><span class="label label-danger">Delete</span></a></th>
+											<th><a adid="#ad.getId()#" href="" class="delete-ad pull-right" data-toggle="modal" data-target="##delete-ad-modal"><span class="label label-danger">Delete</span></a></th>
 										</tr>
 										<tr>
 											<td colspan="2">
@@ -28,7 +28,7 @@
 										</tr>
 										<tr>
 											<td colspan="2">
-												<input type="text" placeholder="Link" name="advertisement_link_#ad.getPageSectionAdvertisementId()#" value="#ad.getLink()#" style="width:100%;padding-left:5px;"/>
+												<input type="text" placeholder="Link" name="advertisement_link_#ad.getId()#" value="#ad.getLink()#" style="width:100%;padding-left:5px;"/>
 											</td>
 										</tr>
 									</table>
