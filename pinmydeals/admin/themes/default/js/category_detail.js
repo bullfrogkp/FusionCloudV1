@@ -367,7 +367,7 @@ $(function() {
 				
 				$.ajax({
 						type: "post",
-						url: "http://admin.pinmydeals.loc/ajax/page.cfc",
+						url: urlHttpsAPI + "ajax/page.cfc",
 						dataType: 'json',
 						data: fd
 				})
@@ -376,7 +376,7 @@ $(function() {
 						fd.method = 'processFormData';
 						$.ajax({
 							type: "post",
-							url: "http://admin.pinmydeals.loc/ajax/page.cfc",
+							url: urlHttpsAPI + "ajax/page.cfc",
 							dataType: 'json',
 							data: fd
 						})

@@ -23,7 +23,7 @@
 										</tr>
 										<tr>
 											<td colspan="2">
-												<img class="img-responsive" src="#ad.getImageLink(type = "small")#" />
+												<img class="img-responsive" src="#ad.getImageLink()#" />
 											</td>
 										</tr>
 										<tr>
@@ -56,6 +56,7 @@
 		<cfset LOCAL.retStruct.messageArray = [] />
 		
 		<cfif StructKeyExists(FORM,"save_item")>
+			<cfset LOCAL.products = EntityLoad("module_admin_category_detail_advertisement", {category = EntityLoadByPK("category",getId())})> 
 			<cfif NOT IsNull(LOCAL.advertisementSection.getSectionData())>
 				<cfloop array="#LOCAL.advertisementSection.getSectionData()#" index="LOCAL.ad">
 					<cfif IsNumeric(FORM["advertisement_rank_#LOCAL.ad.getPageSectionAdvertisementId()#"])>
