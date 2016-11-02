@@ -4,12 +4,12 @@
 		<cfset var LOCAL = {} />
 		<cfset LOCAL.retStruct = {} />
 		<cfif StructKeyExists(getUrlData(),"id") AND IsNumeric(getUrlData().id)>
-			<cfset LOCAL.retStruct.products = EntityLoad("module_admin_category_detail_advertisement", {category = EntityLoadByPK("category",getUrlData().id)})> 
+			<cfset LOCAL.retStruct.ads = EntityLoad("module_admin_category_detail_advertisement", {category = EntityLoadByPK("category",getUrlData().id)})> 
 			<cfset LOCAL.retStruct.tab_title = "Advertisement"> 
 			<cfset LOCAL.retStruct.tab_content = '<div class="form-group"><div class="row">' />
 								
-			<cfif NOT IsNull(LOCAL.retStruct.products)>
-				<cfloop array="#LOCAL.retStruct.products#" index="ad">			
+			<cfif NOT IsNull(LOCAL.retStruct.ads)>
+				<cfloop array="#LOCAL.retStruct.ads#" index="ad">			
 					<cfset LOCAL.retStruct.tab_content &= '
 						<div class="col-xs-2">
 							<div class="box box-warning">
@@ -56,15 +56,15 @@
 		<cfset LOCAL.retStruct.messageArray = [] />
 		
 		<cfif StructKeyExists(FORM,"save_item")>
-			<cfset LOCAL.products = EntityLoad("module_admin_category_detail_advertisement", {category = EntityLoadByPK("category",getId())})> 
-			<cfif NOT IsNull(LOCAL.advertisementSection.getSectionData())>
-				<cfloop array="#LOCAL.advertisementSection.getSectionData()#" index="LOCAL.ad">
-					<cfif IsNumeric(FORM["advertisement_rank_#LOCAL.ad.getPageSectionAdvertisementId()#"])>
-						<cfset LOCAL.ad.setRank(FORM["advertisement_rank_#LOCAL.ad.getPageSectionAdvertisementId()#"]) />
+			<cfset LOCAL.ads = EntityLoad("module_admin_category_detail_advertisement", {category = EntityLoadByPK("category",getId())})> 
+			<cfif NOT IsNull(LOCAL.ads)>
+				<cfloop array="#LOCAL.products#" index="LOCAL.ad">
+					<cfif IsNumeric(FORM["advertisement_rank_#LOCAL.ad.getId()#"])>
+						<cfset LOCAL.ad.setRank(FORM["advertisement_rank_#LOCAL.ad.getId()#"]) />
 						<cfset EntitySave(LOCAL.ad) />
 					</cfif>
-					<cfif Trim(FORM["advertisement_link_#LOCAL.ad.getPageSectionAdvertisementId()#"]) NEQ "">
-						<cfset LOCAL.ad.setLink(FORM["advertisement_link_#LOCAL.ad.getPageSectionAdvertisementId()#"]) />
+					<cfif Trim(FORM["advertisement_link_#LOCAL.ad.getId()#"]) NEQ "">
+						<cfset LOCAL.ad.setLink(FORM["advertisement_link_#LOCAL.ad.getId()#"]) />
 						<cfset EntitySave(LOCAL.ad) />
 					</cfif>
 				</cfloop>
@@ -76,18 +76,10 @@
 						<cfset LOCAL.currentIndex = Replace(Replace(LOCAL.key,"ADS_IMAGE_",""),"_STATUS","") />
 						<cfif StructFind(FORM,LOCAL.key) EQ "done">
 							<cfset LOCAL.imgName = StructFind(FORM,"ADS_IMAGE_#LOCAL.currentIndex#_NAME") />
-							<cfset LOCAL.newAdvertisement = EntityNew("page_section_advertisement") />
-							<cfset LOCAL.newAdvertisement.setName(LOCAL.imgName) />
-							<cfset LOCAL.newAdvertisement.setSection(LOCAL.advertisementSection) />
+							<cfset LOCAL.newAdvertisement = EntityNew("module_admin_category_detail_advertisement") />
+							<cfset LOCAL.newAdvertisement.setImageName(LOCAL.imgName) />
 							<cfset LOCAL.newAdvertisement.setCategory(LOCAL.category) />
 							<cfset EntitySave(LOCAL.newAdvertisement) />
-							<cfset LOCAL.advertisementSection.addAdvertisement(LOCAL.newAdvertisement) />
-							
-							<cfset LOCAL.sizeArray = [{name = "small", width = "200", height = "200", position="center", crop = true}] />	
-							<cfset LOCAL.imagePath = ExpandPath("#APPLICATION.urlHttpsAdmin#images/uploads/advertise/") />
-							<cfset _createImages(	imagePath = LOCAL.imagePath,
-													imageNameWithExtension = LOCAL.imgName,
-													sizeArray = LOCAL.sizeArray) />
 						</cfif>
 					</cfif>
 				</cfloop>
